@@ -24,5 +24,32 @@ namespace PurchasingManager
         {
             InitializeComponent();
         }
+
+
+        #region Events
+        private void btnInput_Click(object sender, RoutedEventArgs e)
+        {
+            labTittle.Content = "NHẬP HÀNG";
+            frmInput.Visibility = Visibility.Visible;
+            frmReport.Visibility = Visibility.Hidden;
+            frmSettings.Visibility = Visibility.Hidden;
+        }
+
+        private void btnFrmSettings_Click(object sender, RoutedEventArgs e)
+        {
+            labTittle.Content = "CÀI ĐẶT";
+            frmInput.Visibility = Visibility.Hidden;
+            frmReport.Visibility = Visibility.Hidden;
+            frmSettings.Visibility = Visibility.Visible;
+        }
+
+        private void btnFrmReport_Click(object sender, RoutedEventArgs e)
+        {
+            labTittle.Content = "BÁO CÁO";
+            frmInput.Visibility = Visibility.Hidden;
+            frmReport.Visibility = Visibility.Visible;
+            frmSettings.Visibility = Visibility.Hidden;
+        }
+        #endregion
     }
 }
