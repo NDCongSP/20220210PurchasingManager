@@ -5,8 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PurchasingManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="QUẢN LÝ THU MUA" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowState="Maximized">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="DarkGreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="1479*"/>
+                <ColumnDefinition Width="194*"/>
+                <ColumnDefinition Width="92*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="Resources/Logo.png" Stretch="Fill"/>
+            <Label Grid.Column="1" x:Name="labTittle" Content="QUẢN LÝ THU MUA"  FontSize="60" FontFamily="Times New Roman" FontWeight="Bold" Foreground="DarkOrange"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="674,36,219,36"
+                   HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <local:ucNhapHang x:Name="frmInput" Visibility="Visible"/>
+            <local:ucReport x:Name="frmReport" Visibility="Hidden"/>
+            <local:ucSettings x:Name="frmSettings" Visibility="Hidden"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1000"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label x:Name="labTime" Content="23/03/2021 08:30:25" FontSize="25" FontFamily="Times New Roman" FontWeight="Bold" Foreground="White" Margin="3"
+                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnInput" Content="Nhập hàng" Margin="3" Width="150" FontSize="25" FontWeight="Bold" FontFamily="Times New Roman" Click="btnInput_Click"/>
+                <Button x:Name="btnFrmSettings" Content="Cài đặt" Margin="3" Width="150" FontSize="25" FontWeight="Bold" FontFamily="Times New Roman" Click="btnFrmSettings_Click"/>
+                <Button x:Name="btnFrmReport" Content="Báo cáo" Margin="3" Width="150" FontSize="25" FontWeight="Bold" FontFamily="Times New Roman" Click="btnFrmReport_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
