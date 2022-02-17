@@ -8,7 +8,56 @@
              Height="880" Width="1920"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Orientation="Vertical">
-        <TextBox x:Name="txtUserName" Text="" FontSize="50"
-                 Margin="5" TabIndex="1"/>
+        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="2">
+
+        </Border>
+        <TabControl FontSize="30" FontWeight="Bold" Background="AliceBlue">
+            <TabItem Header="ĐƠN GIÁ MỦ CAO SU">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Số độ" 
+                       FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                       Foreground="Black"
+                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Column="1" Content="Đơn giá (VNĐ)" 
+                       FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                       Foreground="Black"
+                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBox x:Name="txtSoDo" Grid.Row="1" Text="10" FontSize="100"
+                             Margin="2" TabIndex="1"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Width="870"
+                             HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="txtDonGiaMu" Grid.Row="1" Grid.Column="1" Text="3000" FontSize="100"
+                             Margin="2" TabIndex="1"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Width="870"
+                             HorizontalContentAlignment="Center"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ĐƠN GIÁ ĐIỀU">
+                <StackPanel Orientation="Vertical">
+                    <Label Grid.Column="1" Content="Đơn giá (VNĐ)" 
+                       FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                       Foreground="Black"
+                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtDonGiaDieu" Grid.Row="1" Text="10" FontSize="100"
+                             Margin="514,5,565,5" TabIndex="1"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Width="835"
+                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             />
+
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btnSave" Content="LƯU" FontSize="50" Height="100" Click="btnSave_Click"
+                Margin="5" TabIndex="3"/>
     </StackPanel>
 </UserControl>

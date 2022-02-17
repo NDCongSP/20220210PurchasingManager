@@ -8,7 +8,144 @@
              Height="880" Width="1920"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Orientation="Vertical">
-        <TextBox x:Name="txtUserName" Text="" FontSize="50"
-                 Margin="5" TabIndex="1"/>
+        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="2">
+
+        </Border>
+        <TabControl FontSize="30" FontWeight="Bold" Background="AliceBlue">
+            <TabItem Header="MỦ CAO SU">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Khách hàng" FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                           Foreground="Black"   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+
+                    <ComboBox Grid.Row="1" x:Name="cboCustomer" FontSize="100" FontFamily="Times New Roman" FontWeight="Bold" Margin="10"
+                          SelectionChanged="cboCustomer_SelectionChanged_1">
+                        <ComboBoxItem IsSelected="True">Nguyễn Văn A</ComboBoxItem>
+                        <ComboBoxItem>Nguyễn Văn B</ComboBoxItem>
+                    </ComboBox>
+
+
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="2">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Số điện thoại" FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                                <Label x:Name="labSDT" Content="..." FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Địa chỉ:" FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                                <Label x:Name="labAdd" Content="..." FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2">
+                        <Label Content="Số Kg" FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                           Foreground="Black"   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0,12" Width="434"/>
+
+                        <TextBox x:Name="txtKg" Grid.Row="1" Grid.Column="1" Text="0" FontSize="100"
+                             Margin="2" TabIndex="1"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Width="679"
+                             HorizontalContentAlignment="Center"/>
+                        <CheckBox x:Name="ckMuChen" Content="Mủ chén"
+                                  FontSize="100"
+                                 Margin="2" TabIndex="1"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="679"
+                                 HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="ĐIỀU">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Khách hàng" FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                           Foreground="Black"   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+
+                    <ComboBox Grid.Row="1" x:Name="cboCustomerDieu" FontSize="100" FontFamily="Times New Roman" FontWeight="Bold" Margin="10"
+                          SelectionChanged="cboCustomer_SelectionChanged_1">
+                        <ComboBoxItem IsSelected="True">Nguyễn Văn A</ComboBoxItem>
+                        <ComboBoxItem>Nguyễn Văn B</ComboBoxItem>
+                    </ComboBox>
+
+
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="2">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Số điện thoại" FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                                <Label x:Name="labSDTDieu" Content="..." FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Địa chỉ:" FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                                <Label x:Name="labAddDieu" Content="..." FontFamily="Times New Roman" FontSize="50" FontWeight="Bold"
+                                    Foreground="Black"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2">
+                        <Label Content="Số Kg" FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                           Foreground="Black"   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0,12" Width="434"/>
+
+                        <TextBox x:Name="txtKgDieu" Grid.Row="1" Grid.Column="1" Text="0" FontSize="100"
+                             Margin="2" TabIndex="1"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" Width="679"
+                             HorizontalContentAlignment="Center"/>
+                        
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btnSave" Content="LƯU" FontSize="50" Height="100" Click="btnSave_Click"
+                Margin="5" TabIndex="3"/>
     </StackPanel>
 </UserControl>

@@ -7,8 +7,81 @@
              mc:Ignorable="d" 
              Height="880" Width="1920"
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Vertical">
-        <TextBox x:Name="txtUserName" Text="" FontSize="50"
-                 Margin="5" TabIndex="1"/>
-    </StackPanel>
+    <Grid Height="922" Width="1912" Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Khách hàng" FontSize="30" FontWeight="Bold" FontFamily="Times New Roman"
+                       Foreground="DarkGreen" Margin="8 0 0 0"/>
+                <ComboBox Grid.Row="1" x:Name="cboCustomer" FontSize="30" FontFamily="Times New Roman" FontWeight="Bold" Margin="5"
+                          SelectionChanged="cboCustomer_SelectionChanged">
+                    <ComboBoxItem IsSelected="True">TẤT CẢ</ComboBoxItem>
+                    <ComboBoxItem>Nguyễn Văn A</ComboBoxItem>
+                    <ComboBoxItem>Nguyễn Văn B</ComboBoxItem>
+                </ComboBox>
+
+
+                <Label Grid.Column="2" Content="Thời Gian Bắt Đầu" FontSize="30" FontWeight="Bold" FontFamily="Times New Roman"
+                       Foreground="DarkGreen" Margin="8 0 0 0"/>
+                <DatePicker Grid.Column="2" Grid.Row="1" x:Name="dtFrom" FontSize="30" FontWeight="Bold" FontFamily="Times New Roman" 
+                            Margin="5"/>
+
+                <Label Grid.Column="3" Content="Thời Gian Kết Thúc" FontSize="30" FontWeight="Bold" FontFamily="Times New Roman"
+                       Foreground="DarkGreen" Margin="8 0 0 0"/>
+                <DatePicker Grid.Column="3" Grid.Row="1" x:Name="dtTo" FontSize="30" FontWeight="Bold" FontFamily="Times New Roman" 
+                            Margin="5"/>
+
+                <Button Grid.Column="4" x:Name="btnTruyVan" Content="Truy Vấn" FontSize="25" FontWeight="Bold" FontFamily="Times New Roman" 
+                    Background="DarkGreen" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnTruyVan_Click"  Height="Auto"/>
+                <Button Grid.Column="4" Grid.Row="1" x:Name="btnExport" Content="Xuất Excel" FontSize="25" FontWeight="Bold" FontFamily="Times New Roman" 
+                    Background="DarkGreen" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Click="btnExport_Click"  Height="Auto"/>
+            </Grid>
+        </Border>
+        
+        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Grid.Row="1" Margin="10">
+            <Grid Margin="10" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <DataGrid HorizontalAlignment="Left"  x:Name="dataGrid1" VerticalAlignment="Top" 
+                      Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                      Margin="4" CanUserResizeColumns="True" HorizontalScrollBarVisibility="Visible"  
+                      VerticalScrollBarVisibility="Visible" FontSize="20" FontWeight="Bold"
+                      VirtualizingStackPanel.VirtualizationMode ="Recycling" 
+                      VirtualizingStackPanel.IsVirtualizing ="True"
+                      Grid.Row="0"/>
+
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <Label Content="Tổng tiền" 
+                       FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                       Foreground="Black"
+                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                    <Label x:Name="labTotalMoney" Content="0" 
+                       FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
+                       Foreground="Black"
+                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>

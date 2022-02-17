@@ -23,6 +23,38 @@ namespace PurchasingManager
         public ucNhapHang()
         {
             InitializeComponent();
+
+            Loaded += UcNhapHang_Loaded;
+        }
+
+        private void UcNhapHang_Loaded(object sender, RoutedEventArgs e)
+        {
+            cboCustomer.SelectionChanged += CboCustomer_SelectionChanged;
+        }
+
+        private void CboCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox _cbo = sender as ComboBox;
+
+            var _res = GlobalVariable.ExampleData.FirstOrDefault(x => x.TenKhach == _cbo.Text);
+
+            if (_res != null)
+            {
+                labSDT.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    labSDT.Content = _res.SDT;
+                }));
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cboCustomer_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
