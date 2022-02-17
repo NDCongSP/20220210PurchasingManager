@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,9 +21,28 @@ namespace PurchasingManager
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        System.Timers.Timer _timer = new System.Timers.Timer();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _timer.Interval = 100;
+            _timer.Elapsed += _timer_Elapsed;
+            _timer.Enabled = true;
+        }
+
+        private void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            _timer.Enabled = false;
+
+            Dispatcher.BeginInvoke(new Action(
+                       () =>
+                       {
+                           labTime.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                       }));
+            _timer.Enabled = true;
         }
 
 
