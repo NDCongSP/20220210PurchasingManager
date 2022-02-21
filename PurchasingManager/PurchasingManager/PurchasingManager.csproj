@@ -131,6 +131,7 @@
     </ApplicationDefinition>
     <Compile Include="ClassControls\ConvertDataTableToList.cs" />
     <Compile Include="ClassControls\DataProvider.cs" />
+    <Compile Include="ClassControls\EncodeMD5.cs" />
     <Compile Include="ClassControls\ReadWriteExcel.cs" />
     <Compile Include="ClassControls\SqlTransactionQueryList.cs" />
     <Compile Include="Pages\frmNhapSoDo.xaml.cs">

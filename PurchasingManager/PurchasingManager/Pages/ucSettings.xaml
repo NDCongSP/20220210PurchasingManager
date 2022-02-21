@@ -23,7 +23,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Số độ" 
+                    <Label Content="Ngày" 
                        FontFamily="Times New Roman" FontSize="100" FontWeight="Bold"
                        Foreground="Black"
                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
