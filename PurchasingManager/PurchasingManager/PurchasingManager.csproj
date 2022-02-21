@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LogoPT.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
@@ -128,8 +131,14 @@
     </ApplicationDefinition>
     <Compile Include="ClassControls\ConvertDataTableToList.cs" />
     <Compile Include="ClassControls\DataProvider.cs" />
+    <Compile Include="ClassControls\EncodeMD5.cs" />
     <Compile Include="ClassControls\ReadWriteExcel.cs" />
     <Compile Include="ClassControls\SqlTransactionQueryList.cs" />
+    <Compile Include="Pages\frmNhapSoDo.xaml.cs">
+      <DependentUpon>frmNhapSoDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataModel.cs" />
+    <Compile Include="ClassControls\GlobalVariable.cs" />
     <Compile Include="Pages\ucNhapHang.xaml.cs">
       <DependentUpon>ucNhapHang.xaml</DependentUpon>
     </Compile>
@@ -139,6 +148,10 @@
     <Compile Include="Pages\ucSettings.xaml.cs">
       <DependentUpon>ucSettings.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\frmNhapSoDo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\frmLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,7 +212,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Resource Include="LogoPT.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Logo.png" />
