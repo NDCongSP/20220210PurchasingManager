@@ -62,6 +62,48 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ucBaoCao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucBaoCao.Designer.cs">
+      <DependentUpon>ucBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucKhachHang.Designer.cs">
+      <DependentUpon>ucKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucThuMua.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucThuMua.Designer.cs">
+      <DependentUpon>ucThuMua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmDonGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmDonGia.Designer.cs">
+      <DependentUpon>frmDonGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmKhachHang.Designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmTamUng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmTamUng.Designer.cs">
+      <DependentUpon>frmTamUng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmThuMua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmThuMua.Designer.cs">
+      <DependentUpon>frmThuMua.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -76,6 +118,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ucBaoCao.resx">
+      <DependentUpon>ucBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ucKhachHang.resx">
+      <DependentUpon>ucKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ucThuMua.resx">
+      <DependentUpon>ucThuMua.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
