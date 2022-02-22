@@ -97,12 +97,14 @@ namespace QuanLyThuMua
 
         private void _btnTaoThuMua_Click(object sender, EventArgs e)
         {
-
+            frmThuMua form = new frmThuMua();
+            form.ShowDialog();
         }
 
         private void _btnTaoTamUng_Click(object sender, EventArgs e)
         {
-
+            frmTamUng form = new frmTamUng();
+            form.ShowDialog();
         }
 
         private void _btnThemKH_Click(object sender, EventArgs e)
@@ -113,7 +115,8 @@ namespace QuanLyThuMua
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
         {
-
+            frmKhachHang form = new frmKhachHang();
+            form.ShowDialog();
         }
 
         private void _btnXoaKH_Click(object sender, EventArgs e)
