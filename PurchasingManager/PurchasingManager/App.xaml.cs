@@ -19,7 +19,7 @@ namespace PurchasingManager
 
             DataProvider.Instance.connectionStr = EncodeMD5.DecryptString(ConfigurationManager.AppSettings["ConString"], "PhucTh!nhMD%");
 
-            DataProvider.Instance.ExecuteNonQuery("call spCustomerInsert ('Nguyễn Văn D','0909123459','Bình Phước');");
+           // DataProvider.Instance.ExecuteNonQuery("call spCustomerInsert ('Nguyễn Văn D','0909123459','Bình Phước');");
 
             GlobalVariable.DonGiaCaoSu.Add(0, 900);
             GlobalVariable.DonGiaCaoSu.Add(10, 1000);
