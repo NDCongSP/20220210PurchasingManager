@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurchasingManager", "Purcha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyThuMua", "QuanLyThuMua\QuanLyThuMua.csproj", "{F04E3851-2921-4A9F-A854-FB20D1AED361}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{AAAC9D85-693D-4BE4-8E32-3FE3824FF972}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F04E3851-2921-4A9F-A854-FB20D1AED361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F04E3851-2921-4A9F-A854-FB20D1AED361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F04E3851-2921-4A9F-A854-FB20D1AED361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAC9D85-693D-4BE4-8E32-3FE3824FF972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAC9D85-693D-4BE4-8E32-3FE3824FF972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAC9D85-693D-4BE4-8E32-3FE3824FF972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAC9D85-693D-4BE4-8E32-3FE3824FF972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
