@@ -212,9 +212,9 @@ namespace QuanLyThuMua
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::QuanLyThuMua.Properties.Resources.icons8_save_50__1_;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(12, 565);
+            this.btnSave.Location = new System.Drawing.Point(12, 556);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(586, 90);
+            this.btnSave.Size = new System.Drawing.Size(579, 99);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
