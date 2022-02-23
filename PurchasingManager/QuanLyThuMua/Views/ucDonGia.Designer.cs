@@ -1,7 +1,6 @@
-﻿
-namespace QuanLyThuMua
+﻿namespace QuanLyThuMua
 {
-    partial class ucBaoCao
+    partial class ucDonGia
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,18 +28,8 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // ucBaoCao
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "ucBaoCao";
-            this.Size = new System.Drawing.Size(757, 480);
-            this.ResumeLayout(false);
-
         }
 
         #endregion
