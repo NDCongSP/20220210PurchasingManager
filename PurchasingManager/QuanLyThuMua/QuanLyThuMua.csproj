@@ -65,11 +65,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EncodeMD5.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalVariable.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\PriceModel.cs" />
+    <Compile Include="Models\PurchaseModel.cs" />
+    <Compile Include="Models\TamUngModel.cs" />
+    <Compile Include="Views\ucDonGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucDonGia.Designer.cs">
+      <DependentUpon>ucDonGia.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ucBaoCao.cs">
       <SubType>UserControl</SubType>
