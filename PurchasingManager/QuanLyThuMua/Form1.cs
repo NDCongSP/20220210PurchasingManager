@@ -67,6 +67,10 @@ namespace QuanLyThuMua
             {
                 page = new ucKhachHang();
             }
+            else if (_activePageText == "Đơn Giá")
+            {
+                page = new ucDonGia();
+            }
             else if (_activePageText == "Báo Cáo")
             {
                 page = new ucBaoCao();
@@ -115,7 +119,7 @@ namespace QuanLyThuMua
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
         {
-            frmKhachHang form = new frmKhachHang();
+            frmKhachHangUpdate form = new frmKhachHangUpdate();
             form.ShowDialog();
         }
 
@@ -124,10 +128,29 @@ namespace QuanLyThuMua
 
         }
 
-        private void _btnCaiDatDonGia_Click(object sender, EventArgs e)
+        private void _btnThemDonGia_Click(object sender, EventArgs e)
         {
             frmDonGia form = new frmDonGia();
             form.ShowDialog();
+        }
+
+        private void _btnSuaDonGia_Click(object sender, EventArgs e)
+        {
+            frmDonGia form = new frmDonGia();
+            form.ShowDialog();
+        }
+
+        private void _btnXoaDonGia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _btnRefreshKH_Click(object sender, EventArgs e)
+        {
+            if (_activePage is ucKhachHang uc)
+            {
+                uc.RefreshData();
+            }
         }
     }
 }

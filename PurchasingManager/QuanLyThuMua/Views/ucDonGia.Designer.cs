@@ -1,7 +1,6 @@
-﻿
-namespace QuanLyThuMua
+﻿namespace QuanLyThuMua
 {
-    partial class ucBaoCao
+    partial class ucDonGia
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,20 +28,33 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // ucBaoCao
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(293, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Đơn giá";
+            // 
+            // ucDonGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "ucBaoCao";
-            this.Size = new System.Drawing.Size(757, 480);
+            this.Controls.Add(this.label1);
+            this.Name = "ucDonGia";
+            this.Size = new System.Drawing.Size(933, 530);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
     }
 }

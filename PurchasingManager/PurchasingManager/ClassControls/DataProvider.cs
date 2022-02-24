@@ -16,7 +16,7 @@ namespace PurchasingManager
     public class DataProvider
     {
         //connection string kết nối DB server
-        public string connectionStr = $"Data Source=localhost;Database=sonthinhgiamsatloducnhom;UID=root;Password=100100; Min Pool Size=0;Max Pool Size=1000;Pooling=true; Connect Timeout=65535;";
+        public string connectionStr = $"Data Source=localhost;Database=dulieuthumua;UID=root;Password=100100; Min Pool Size=0;Max Pool Size=1000;Pooling=true; Connect Timeout=65535;";
         
 
         #region tạo Degin Parttern Singleton
