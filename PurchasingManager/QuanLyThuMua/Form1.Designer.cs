@@ -30,6 +30,7 @@ namespace QuanLyThuMua
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonRibbon1 = new Krypton.Ribbon.KryptonRibbon();
             this.kryptonRibbonTab1 = new Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup1 = new Krypton.Ribbon.KryptonRibbonGroup();
@@ -42,16 +43,17 @@ namespace QuanLyThuMua
             this._btnThemKH = new Krypton.Ribbon.KryptonRibbonGroupButton();
             this._btnSuaKH = new Krypton.Ribbon.KryptonRibbonGroupButton();
             this._btnXoaKH = new Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonGroupSeparator1 = new Krypton.Ribbon.KryptonRibbonGroupSeparator();
             this.kryptonRibbonTab3 = new Krypton.Ribbon.KryptonRibbonTab();
-            this.panelContainer = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
-            this.kryptonRibbonTab4 = new Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup3 = new Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupTriple3 = new Krypton.Ribbon.KryptonRibbonGroupTriple();
             this._btnThemDonGia = new Krypton.Ribbon.KryptonRibbonGroupButton();
             this._btnSuaDonGia = new Krypton.Ribbon.KryptonRibbonGroupButton();
             this._btnXoaDonGia = new Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.kryptonRibbonTab4 = new Krypton.Ribbon.KryptonRibbonTab();
+            this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
+            this.panelContainer = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonRibbonGroupTriple4 = new Krypton.Ribbon.KryptonRibbonGroupTriple();
+            this._btnRefreshKH = new Krypton.Ribbon.KryptonRibbonGroupButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContainer)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +68,8 @@ namespace QuanLyThuMua
             this.kryptonRibbonTab2,
             this.kryptonRibbonTab3,
             this.kryptonRibbonTab4});
-            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab3;
+            this.kryptonRibbon1.SelectedContext = null;
+            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab2;
             this.kryptonRibbon1.Size = new System.Drawing.Size(1924, 145);
             this.kryptonRibbon1.StateCommon.RibbonGeneral.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRibbon1.TabIndex = 0;
@@ -109,8 +112,8 @@ namespace QuanLyThuMua
             // kryptonRibbonGroup2
             // 
             this.kryptonRibbonGroup2.Items.AddRange(new Krypton.Ribbon.KryptonRibbonGroupContainer[] {
-            this.kryptonRibbonGroupTriple2,
-            this.kryptonRibbonGroupSeparator1});
+            this.kryptonRibbonGroupTriple4,
+            this.kryptonRibbonGroupTriple2});
             this.kryptonRibbonGroup2.TextLine1 = "Khách Hàng";
             // 
             // kryptonRibbonGroupTriple2
@@ -141,25 +144,6 @@ namespace QuanLyThuMua
             this.kryptonRibbonGroup3});
             this.kryptonRibbonTab3.Text = "Đơn Giá";
             // 
-            // panelContainer
-            // 
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 145);
-            this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Padding = new System.Windows.Forms.Padding(12);
-            this.panelContainer.Size = new System.Drawing.Size(1924, 916);
-            this.panelContainer.TabIndex = 1;
-            this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
-            // 
-            // kryptonManager1
-            // 
-            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteModeManager.Office2010BlueLightMode;
-            // 
-            // kryptonRibbonTab4
-            // 
-            this.kryptonRibbonTab4.Text = "Báo Cáo";
-            // 
             // kryptonRibbonGroup3
             // 
             this.kryptonRibbonGroup3.Items.AddRange(new Krypton.Ribbon.KryptonRibbonGroupContainer[] {
@@ -188,6 +172,36 @@ namespace QuanLyThuMua
             this._btnXoaDonGia.TextLine1 = "Xóa";
             this._btnXoaDonGia.Click += new System.EventHandler(this._btnXoaDonGia_Click);
             // 
+            // kryptonRibbonTab4
+            // 
+            this.kryptonRibbonTab4.Text = "Báo Cáo";
+            // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalPaletteMode = Krypton.Toolkit.PaletteModeManager.Office2010BlueLightMode;
+            // 
+            // panelContainer
+            // 
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(0, 145);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Padding = new System.Windows.Forms.Padding(12);
+            this.panelContainer.Size = new System.Drawing.Size(1924, 916);
+            this.panelContainer.TabIndex = 1;
+            this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
+            // 
+            // kryptonRibbonGroupTriple4
+            // 
+            this.kryptonRibbonGroupTriple4.Items.AddRange(new Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this._btnRefreshKH});
+            // 
+            // _btnRefreshKH
+            // 
+            this._btnRefreshKH.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnRefreshKH.ImageLarge")));
+            this._btnRefreshKH.TextLine1 = "Tải lại";
+            this._btnRefreshKH.Click += new System.EventHandler(this._btnRefreshKH_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -210,7 +224,6 @@ namespace QuanLyThuMua
 
         private Krypton.Ribbon.KryptonRibbon kryptonRibbon1;
         private Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab1;
-        private Krypton.Toolkit.KryptonPanel panelContainer;
         private Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab2;
         private Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup1;
         private Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple1;
@@ -223,13 +236,15 @@ namespace QuanLyThuMua
         private Krypton.Ribbon.KryptonRibbonGroupButton _btnXoaKH;
         private Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab3;
         private Krypton.Toolkit.KryptonManager kryptonManager1;
-        private Krypton.Ribbon.KryptonRibbonGroupSeparator kryptonRibbonGroupSeparator1;
         private Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab4;
         private Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup3;
         private Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple3;
         private Krypton.Ribbon.KryptonRibbonGroupButton _btnThemDonGia;
         private Krypton.Ribbon.KryptonRibbonGroupButton _btnSuaDonGia;
         private Krypton.Ribbon.KryptonRibbonGroupButton _btnXoaDonGia;
+        private Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple4;
+        private Krypton.Ribbon.KryptonRibbonGroupButton _btnRefreshKH;
+        private Krypton.Toolkit.KryptonPanel panelContainer;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using Krypton.Toolkit;
+﻿using Dapper;
+using Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,14 @@ namespace QuanLyThuMua
         {
             if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtPhoneNum.Text) && !string.IsNullOrEmpty(txtAdd.Text))
             {
-
+                if (GlobalVariable.ConnectionDb.Execute($"call spCustomerInsert ('{txtName.Text}','{txtPhoneNum.Text}','{txtAdd.Text}');") > 0)
+                {
+                    MessageBox.Show("Lưu thành công.");
+                }
+                else
+                {
+                    MessageBox.Show("Lưu thất bại.");
+                }
             }
             else
             {
