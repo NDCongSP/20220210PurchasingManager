@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>..\..\..\..\..\SelfLearning\11.ComponentFactory\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -132,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmTamUng.resx">
       <DependentUpon>frmTamUng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmThuMua.resx">
+      <DependentUpon>frmThuMua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ucBaoCao.resx">
       <DependentUpon>ucBaoCao.cs</DependentUpon>

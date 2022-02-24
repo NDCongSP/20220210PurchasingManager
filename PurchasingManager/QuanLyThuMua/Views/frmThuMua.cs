@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Krypton.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,21 @@ using System.Windows.Forms;
 
 namespace QuanLyThuMua
 {
-    public partial class frmThuMua : Form
+    public partial class frmThuMua : KryptonForm
     {
         public frmThuMua()
         {
             InitializeComponent();
         }
+
+        #region Props
+
+        #endregion
+        #region Methods
+
+        #endregion
+        #region Events
+
+        #endregion
     }
 }
