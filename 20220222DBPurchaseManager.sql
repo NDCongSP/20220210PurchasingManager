@@ -1,15 +1,15 @@
-CREATE DATABASE  IF NOT EXISTS `dulieuthumua` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `dulieuthumua` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `dulieuthumua`;
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: dulieuthumua
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	5.6.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,15 +23,15 @@ USE `dulieuthumua`;
 
 DROP TABLE IF EXISTS `customerinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customerinfo` (
-  `Id` int NOT NULL AUTO_INCREMENT,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(500) DEFAULT NULL,
   `Phone` varchar(45) DEFAULT NULL,
   `Address` varchar(500) DEFAULT NULL,
   `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,15 +50,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `priceinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `priceinfo` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `DateTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'số độ của mủ cao su, chỉ dùng choi trường hợp mủ cao su không phải mủ chén',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'số độ của mủ cao su, chỉ dùng choi trường hợp mủ cao su không phải mủ chén',
   `Type` varchar(45) NOT NULL COMMENT 'co 2 loai,  "Cao su" "Dieu"',
   `Price` float NOT NULL,
   `Note` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +67,7 @@ CREATE TABLE `priceinfo` (
 
 LOCK TABLES `priceinfo` WRITE;
 /*!40000 ALTER TABLE `priceinfo` DISABLE KEYS */;
+INSERT INTO `priceinfo` VALUES (1,'2022-02-21 10:00:00','Cao su',100,'Test'),(2,'2022-02-21 10:01:00','Cao su',105,'Test'),(3,'2022-02-21 11:01:00','Dieu',200,'Test'),(4,'2022-02-21 11:10:00','Dieu',234,'Test'),(5,'2022-02-23 11:32:43','Cao su',150,'aaaaaaa'),(6,'2022-02-23 11:32:43','Dieu',250,'Điều');
 /*!40000 ALTER TABLE `priceinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,23 +77,23 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `purchaseinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `purchaseinfo` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `CustomerId` int DEFAULT NULL,
-  `Datetime` datetime DEFAULT CURRENT_TIMESTAMP,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CustomerId` int(11) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `Type` varchar(45) NOT NULL COMMENT 'Có 2 loại thu mua là: "Cao su"'' "Dieu"',
   `Weight` float DEFAULT NULL,
-  `PriceId` int DEFAULT NULL,
+  `PriceId` int(11) DEFAULT NULL,
   `Price` float DEFAULT NULL,
-  `PayNow` int DEFAULT '0' COMMENT '1- Thanh toán ngay\\n0-Thanh toán cuối tháng\\nMặc định là 0',
-  `MuType` int DEFAULT '0' COMMENT 'Chỉ dùngcho đơn hàng là mủ cao su.\\n1- mủ chén\\n0- không phải mủ chén',
+  `PayNow` int(11) DEFAULT '0' COMMENT '1- Thanh toán ngay\\n0-Thanh toán cuối tháng\\nMặc định là 0',
+  `MuType` int(11) DEFAULT '0' COMMENT 'Chỉ dùngcho đơn hàng là mủ cao su.\\n1- mủ chén\\n0- không phải mủ chén',
   `Degree` float DEFAULT NULL COMMENT 'Chỉ dùngcho đơn hàng là mủ cao su.\n1- mủ chén\nChỉ mủ loại này mới có số độ: 0- không phải mủ chén',
   `Note` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_purchase_customer_idx` (`CustomerId`),
   CONSTRAINT `fk_purchase_customer` FOREIGN KEY (`CustomerId`) REFERENCES `customerinfo` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='lưu thông tin tất cả các đơn hàng thu mua, lưu ý có đơn hàng trả tiên ngày và đơn hàng cuối tháng mới thanh toán';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='lưu thông tin tất cả các đơn hàng thu mua, lưu ý có đơn hàng trả tiên ngày và đơn hàng cuối tháng mới thanh toán';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,17 +111,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tamung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tamung` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Datetime` datetime DEFAULT NULL,
-  `CustomerId` int DEFAULT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CreatedDate` datetime DEFAULT NULL,
+  `CustomerId` int(11) DEFAULT NULL,
   `Money` float DEFAULT NULL,
   `Note` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_tamung_khachhang_idx` (`CustomerId`),
   CONSTRAINT `fk_tamung_khachhang` FOREIGN KEY (`CustomerId`) REFERENCES `customerinfo` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='Lưu thông tin các tạm ứng của khách, để cuối tháng tính tổng tiền, rồi trừ khoản tạm ứng này';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Lưu thông tin các tạm ứng của khách, để cuối tháng tính tổng tiền, rồi trừ khoản tạm ứng này';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,14 +139,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `useraccount`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `useraccount` (
-  `Id` int NOT NULL AUTO_INCREMENT,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(500) DEFAULT NULL,
   `Password` varchar(500) DEFAULT NULL,
   `Role` varchar(45) DEFAULT '2' COMMENT '1-Admin\n2-Operator',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-22 21:48:06
+-- Dump completed on 2022-02-23 21:18:17
