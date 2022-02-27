@@ -61,7 +61,7 @@ namespace QuanLyThuMua
             UserControl page = null;
             if (_activePageText == "Thu Mua")
             {
-                page = new ucThuMua();
+                page = new ucThuMua() { };
             }
             else if (_activePageText == "Khách Hàng")
             {
@@ -75,7 +75,6 @@ namespace QuanLyThuMua
             {
                 page = new ucBaoCao();
             }
-
             ActivePage = page;
         }
 
@@ -102,7 +101,16 @@ namespace QuanLyThuMua
         private void _btnTaoThuMua_Click(object sender, EventArgs e)
         {
             frmThuMua form = new frmThuMua();
+            form.OnPurchaseInserted += Form_OnPurchaseInserted;
             form.ShowDialog();
+        }
+
+        private void Form_OnPurchaseInserted(object sender, EventArgs e)
+        {
+            if (ActivePage is ucThuMua thuMua)
+            {
+                thuMua.GetData();
+            }
         }
 
         private void _btnTaoTamUng_Click(object sender, EventArgs e)
@@ -119,8 +127,8 @@ namespace QuanLyThuMua
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
         {
-            frmKhachHangUpdate form = new frmKhachHangUpdate();
-            form.ShowDialog();
+            //frmKhachHangUpdate form = new frmKhachHangUpdate();
+            //form.ShowDialog();
         }
 
         private void _btnXoaKH_Click(object sender, EventArgs e)

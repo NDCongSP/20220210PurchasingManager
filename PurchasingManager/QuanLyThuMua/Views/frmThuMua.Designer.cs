@@ -29,207 +29,224 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.cbbKH = new Krypton.Toolkit.KryptonComboBox();
-            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            this.cbbLoaimu = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThuMua));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdDieu = new Krypton.Toolkit.KryptonRadioButton();
+            this.rdCaosu = new Krypton.Toolkit.KryptonRadioButton();
+            this.ckbPayNow = new Krypton.Toolkit.KryptonCheckBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.rtbNote = new System.Windows.Forms.RichTextBox();
+            this.txtKL = new System.Windows.Forms.TextBox();
+            this.txtDongia = new System.Windows.Forms.TextBox();
+            this.txtSodo = new System.Windows.Forms.TextBox();
             this.txtDiachi = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.kryptonCheckBox1 = new Krypton.Toolkit.KryptonCheckBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.txtKL = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
+            this.cbbLoaimu = new Krypton.Toolkit.KryptonComboBox();
+            this.cbbKH = new Krypton.Toolkit.KryptonComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblKL = new System.Windows.Forms.Label();
+            this.lblDongia = new System.Windows.Forms.Label();
+            this.lblSodo = new System.Windows.Forms.Label();
+            this.lblLoaimu = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbLoaimu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbKH)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // groupBox1
             // 
-            this.kryptonPanel1.Controls.Add(this.kryptonCheckBox1);
-            this.kryptonPanel1.Controls.Add(this.textBox6);
-            this.kryptonPanel1.Controls.Add(this.textBox7);
-            this.kryptonPanel1.Controls.Add(this.textBox5);
-            this.kryptonPanel1.Controls.Add(this.textBox4);
-            this.kryptonPanel1.Controls.Add(this.textBox3);
-            this.kryptonPanel1.Controls.Add(this.txtKL);
-            this.kryptonPanel1.Controls.Add(this.txtSdt);
-            this.kryptonPanel1.Controls.Add(this.txtDiachi);
-            this.kryptonPanel1.Controls.Add(this.cbbKH);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton2);
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
-            this.kryptonPanel1.Controls.Add(this.cbbLoaimu);
-            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1240, 794);
-            this.kryptonPanel1.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.rdDieu);
+            this.groupBox1.Controls.Add(this.rdCaosu);
+            this.groupBox1.Controls.Add(this.ckbPayNow);
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.btnExit);
+            this.groupBox1.Controls.Add(this.rtbNote);
+            this.groupBox1.Controls.Add(this.txtKL);
+            this.groupBox1.Controls.Add(this.txtDongia);
+            this.groupBox1.Controls.Add(this.txtSodo);
+            this.groupBox1.Controls.Add(this.txtDiachi);
+            this.groupBox1.Controls.Add(this.txtSdt);
+            this.groupBox1.Controls.Add(this.cbbLoaimu);
+            this.groupBox1.Controls.Add(this.cbbKH);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.lblKL);
+            this.groupBox1.Controls.Add(this.lblDongia);
+            this.groupBox1.Controls.Add(this.lblSodo);
+            this.groupBox1.Controls.Add(this.lblLoaimu);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
-            // cbbKH
+            // rdDieu
             // 
-            this.cbbKH.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbbKH.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbbKH.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbbKH.DropDownWidth = 955;
-            this.cbbKH.IntegralHeight = false;
-            this.cbbKH.Items.AddRange(new object[] {
-            "Nguyen Van A",
-            "Tran Van B",
-            "Nguyen Thi C",
-            "Cao Van D",
-            "Le Van E"});
-            this.cbbKH.Location = new System.Drawing.Point(232, 44);
-            this.cbbKH.Name = "cbbKH";
-            this.cbbKH.Size = new System.Drawing.Size(926, 37);
-            this.cbbKH.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.cbbKH.StateCommon.ComboBox.Content.Padding = new System.Windows.Forms.Padding(8);
-            this.cbbKH.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.cbbKH.TabIndex = 8;
+            resources.ApplyResources(this.rdDieu, "rdDieu");
+            this.rdDieu.Name = "rdDieu";
+            this.rdDieu.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdDieu.Values.Text = resources.GetString("rdDieu.Values.Text");
             // 
-            // kryptonButton2
+            // rdCaosu
             // 
-            this.kryptonButton2.Location = new System.Drawing.Point(1023, 729);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.Size = new System.Drawing.Size(205, 53);
-            this.kryptonButton2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.kryptonButton2.TabIndex = 7;
-            this.kryptonButton2.Values.Text = "Luu";
+            resources.ApplyResources(this.rdCaosu, "rdCaosu");
+            this.rdCaosu.Checked = true;
+            this.rdCaosu.Name = "rdCaosu";
+            this.rdCaosu.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdCaosu.Values.Text = resources.GetString("rdCaosu.Values.Text");
             // 
-            // kryptonButton1
+            // ckbPayNow
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(700, 729);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(290, 53);
-            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton1.TabIndex = 7;
-            this.kryptonButton1.Values.Text = "Thanh toan ngay va Luu";
+            resources.ApplyResources(this.ckbPayNow, "ckbPayNow");
+            this.ckbPayNow.Name = "ckbPayNow";
+            this.ckbPayNow.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbPayNow.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.ckbPayNow.StateCommon.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.ckbPayNow.Values.Text = resources.GetString("ckbPayNow.Values.Text");
             // 
-            // cbbLoaimu
+            // btnSave
             // 
-            this.cbbLoaimu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoaimu.FormattingEnabled = true;
-            this.cbbLoaimu.Location = new System.Drawing.Point(232, 270);
-            this.cbbLoaimu.Name = "cbbLoaimu";
-            this.cbbLoaimu.Size = new System.Drawing.Size(420, 33);
-            this.cbbLoaimu.TabIndex = 6;
+            this.btnSave.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Name = "btnSave";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // txtDiachi
+            // btnExit
             // 
-            this.txtDiachi.Enabled = false;
-            this.txtDiachi.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiachi.Location = new System.Drawing.Point(232, 122);
-            this.txtDiachi.Name = "txtDiachi";
-            this.txtDiachi.ReadOnly = true;
-            this.txtDiachi.Size = new System.Drawing.Size(926, 33);
-            this.txtDiachi.TabIndex = 9;
+            this.btnExit.BackColor = System.Drawing.Color.OrangeRed;
+            resources.ApplyResources(this.btnExit, "btnExit");
+            this.btnExit.Name = "btnExit";
+            this.btnExit.UseVisualStyleBackColor = false;
             // 
-            // txtSdt
+            // rtbNote
             // 
-            this.txtSdt.Enabled = false;
-            this.txtSdt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSdt.Location = new System.Drawing.Point(232, 196);
-            this.txtSdt.Name = "txtSdt";
-            this.txtSdt.ReadOnly = true;
-            this.txtSdt.Size = new System.Drawing.Size(926, 33);
-            this.txtSdt.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(77, 48);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(138, 33);
-            this.textBox3.TabIndex = 10;
-            this.textBox3.Text = "Khach hang";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(77, 122);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(138, 33);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.Text = "Dia chi";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(77, 270);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(138, 33);
-            this.textBox5.TabIndex = 10;
-            this.textBox5.Text = "Loai mu";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(77, 196);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(138, 33);
-            this.textBox6.TabIndex = 10;
-            this.textBox6.Text = "SDT";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // kryptonCheckBox1
-            // 
-            this.kryptonCheckBox1.LabelStyle = Krypton.Toolkit.LabelStyle.BoldPanel;
-            this.kryptonCheckBox1.Location = new System.Drawing.Point(689, 273);
-            this.kryptonCheckBox1.Name = "kryptonCheckBox1";
-            this.kryptonCheckBox1.Size = new System.Drawing.Size(101, 30);
-            this.kryptonCheckBox1.StateCommon.LongText.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.kryptonCheckBox1.StateCommon.ShortText.Color1 = System.Drawing.Color.Navy;
-            this.kryptonCheckBox1.StateCommon.ShortText.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.kryptonCheckBox1.TabIndex = 11;
-            this.kryptonCheckBox1.Values.Text = "Mu chen";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(77, 342);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(138, 33);
-            this.textBox7.TabIndex = 10;
-            this.textBox7.Text = "Khoi luong (Kg)";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rtbNote.AutoWordSelection = true;
+            resources.ApplyResources(this.rtbNote, "rtbNote");
+            this.rtbNote.Name = "rtbNote";
             // 
             // txtKL
             // 
-            this.txtKL.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKL.Location = new System.Drawing.Point(232, 342);
+            this.txtKL.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtKL, "txtKL");
             this.txtKL.Name = "txtKL";
-            this.txtKL.Size = new System.Drawing.Size(926, 33);
-            this.txtKL.TabIndex = 9;
+            // 
+            // txtDongia
+            // 
+            this.txtDongia.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtDongia, "txtDongia");
+            this.txtDongia.Name = "txtDongia";
+            // 
+            // txtSodo
+            // 
+            this.txtSodo.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtSodo, "txtSodo");
+            this.txtSodo.Name = "txtSodo";
+            // 
+            // txtDiachi
+            // 
+            resources.ApplyResources(this.txtDiachi, "txtDiachi");
+            this.txtDiachi.ForeColor = System.Drawing.Color.Black;
+            this.txtDiachi.Name = "txtDiachi";
+            this.txtDiachi.ReadOnly = true;
+            // 
+            // txtSdt
+            // 
+            resources.ApplyResources(this.txtSdt, "txtSdt");
+            this.txtSdt.ForeColor = System.Drawing.Color.Black;
+            this.txtSdt.Name = "txtSdt";
+            this.txtSdt.ReadOnly = true;
+            // 
+            // cbbLoaimu
+            // 
+            this.cbbLoaimu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbbLoaimu.DropDownWidth = 862;
+            this.cbbLoaimu.IntegralHeight = false;
+            this.cbbLoaimu.Items.AddRange(new object[] {
+            resources.GetString("cbbLoaimu.Items"),
+            resources.GetString("cbbLoaimu.Items1")});
+            resources.ApplyResources(this.cbbLoaimu, "cbbLoaimu");
+            this.cbbLoaimu.Name = "cbbLoaimu";
+            this.cbbLoaimu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbLoaimu.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            // 
+            // cbbKH
+            // 
+            this.cbbKH.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbbKH.DropDownWidth = 862;
+            this.cbbKH.IntegralHeight = false;
+            resources.ApplyResources(this.cbbKH, "cbbKH");
+            this.cbbKH.Name = "cbbKH";
+            this.cbbKH.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbKH.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // lblKL
+            // 
+            resources.ApplyResources(this.lblKL, "lblKL");
+            this.lblKL.Name = "lblKL";
+            // 
+            // lblDongia
+            // 
+            resources.ApplyResources(this.lblDongia, "lblDongia");
+            this.lblDongia.Name = "lblDongia";
+            // 
+            // lblSodo
+            // 
+            resources.ApplyResources(this.lblSodo, "lblSodo");
+            this.lblSodo.Name = "lblSodo";
+            // 
+            // lblLoaimu
+            // 
+            resources.ApplyResources(this.lblLoaimu, "lblLoaimu");
+            this.lblLoaimu.Name = "lblLoaimu";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // frmThuMua
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 794);
-            this.Controls.Add(this.kryptonPanel1);
+            this.Controls.Add(this.groupBox1);
+            this.CornerRoundingRadius = 5F;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.IsMdiContainer = true;
+            this.MaximizeBox = false;
             this.Name = "frmThuMua";
-            this.Text = "frmThuMua";
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
+            this.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.StateCommon.Border.Rounding = 5F;
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbLoaimu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbKH)).EndInit();
             this.ResumeLayout(false);
 
@@ -237,19 +254,28 @@ namespace QuanLyThuMua
 
         #endregion
 
-        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private Krypton.Toolkit.KryptonButton kryptonButton2;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
-        private System.Windows.Forms.ComboBox cbbLoaimu;
-        private Krypton.Toolkit.KryptonComboBox cbbKH;
-        private System.Windows.Forms.TextBox txtDiachi;
-        private Krypton.Toolkit.KryptonCheckBox kryptonCheckBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Krypton.Toolkit.KryptonRadioButton rdCaosu;
+        private Krypton.Toolkit.KryptonCheckBox ckbPayNow;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.TextBox txtKL;
+        private System.Windows.Forms.TextBox txtDongia;
+        private System.Windows.Forms.TextBox txtSodo;
+        private System.Windows.Forms.TextBox txtDiachi;
         private System.Windows.Forms.TextBox txtSdt;
+        private Krypton.Toolkit.KryptonComboBox cbbLoaimu;
+        private Krypton.Toolkit.KryptonComboBox cbbKH;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblKL;
+        private System.Windows.Forms.Label lblDongia;
+        private System.Windows.Forms.Label lblSodo;
+        private System.Windows.Forms.Label lblLoaimu;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label1;
+        private Krypton.Toolkit.KryptonRadioButton rdDieu;
     }
 }

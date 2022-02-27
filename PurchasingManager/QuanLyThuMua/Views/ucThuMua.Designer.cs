@@ -29,95 +29,43 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.kryptonDataGridView1 = new Krypton.Toolkit.KryptonDataGridView();
-            this.Column1 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column2 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column3 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column4 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column5 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            this.gvPurchaseList = new Krypton.Toolkit.KryptonDataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPurchaseList)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonDataGridView1
+            // gvPurchaseList
             // 
-            this.kryptonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(1060, 660);
-            this.kryptonDataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 100;
-            // 
-            // Column2
-            // 
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 100;
-            // 
-            // Column3
-            // 
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 100;
-            // 
-            // Column4
-            // 
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 100;
-            // 
-            // Column5
-            // 
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 100;
+            this.gvPurchaseList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gvPurchaseList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gvPurchaseList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvPurchaseList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.gvPurchaseList.Location = new System.Drawing.Point(0, 0);
+            this.gvPurchaseList.MultiSelect = false;
+            this.gvPurchaseList.Name = "gvPurchaseList";
+            this.gvPurchaseList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvPurchaseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvPurchaseList.Size = new System.Drawing.Size(1060, 660);
+            this.gvPurchaseList.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.gvPurchaseList.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvPurchaseList.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvPurchaseList.TabIndex = 0;
             // 
             // ucThuMua
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.kryptonDataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.gvPurchaseList);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucThuMua";
             this.Size = new System.Drawing.Size(1060, 660);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPurchaseList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column2;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column5;
+        private Krypton.Toolkit.KryptonDataGridView gvPurchaseList;
     }
 }
