@@ -9,8 +9,10 @@ namespace QuanLyThuMua
 {
     public class PurchaseModel
     {
+        [Browsable(false)]
         public int Id { get; set; }
         [DesignOnly(true)]
+        [Browsable(false)]
         public int CustomerId { get; set; }
         [DisplayName("Ngày tạo")]
         public DateTime CreatedDate { get; set; }

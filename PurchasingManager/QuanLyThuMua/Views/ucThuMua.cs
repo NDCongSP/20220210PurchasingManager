@@ -47,8 +47,8 @@ namespace QuanLyThuMua
         {
           List<PurchaseModel> purchaseModels =  GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
             gvPurchaseList.DataSource = purchaseModels;
-            gvPurchaseList.Columns["CustomerId"].Visible = false;
-            gvPurchaseList.Columns["PriceId"].Visible = false;
+            //gvPurchaseList.Columns["CustomerId"].Visible = false;
+            //gvPurchaseList.Columns["PriceId"].Visible = false;
         }
         private void GvPurchaseList_DoubleClick(object sender, EventArgs e)
         {
