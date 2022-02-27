@@ -9,7 +9,7 @@ namespace QuanLyThuMua
 {
     public class PurchaseModel
     {
-        [Browsable(false)]
+        [Browsable(true)]
         public int Id { get; set; }
         [DesignOnly(true)]
         [Browsable(false)]

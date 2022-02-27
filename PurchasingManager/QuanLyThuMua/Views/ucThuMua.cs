@@ -14,8 +14,8 @@ namespace QuanLyThuMua
 {
     public partial class ucThuMua : UserControl
     {
-      
 
+        public int GridHeight { get; set; }
         public ucThuMua()
         {
             InitializeComponent();
@@ -28,7 +28,10 @@ namespace QuanLyThuMua
         {
             //KryptonDataGridView gv = sender as KryptonDataGridView;
             var activeColumn = gvPurchaseList.Columns[e.ColumnIndex];
-            if (activeColumn.Name == "Degree")
+            var row = gvPurchaseList.Rows[e.RowIndex];
+            var _type = row.Cells["type"].Value.ToString();
+            int _mutype =Convert.ToInt32(row.Cells["mutype"].Value);
+            if (activeColumn.Name == "Degree" && _type == "Cao su" && _mutype == 1 )
             {
                 e.Cancel = false;
             }
@@ -41,6 +44,8 @@ namespace QuanLyThuMua
         private void UcThuMua_Load(object sender, EventArgs e)
         {
             GetData();
+            Console.WriteLine(this.Height);
+            gvPurchaseList.Height = GridHeight - 50;
         }
 
         public void GetData()

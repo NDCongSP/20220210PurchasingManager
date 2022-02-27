@@ -83,6 +83,7 @@ namespace QuanLyThuMua
             // 
             this.btnExit.BackColor = System.Drawing.Color.OrangeRed;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnExit.Location = new System.Drawing.Point(592, 457);
             this.btnExit.Name = "btnExit";

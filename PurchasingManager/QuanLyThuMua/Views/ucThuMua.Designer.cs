@@ -35,20 +35,21 @@ namespace QuanLyThuMua
             // 
             // gvPurchaseList
             // 
-            this.gvPurchaseList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.gvPurchaseList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.gvPurchaseList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvPurchaseList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvPurchaseList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.gvPurchaseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvPurchaseList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.gvPurchaseList.Location = new System.Drawing.Point(0, 0);
+            this.gvPurchaseList.Location = new System.Drawing.Point(8, 8);
             this.gvPurchaseList.MultiSelect = false;
             this.gvPurchaseList.Name = "gvPurchaseList";
+            this.gvPurchaseList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.gvPurchaseList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.gvPurchaseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvPurchaseList.Size = new System.Drawing.Size(1060, 660);
             this.gvPurchaseList.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.gvPurchaseList.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvPurchaseList.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvPurchaseList.TabIndex = 0;
+            this.gvPurchaseList.TabIndex = 2;
             // 
             // ucThuMua
             // 

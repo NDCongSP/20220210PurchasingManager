@@ -121,6 +121,7 @@ namespace QuanLyThuMua
             // 
             this.btnExit.BackColor = System.Drawing.Color.OrangeRed;
             resources.ApplyResources(this.btnExit, "btnExit");
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExit.Name = "btnExit";
             this.btnExit.UseVisualStyleBackColor = false;
             // 

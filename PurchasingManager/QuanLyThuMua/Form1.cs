@@ -61,7 +61,7 @@ namespace QuanLyThuMua
             UserControl page = null;
             if (_activePageText == "Thu Mua")
             {
-                page = new ucThuMua() { };
+                page = new ucThuMua() { GridHeight = panelContainer .Height};
             }
             else if (_activePageText == "Khách Hàng")
             {
