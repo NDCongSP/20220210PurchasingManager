@@ -16,6 +16,7 @@ namespace QuanLyThuMua
     {
         private int customerId;
         private CustomerModel customerInfo = new CustomerModel();
+        private bool isActived = false;
 
         public frmKhachHangUpdate()
         {
@@ -47,7 +48,25 @@ namespace QuanLyThuMua
                 txtAdd.Text = customerInfo.Address;
             }));
 
+            if (customerInfo.IsActived == 1)
+            {
+                ckbStatus.Checked = true;
+                isActived = true;
+            }
+            else
+            {
+                ckbStatus.Checked = false;
+                isActived = false;
+            }
+
             krpCboCustomer.SelectedValueChanged += KrpCboCustomer_SelectedValueChanged;
+            ckbStatus.CheckedChanged += CkbStatus_CheckedChanged;
+        }
+
+        private void CkbStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            var sen = sender as KryptonCheckBox;
+            isActived = sen.Checked;
         }
 
         private void KrpCboCustomer_SelectedValueChanged(object sender, EventArgs e)
@@ -74,7 +93,7 @@ namespace QuanLyThuMua
         {
             if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtPhoneNum.Text) && !string.IsNullOrEmpty(txtAdd.Text))
             {
-                if (GlobalVariable.ConnectionDb.Execute($"call spCustomerUpdate ({customerInfo.Id},'{txtName.Text}','{txtPhoneNum.Text}','{txtAdd.Text}');") > 0)
+                if (GlobalVariable.ConnectionDb.Execute($"call spCustomerUpdate ({customerInfo.Id},'{txtName.Text}','{txtPhoneNum.Text}','{txtAdd.Text}',{isActived});") > 0)
                 {
                     MessageBox.Show("Cập nhật thành công.");
                 }
