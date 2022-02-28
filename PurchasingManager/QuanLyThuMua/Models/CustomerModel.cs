@@ -13,5 +13,6 @@ namespace QuanLyThuMua
         public string Phone { get; set; }
         public string Address { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int IsActived { get; set; }
     }
 }
