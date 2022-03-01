@@ -34,12 +34,12 @@ namespace QuanLyThuMua
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.kryptonDataGridView1 = new Krypton.Toolkit.KryptonDataGridView();
-            this.Column1 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column2 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column3 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column4 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column5 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column3 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column5 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,11 +113,11 @@ namespace QuanLyThuMua
 
         #endregion
 
-        private Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column2;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column5;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column2;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column5;
     }
 }

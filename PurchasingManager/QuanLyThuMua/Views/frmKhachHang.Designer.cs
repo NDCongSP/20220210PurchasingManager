@@ -38,7 +38,7 @@ namespace QuanLyThuMua
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
+            this.kryptonContextMenu1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -179,7 +179,7 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
-        private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button1;
     }

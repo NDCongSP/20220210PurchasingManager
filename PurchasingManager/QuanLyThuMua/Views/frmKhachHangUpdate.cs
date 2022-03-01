@@ -1,5 +1,5 @@
-﻿using Dapper;
-using Krypton.Toolkit;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
