@@ -21,6 +21,7 @@ namespace QuanLyThuMua
         [DisplayName("Trọng lượng")]
         public double Weight { get; set; }
         [DesignOnly(true)]
+        [Browsable(true)]
         public int PriceId { get; set; }
         [DisplayName("Đơn giá")]
         public double Price { get; set; }

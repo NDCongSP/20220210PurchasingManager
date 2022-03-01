@@ -127,8 +127,8 @@ namespace QuanLyThuMua
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
         {
-            //frmKhachHangUpdate form = new frmKhachHangUpdate();
-            //form.ShowDialog();
+            frmKhachHangUpdate form = new frmKhachHangUpdate();
+            form.ShowDialog();
         }
 
         private void _btnXoaKH_Click(object sender, EventArgs e)
@@ -144,18 +144,21 @@ namespace QuanLyThuMua
 
         private void _btnSuaDonGia_Click(object sender, EventArgs e)
         {
-            frmDonGia form = new frmDonGia();
-            form.ShowDialog();
-        }
-
-        private void _btnXoaDonGia_Click(object sender, EventArgs e)
-        {
-
+            //frmDonGiaUpdate form = new frmDonGiaUpdate();
+            //form.ShowDialog();
         }
 
         private void _btnRefreshKH_Click(object sender, EventArgs e)
         {
             if (_activePage is ucKhachHang uc)
+            {
+                uc.RefreshData();
+            }
+        }
+
+        private void _btnRefreshGia_Click(object sender, EventArgs e)
+        {
+            if (_activePage is ucDonGia uc)
             {
                 uc.RefreshData();
             }
