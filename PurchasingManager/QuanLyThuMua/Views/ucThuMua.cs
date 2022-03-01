@@ -1,4 +1,4 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Krypton.Toolkit;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -30,8 +30,8 @@ namespace QuanLyThuMua
             var activeColumn = gvPurchaseList.Columns[e.ColumnIndex];
             var row = gvPurchaseList.Rows[e.RowIndex];
             var _type = row.Cells["type"].Value.ToString();
-            int _mutype =Convert.ToInt32(row.Cells["mutype"].Value);
-            if (activeColumn.Name == "Degree" && _type == "Cao su" && _mutype == 1 )
+            int _mutype = Convert.ToInt32(row.Cells["mutype"].Value);
+            if (activeColumn.Name == "Degree" && _type == "Cao su" && _mutype == 1)
             {
                 e.Cancel = false;
             }
@@ -50,7 +50,7 @@ namespace QuanLyThuMua
 
         public void GetData()
         {
-          List<PurchaseModel> purchaseModels =  GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
+            List<PurchaseModel> purchaseModels = GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
             gvPurchaseList.DataSource = purchaseModels;
             //gvPurchaseList.Columns["CustomerId"].Visible = false;
             //gvPurchaseList.Columns["PriceId"].Visible = false;
@@ -58,8 +58,8 @@ namespace QuanLyThuMua
         private void GvPurchaseList_DoubleClick(object sender, EventArgs e)
         {
             KryptonDataGridView gv = sender as KryptonDataGridView;
-            
-            
+
+
         }
     }
 }

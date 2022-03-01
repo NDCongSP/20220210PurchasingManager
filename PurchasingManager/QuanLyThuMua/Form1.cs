@@ -127,8 +127,8 @@ namespace QuanLyThuMua
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
         {
-            //frmKhachHangUpdate form = new frmKhachHangUpdate();
-            //form.ShowDialog();
+            frmKhachHangUpdate form = new frmKhachHangUpdate();
+            form.ShowDialog();
         }
 
         private void _btnXoaKH_Click(object sender, EventArgs e)
