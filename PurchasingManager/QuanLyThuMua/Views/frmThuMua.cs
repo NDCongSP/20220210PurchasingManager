@@ -31,7 +31,8 @@ namespace QuanLyThuMua
             InitializeComponent();
             Load += FrmThuMua_Load;
             cbbKH.SelectedValueChanged += CbbKH_SelectedValueChanged;
-            txtKL.Validating += TxtKL_Validating; ;
+            txtKL.Validating += TxtKL_Validating;
+            txtKL.Validated += TxtKL_Validated;
             cbbLoaimu.SelectedValueChanged += CbbLoaimu_SelectedValueChanged;
             btnSave.Click += BtnLuu_Click;
             txtDongia.Validating += TxtDongia_Validating;
@@ -40,7 +41,10 @@ namespace QuanLyThuMua
             ckbPayNow.CheckedChanged += CkbPayNow_CheckedChanged;
             rdCaosu.CheckedChanged += RdType_CheckedChanged;
             rdDieu.CheckedChanged += RdType_CheckedChanged;
+            txtSodo.Validated += TxtSodo_Validated;
         }
+
+  
 
         private void RdType_CheckedChanged(object sender, EventArgs e)
         {
@@ -125,7 +129,7 @@ namespace QuanLyThuMua
             var cell = row.Cell(1);
             if (Type == "Cao su")
             {
-                ws.Cell("A10").Value = $"Tên hàng: Cao su";
+                ws.Cell("A10").Value = $"Tên hàng: Cao su ({cbbLoaimu.Text})";
                 //cell.Value = $"Tên hàng: Cao su";
             }
             else
@@ -152,17 +156,27 @@ namespace QuanLyThuMua
             info.Verb = "print";
             info.FileName = fileName;
             info.CreateNoWindow = true;
-            info.WindowStyle = ProcessWindowStyle.Hidden;
+            info.WindowStyle = ProcessWindowStyle.Normal;
             Process p = new Process();
             p.StartInfo = info;
             p.Start();
-            p.WaitForInputIdle();
+            p?.WaitForInputIdle();
             System.Threading.Thread.Sleep(5000);
-            if (false == p.CloseMainWindow())
+            if (false == p?.CloseMainWindow())
                 if (!p.HasExited)
                 {
                     p.Kill();
                 }
+        }
+        private void OpenFile(string fileName)
+        {
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = fileName;
+            info.CreateNoWindow = true;
+            info.WindowStyle = ProcessWindowStyle.Normal;
+            Process p = new Process();
+            p.StartInfo = info;
+            p.Start();
         }
         #endregion
         #region Events
@@ -200,6 +214,10 @@ namespace QuanLyThuMua
             //    e.Cancel = true;
             //}
         }
+        private void TxtKL_Validated(object sender, EventArgs e)
+        {
+            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 1)).ToString("#,###", culture.NumberFormat);
+        }
         private void CbbLoaimu_SelectedValueChanged(object sender, EventArgs e)
         {
             KryptonComboBox cbb = sender as KryptonComboBox;
@@ -215,8 +233,6 @@ namespace QuanLyThuMua
                 txtSodo.Focus();
             }
         }
-
-
 
         private void TxtDongia_Validating(object sender, CancelEventArgs e)
         {
@@ -245,6 +261,7 @@ namespace QuanLyThuMua
                 //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
                 culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
                 tb.Text = double.Parse(tb.Text).ToString("#,###", culture.NumberFormat);
+                txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 1)).ToString("#,###", culture.NumberFormat);
                 //tb.Text = double.Parse(tb.Text).ToString("C", cul.NumberFormat);
                 //tb.Text = String.Format("{0:C}", tb.Text).ToString("C",cul.NumberFormat);
             }
@@ -254,6 +271,7 @@ namespace QuanLyThuMua
             KryptonCheckBox cb = sender as KryptonCheckBox;
             if (cb.Checked)
             {
+                txtDongia.Text = LastestPrice.Price.ToString("#,###",culture.NumberFormat);
                 txtDongia.Visible = true;
                 lblDongia.Visible = true;
                 txtDongia.Focus();
@@ -264,7 +282,10 @@ namespace QuanLyThuMua
                 lblDongia.Visible = false;
             }
         }
-
+        private void TxtSodo_Validated(object sender, EventArgs e)
+        {
+            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 1)).ToString("#,###", culture.NumberFormat);
+        }
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -300,12 +321,13 @@ namespace QuanLyThuMua
             purchaseModel.Note = rtbNote.Text;
             if (InsertPurchase(purchaseModel) > 0)
             {
+                MessageBox.Show("Thêm thành công", "Thông tin", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
                 if (ckbPayNow.Checked)    //In bill neu thanh toan ngay
                 {
                     LoadTemplate();
-                    SendToPrinter(fileName);
+                    //SendToPrinter(fileName);
+                    OpenFile(fileName);
                 }
-                MessageBox.Show("Thêm thành công", "Thông tin", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
                 OnPurchaseInserted(this, e);
             }
 

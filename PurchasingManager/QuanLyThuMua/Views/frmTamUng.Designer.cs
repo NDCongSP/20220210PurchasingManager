@@ -49,7 +49,6 @@ namespace QuanLyThuMua
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.rtbNote);
             this.groupBox1.Controls.Add(this.txtSotien);
             this.groupBox1.Controls.Add(this.txtDiachi);
@@ -60,6 +59,7 @@ namespace QuanLyThuMua
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -69,12 +69,12 @@ namespace QuanLyThuMua
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnSave.BackColor = System.Drawing.Color.Green;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Bold);
             this.btnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSave.Location = new System.Drawing.Point(866, 457);
+            this.btnSave.Location = new System.Drawing.Point(678, 400);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(234, 55);
+            this.btnSave.Size = new System.Drawing.Size(422, 112);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -85,9 +85,9 @@ namespace QuanLyThuMua
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnExit.Location = new System.Drawing.Point(592, 457);
+            this.btnExit.Location = new System.Drawing.Point(754, 457);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(234, 55);
+            this.btnExit.Size = new System.Drawing.Size(72, 55);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -202,8 +202,10 @@ namespace QuanLyThuMua
             // 
             // frmTamUng
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(1163, 531);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmTamUng";
