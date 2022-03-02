@@ -58,6 +58,7 @@ namespace QuanLyThuMua
             this.kryGridCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryGridCustomer.Location = new System.Drawing.Point(0, 0);
             this.kryGridCustomer.Name = "kryGridCustomer";
+            this.kryGridCustomer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryGridCustomer.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.kryGridCustomer.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

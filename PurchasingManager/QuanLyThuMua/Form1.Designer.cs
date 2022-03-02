@@ -31,6 +31,7 @@ namespace QuanLyThuMua
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+
             this.kryptonRibbon1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbon();
             this.kryptonRibbonTab1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
@@ -71,6 +72,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonGroupTriple9 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
             this._cobKieuBaoCao = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupComboBox();
             this.kryptonRibbonGroupLabel4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLabel();
+
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContainer)).BeginInit();
             this.SuspendLayout();
@@ -85,8 +87,10 @@ namespace QuanLyThuMua
             this.kryptonRibbonTab2,
             this.kryptonRibbonTab3,
             this.kryptonRibbonTab4});
+
             this.kryptonRibbon1.SelectedContext = null;
             this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab4;
+          
             this.kryptonRibbon1.Size = new System.Drawing.Size(1924, 145);
             this.kryptonRibbon1.StateCommon.RibbonGeneral.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRibbon1.TabIndex = 0;
@@ -135,6 +139,7 @@ namespace QuanLyThuMua
             // 
             // kryptonRibbonGroupTriple4
             // 
+
             this.kryptonRibbonGroupTriple4.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
             this._btnRefreshKH});
             // 
@@ -148,8 +153,7 @@ namespace QuanLyThuMua
             // 
             this.kryptonRibbonGroupTriple2.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
             this._btnThemKH,
-            this._btnSuaKH,
-            this._btnXoaKH});
+            this._btnSuaKH});
             // 
             // _btnThemKH
             // 
@@ -160,11 +164,6 @@ namespace QuanLyThuMua
             // 
             this._btnSuaKH.TextLine1 = "Sửa";
             this._btnSuaKH.Click += new System.EventHandler(this._btnSuaKH_Click);
-            // 
-            // _btnXoaKH
-            // 
-            this._btnXoaKH.TextLine1 = "Xóa";
-            this._btnXoaKH.Click += new System.EventHandler(this._btnXoaKH_Click);
             // 
             // kryptonRibbonTab3
             // 
@@ -180,10 +179,16 @@ namespace QuanLyThuMua
             // 
             // kryptonRibbonGroupTriple3
             // 
+
             this.kryptonRibbonGroupTriple3.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
             this._btnThemDonGia,
-            this._btnSuaDonGia,
-            this._btnXoaDonGia});
+            this._btnSuaDonGia});
+            // 
+            // _btnRefreshGia
+            // 
+            this._btnRefreshGia.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnRefreshGia.ImageLarge")));
+            this._btnRefreshGia.TextLine1 = "Tải lại";
+            this._btnRefreshGia.Click += new System.EventHandler(this._btnRefreshGia_Click);
             // 
             // _btnThemDonGia
             // 
@@ -194,11 +199,6 @@ namespace QuanLyThuMua
             // 
             this._btnSuaDonGia.TextLine1 = "Sửa";
             this._btnSuaDonGia.Click += new System.EventHandler(this._btnSuaDonGia_Click);
-            // 
-            // _btnXoaDonGia
-            // 
-            this._btnXoaDonGia.TextLine1 = "Xóa";
-            this._btnXoaDonGia.Click += new System.EventHandler(this._btnXoaDonGia_Click);
             // 
             // kryptonRibbonTab4
             // 
@@ -263,6 +263,7 @@ namespace QuanLyThuMua
             this.panelContainer.TabIndex = 1;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
             // 
+
             // kryptonRibbonGroupTriple6
             // 
             this.kryptonRibbonGroupTriple6.ItemAlignment = ComponentFactory.Krypton.Ribbon.RibbonItemAlignment.Center;
@@ -330,6 +331,7 @@ namespace QuanLyThuMua
             // 
             this.kryptonRibbonGroupLabel4.TextLine1 = "Loại";
             // 
+
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
