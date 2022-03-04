@@ -16,12 +16,71 @@ namespace QuanLyThuMua
     {
 
         public int GridHeight { get; set; }
+        bool isUpdate;
+        int CurrentValue;
         public ucThuMua()
         {
             InitializeComponent();
             Load += UcThuMua_Load;
             gvPurchaseList.DoubleClick += GvPurchaseList_DoubleClick;
             gvPurchaseList.CellBeginEdit += GvPurchaseList_CellBeginEdit;
+            gvPurchaseList.CellValueChanged += GvPurchaseList_CellValueChanged;
+            //gvPurchaseList.CellValidating += GvPurchaseList_CellValidating;
+            gvPurchaseList.CellEndEdit += GvPurchaseList_CellEndEdit;
+          
+          
+        }
+
+
+        private void GvPurchaseList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            KryptonDataGridView gv = sender as KryptonDataGridView;
+            var row = gv.Rows[e.RowIndex];
+            int currentValue = Convert.ToInt32(row.Cells[e.ColumnIndex].Value);
+            if (CurrentValue != currentValue)
+            {
+                isUpdate = true;
+            }
+            else
+            {
+                isUpdate = false;
+            }
+        }
+
+        private void GvPurchaseList_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+           
+        }
+
+        private void GvPurchaseList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            KryptonDataGridView gv = sender as KryptonDataGridView;
+            var row = gv.Rows[e.RowIndex];
+            //string textValue = row.Cells[e.ColumnIndex].Value.ToString();
+            //if ((!System.Text.RegularExpressions.Regex.IsMatch(textValue, "\\d+") || !float.TryParse(textValue, out float res)) && !string.IsNullOrEmpty(textValue))
+            //{
+            //    MessageBox.Show("Vui lòng nhập đúng định dạng?");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Cập nhật lại số độ?");
+            //}
+            long Id = Convert.ToInt64(row.Cells["Id"].Value);
+            int Sodo = Convert.ToInt32(row.Cells["Degree"].Value);
+            if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
+            {
+                MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                return;
+            }
+            if (isUpdate && MessageBox.Show("Cập nhật lại số độ?","Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (UpdatePurchase(Id, Sodo) >0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông tin", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
+                    GetData();
+                }
+            }
+            
         }
 
         private void GvPurchaseList_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -30,9 +89,10 @@ namespace QuanLyThuMua
             var activeColumn = gvPurchaseList.Columns[e.ColumnIndex];
             var row = gvPurchaseList.Rows[e.RowIndex];
             var _type = row.Cells["type"].Value.ToString();
-            int _mutype = Convert.ToInt32(row.Cells["mutype"].Value);
-            if (activeColumn.Name == "Degree" && _type == "Cao su" && _mutype == 1)
+            string _mutype = row.Cells["mutypename"].Value.ToString();
+            if (activeColumn.Name == "Degree" && _type == "Cao su" && _mutype != "Mủ chén")
             {
+                CurrentValue = Convert.ToInt32(row.Cells["Degree"].Value);
                 e.Cancel = false;
             }
             else
@@ -55,11 +115,16 @@ namespace QuanLyThuMua
             //gvPurchaseList.Columns["CustomerId"].Visible = false;
             //gvPurchaseList.Columns["PriceId"].Visible = false;
         }
+        private int UpdatePurchase(long Id, int Sodo)
+        {
+            var param = new DynamicParameters();
+            param.Add("@_id",Id);
+            param.Add("@_sodo",Sodo);
+            return GlobalVariable.ConnectionDb.Execute("spPurchaseUpdate", param, commandType: CommandType.StoredProcedure);
+        }
         private void GvPurchaseList_DoubleClick(object sender, EventArgs e)
         {
             KryptonDataGridView gv = sender as KryptonDataGridView;
-
-
         }
     }
 }
