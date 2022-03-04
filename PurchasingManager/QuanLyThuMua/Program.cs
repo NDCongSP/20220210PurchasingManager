@@ -17,6 +17,9 @@ namespace QuanLyThuMua
         {
             //Lấy thông tin chuỗi kết Db
             GlobalVariable.ConnectionDb.ConnectionString = EncodeMD5.DecryptString(ConfigurationManager.AppSettings["ConString"], "PhucTh!nhMD%");
+            GlobalVariable.PathFile = ConfigurationManager.AppSettings["PathFile"];
+            GlobalVariable.SoDoMin =Convert.ToInt32( ConfigurationManager.AppSettings["SoDoMin"]);
+            GlobalVariable.SoDoMax = Convert.ToInt32(ConfigurationManager.AppSettings["SoDoMax"]);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
