@@ -122,13 +122,13 @@ namespace QuanLyThuMua
                 ws.Cell("C10").Value = $"Điều";
                 //cell.Value = $"Tên hàng: Điều";
             }
-            ws.Cell("A8").Value = $"{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
+            ws.Cell("A8").Value = $"'{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
             ws.Cell("C11").Value = $"{purchaseModel.Name}";
             ws.Cell("C12").Value = $"'{purchaseModel.Phone}";
-            ws.Cell("A13").Value = $"{purchaseModel.Address}";
-            ws.Cell("C15").Value = $"{purchaseModel.Weight}";
+            ws.Cell("C13").Value = $"{purchaseModel.Address}";
+            ws.Cell("C15").Value = $"{purchaseModel.Weight.ToString("#,###.##", culture.NumberFormat)}";
             ws.Cell("G15").Value = $"{purchaseModel.Degree}";
-            ws.Cell("C16").Value = $"{purchaseModel.Price} VNĐ";
+            ws.Cell("C16").Value = $"{purchaseModel.Price.ToString("#,###", culture.NumberFormat)} VNĐ";
 
             var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree : 1;
             double tongTien = purchaseModel.Price * Convert.ToDouble(degree) * purchaseModel.Weight;
@@ -392,22 +392,25 @@ namespace QuanLyThuMua
         private void TxtSodo_Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
-            
-            if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out float res)) && !string.IsNullOrEmpty(tb.Text))
+
+            if (Type=="Cao su")
             {
-                tb.Text = "";
-                e.Cancel = true;
-            }
-            else
-            {
-                int Sodo = Convert.ToInt32(tb.Text);
-                if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
+                if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out float res)) && !string.IsNullOrEmpty(tb.Text))
                 {
                     tb.Text = "";
                     e.Cancel = true;
-                    MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                 }
-               
+                else
+                {
+                    int Sodo = Convert.ToInt32(tb.Text);
+                    if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
+                    {
+                        tb.Text = "";
+                        e.Cancel = true;
+                        MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                    }
+
+                }
             }
         }
         private void TxtSodo_Validated(object sender, EventArgs e)
