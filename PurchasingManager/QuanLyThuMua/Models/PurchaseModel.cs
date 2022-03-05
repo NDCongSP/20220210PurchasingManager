@@ -46,10 +46,10 @@ namespace QuanLyThuMua
         public double Degree { get; set; } 
     
         private double _money;
-        [DisplayName("Thanh tien")]
+        [DisplayName("Thành tiền")]
         public double Money
         {
-            get { return  Price * Degree * Weight ; }
+            get { return  Price * (Degree == 0?1: Degree) * Weight ; }
             set { _money = value; }
         }
 

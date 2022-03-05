@@ -421,6 +421,19 @@ namespace QuanLyThuMua
 
         private void TxtDongia_TextChanged(object sender, EventArgs e)
         {
+            TextBox tb = sender as TextBox;
+            string value;
+            NumberStyles style;
+            decimal currency;
+            value = tb.Text;
+            style = NumberStyles.Number | NumberStyles.AllowCurrencySymbol;
+            //culture = CultureInfo.CreateSpecificCulture("vi-VN");
+            culture = CultureInfo.CreateSpecificCulture("en-US");
+            if (Decimal.TryParse(value, style, culture, out currency) && !string.IsNullOrEmpty(value))
+            {
+                tb.Text = currency.ToString("#,###", culture.NumberFormat);
+            }
+           
             UpdateTotalMoney();
         }
         #endregion
