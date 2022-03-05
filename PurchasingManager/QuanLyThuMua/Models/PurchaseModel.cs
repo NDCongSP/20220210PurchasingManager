@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace QuanLyThuMua
 {
     public class PurchaseModel
     {
+        CultureInfo culture = CultureInfo.GetCultureInfo("en-US");
         [Browsable(true)]
         public int Id { get; set; }
         [DesignOnly(true)]
@@ -41,7 +43,16 @@ namespace QuanLyThuMua
         [DisplayName("Loại mủ")]
         public string MuTypeName { get; set; }
         [DisplayName("Số độ")]
-        public double? Degree { get; set; }
+        public double Degree { get; set; } 
+    
+        private double _money;
+        [DisplayName("Thanh tien")]
+        public double Money
+        {
+            get { return  Price * Degree * Weight ; }
+            set { _money = value; }
+        }
+
         [DisplayName("Lưu ý")]
         public string Note { get; set; }
     }
