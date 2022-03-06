@@ -52,13 +52,6 @@ namespace QuanLyThuMua
             txtSodo.TextChanged += TxtSodo_TextChanged;
 
         }
-
-     
-
-
-
-
-
         #region Props
         public string Type { get; set; } = "Cao su";
         public event EventHandler OnPurchaseInserted;
@@ -300,7 +293,7 @@ namespace QuanLyThuMua
         {
             // LoadTemplate();
 
-            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text != "Mủ chén")
+            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text != "Mủ chén" && Type == "Cao su")
             {
                 MessageBox.Show("Vui lòng nhập số độ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                 return;
@@ -392,17 +385,21 @@ namespace QuanLyThuMua
         private void TxtSodo_Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
-
+            float Sodo = 0;
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                return;
+            }
             if (Type=="Cao su")
             {
-                if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out float res)) && !string.IsNullOrEmpty(tb.Text))
+                if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out Sodo)) && !string.IsNullOrEmpty(tb.Text))
                 {
                     tb.Text = "";
                     e.Cancel = true;
                 }
                 else
                 {
-                    int Sodo = Convert.ToInt32(tb.Text);
+                    //int Sodo = Convert.ToInt32(tb.Text);
                     if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
                     {
                         tb.Text = "";
@@ -424,6 +421,19 @@ namespace QuanLyThuMua
 
         private void TxtDongia_TextChanged(object sender, EventArgs e)
         {
+            TextBox tb = sender as TextBox;
+            string value;
+            NumberStyles style;
+            decimal currency;
+            value = tb.Text;
+            style = NumberStyles.Number | NumberStyles.AllowCurrencySymbol;
+            //culture = CultureInfo.CreateSpecificCulture("vi-VN");
+            culture = CultureInfo.CreateSpecificCulture("en-US");
+            if (Decimal.TryParse(value, style, culture, out currency) && !string.IsNullOrEmpty(value))
+            {
+                tb.Text = currency.ToString("#,###", culture.NumberFormat);
+            }
+           
             UpdateTotalMoney();
         }
         #endregion
