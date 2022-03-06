@@ -52,13 +52,6 @@ namespace QuanLyThuMua
             txtSodo.TextChanged += TxtSodo_TextChanged;
 
         }
-
-     
-
-
-
-
-
         #region Props
         public string Type { get; set; } = "Cao su";
         public event EventHandler OnPurchaseInserted;
@@ -122,13 +115,13 @@ namespace QuanLyThuMua
                 ws.Cell("C10").Value = $"Điều";
                 //cell.Value = $"Tên hàng: Điều";
             }
-            ws.Cell("A8").Value = $"{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
+            ws.Cell("A8").Value = $"'{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
             ws.Cell("C11").Value = $"{purchaseModel.Name}";
             ws.Cell("C12").Value = $"'{purchaseModel.Phone}";
-            ws.Cell("A13").Value = $"{purchaseModel.Address}";
-            ws.Cell("C15").Value = $"{purchaseModel.Weight}";
+            ws.Cell("C13").Value = $"{purchaseModel.Address}";
+            ws.Cell("C15").Value = $"{purchaseModel.Weight.ToString("#,###.##", culture.NumberFormat)}";
             ws.Cell("G15").Value = $"{purchaseModel.Degree}";
-            ws.Cell("C16").Value = $"{purchaseModel.Price} VNĐ";
+            ws.Cell("C16").Value = $"{purchaseModel.Price.ToString("#,###", culture.NumberFormat)} VNĐ";
 
             var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree : 1;
             double tongTien = purchaseModel.Price * Convert.ToDouble(degree) * purchaseModel.Weight;
@@ -300,7 +293,7 @@ namespace QuanLyThuMua
         {
             // LoadTemplate();
 
-            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text != "Mủ chén")
+            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text != "Mủ chén" && Type == "Cao su")
             {
                 MessageBox.Show("Vui lòng nhập số độ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                 return;
@@ -392,22 +385,29 @@ namespace QuanLyThuMua
         private void TxtSodo_Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
-            
-            if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out float res)) && !string.IsNullOrEmpty(tb.Text))
+            float Sodo = 0;
+            if (string.IsNullOrEmpty(tb.Text))
             {
-                tb.Text = "";
-                e.Cancel = true;
+                return;
             }
-            else
+            if (Type=="Cao su")
             {
-                int Sodo = Convert.ToInt32(tb.Text);
-                if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
+                if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out Sodo)) && !string.IsNullOrEmpty(tb.Text))
                 {
                     tb.Text = "";
                     e.Cancel = true;
-                    MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                 }
-               
+                else
+                {
+                    //int Sodo = Convert.ToInt32(tb.Text);
+                    if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
+                    {
+                        tb.Text = "";
+                        e.Cancel = true;
+                        MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                    }
+
+                }
             }
         }
         private void TxtSodo_Validated(object sender, EventArgs e)
@@ -421,6 +421,19 @@ namespace QuanLyThuMua
 
         private void TxtDongia_TextChanged(object sender, EventArgs e)
         {
+            TextBox tb = sender as TextBox;
+            string value;
+            NumberStyles style;
+            decimal currency;
+            value = tb.Text;
+            style = NumberStyles.Number | NumberStyles.AllowCurrencySymbol;
+            //culture = CultureInfo.CreateSpecificCulture("vi-VN");
+            culture = CultureInfo.CreateSpecificCulture("en-US");
+            if (Decimal.TryParse(value, style, culture, out currency) && !string.IsNullOrEmpty(value))
+            {
+                tb.Text = currency.ToString("#,###", culture.NumberFormat);
+            }
+           
             UpdateTotalMoney();
         }
         #endregion

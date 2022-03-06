@@ -80,9 +80,7 @@ namespace QuanLyThuMua
                     GetData();
                 }
             }
-            
         }
-
         private void GvPurchaseList_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             //KryptonDataGridView gv = sender as KryptonDataGridView;
@@ -112,6 +110,10 @@ namespace QuanLyThuMua
         {
             List<PurchaseModel> purchaseModels = GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
             gvPurchaseList.DataSource = purchaseModels;
+            gvPurchaseList.Columns["CreatedDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+            gvPurchaseList.Columns["Weight"].DefaultCellStyle.Format = "#,###.##";
+            gvPurchaseList.Columns["Price"].DefaultCellStyle.Format = "#,###";
+            gvPurchaseList.Columns["Money"].DefaultCellStyle.Format = "#,###";
             //gvPurchaseList.Columns["CustomerId"].Visible = false;
             //gvPurchaseList.Columns["PriceId"].Visible = false;
         }
