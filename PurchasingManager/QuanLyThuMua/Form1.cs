@@ -1,13 +1,7 @@
-﻿using Krypton.Toolkit;
+﻿using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
 
 namespace QuanLyThuMua
 {
@@ -54,6 +48,7 @@ namespace QuanLyThuMua
         {
             InitializeComponent();
             kryptonRibbon1_SelectedTabChanged(null, null);
+           
         }
 
         private void OnActivePageTextChanged()
@@ -101,6 +96,8 @@ namespace QuanLyThuMua
         private void _btnTaoThuMua_Click(object sender, EventArgs e)
         {
             frmThuMua form = new frmThuMua();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
             form.OnPurchaseInserted += Form_OnPurchaseInserted;
             form.ShowDialog();
         }
@@ -116,18 +113,24 @@ namespace QuanLyThuMua
         private void _btnTaoTamUng_Click(object sender, EventArgs e)
         {
             frmTamUng form = new frmTamUng();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
             form.ShowDialog();
         }
 
         private void _btnThemKH_Click(object sender, EventArgs e)
         {
             frmKhachHang form = new frmKhachHang();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
             form.ShowDialog();
         }
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
         {
             frmKhachHangUpdate form = new frmKhachHangUpdate();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
             form.ShowDialog();
         }
 
@@ -139,13 +142,17 @@ namespace QuanLyThuMua
         private void _btnThemDonGia_Click(object sender, EventArgs e)
         {
             frmDonGia form = new frmDonGia();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
             form.ShowDialog();
         }
 
         private void _btnSuaDonGia_Click(object sender, EventArgs e)
         {
-            //frmDonGiaUpdate form = new frmDonGiaUpdate();
-            //form.ShowDialog();
+            frmDonGia form = new frmDonGia();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.ShowDialog();
         }
 
         private void _btnRefreshKH_Click(object sender, EventArgs e)
@@ -162,6 +169,45 @@ namespace QuanLyThuMua
             {
                 uc.RefreshData();
             }
+        }
+
+        private void _btnCapNhatBaoCao_Click(object sender, EventArgs e)
+        {
+            if (_dtpFromDay.Value > _dtpToDay.Value)
+            {
+                MessageBox.Show("Thời giàn 'Từ Ngày' phải nhỏ hơn 'Đến Ngày'.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (ActivePage is ucBaoCao uc)
+            {
+
+                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+
+                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text);
+            }
+        }
+
+        private void _btnXuatExcel_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void _cobBaoCaoKH_DropDown(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
+                _cobBaoCaoKH.Items.Clear();
+
+                foreach (var item in result)
+                {
+                    _cobBaoCaoKH.Items.Add(item);
+                }
+            }
+            catch { }
         }
     }
 }
