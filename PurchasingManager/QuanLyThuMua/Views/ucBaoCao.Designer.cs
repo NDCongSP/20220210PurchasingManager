@@ -29,18 +29,11 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this._dgBaoCao = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.kryptonPage2 = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this._dgTamUng = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.kryptonDataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colId = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colCreatedDate = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colType = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
@@ -52,6 +45,13 @@ namespace QuanLyThuMua
             this.colKieuMu = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colDo = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colNote = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonPage2 = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this._dgTamUng = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonDataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.kryptonPage3 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -71,7 +71,7 @@ namespace QuanLyThuMua
             this.kryptonPanel1.Controls.Add(this.kryptonNavigator1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(2017, 1300);
             this.kryptonPanel1.TabIndex = 0;
@@ -82,13 +82,13 @@ namespace QuanLyThuMua
             this.kryptonNavigator1.AllowTabFocus = false;
             this.kryptonNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonNavigator1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonNavigator1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryptonNavigator1.Margin = new System.Windows.Forms.Padding(6);
             this.kryptonNavigator1.Name = "kryptonNavigator1";
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.kryptonPage1,
             this.kryptonPage2,
             this.kryptonPage3});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(2017, 1300);
             this.kryptonNavigator1.StateCommon.Tab.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonNavigator1.StateCommon.Tab.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -101,7 +101,7 @@ namespace QuanLyThuMua
             this.kryptonPage1.Controls.Add(this._dgBaoCao);
             this.kryptonPage1.Flags = 65534;
             this.kryptonPage1.LastVisibleSet = true;
-            this.kryptonPage1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryptonPage1.Margin = new System.Windows.Forms.Padding(6);
             this.kryptonPage1.MinimumSize = new System.Drawing.Size(92, 92);
             this.kryptonPage1.Name = "kryptonPage1";
             this.kryptonPage1.Size = new System.Drawing.Size(2015, 1267);
@@ -129,7 +129,7 @@ namespace QuanLyThuMua
             this.colNote});
             this._dgBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
             this._dgBaoCao.Location = new System.Drawing.Point(0, 0);
-            this._dgBaoCao.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this._dgBaoCao.Margin = new System.Windows.Forms.Padding(6);
             this._dgBaoCao.Name = "_dgBaoCao";
             this._dgBaoCao.ReadOnly = true;
             this._dgBaoCao.RowTemplate.Height = 30;
@@ -139,13 +139,108 @@ namespace QuanLyThuMua
             this._dgBaoCao.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this._dgBaoCao.TabIndex = 0;
             // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Width = 100;
+            // 
+            // colCreatedDate
+            // 
+            this.colCreatedDate.DataPropertyName = "CreatedDate";
+            this.colCreatedDate.HeaderText = "Ngày Mua";
+            this.colCreatedDate.Name = "colCreatedDate";
+            this.colCreatedDate.ReadOnly = true;
+            this.colCreatedDate.Width = 100;
+            // 
+            // colType
+            // 
+            this.colType.DataPropertyName = "Type";
+            this.colType.HeaderText = "Kiểu";
+            this.colType.Name = "colType";
+            this.colType.ReadOnly = true;
+            this.colType.Width = 100;
+            // 
+            // colTenKH
+            // 
+            this.colTenKH.DataPropertyName = "TenKhachHang";
+            this.colTenKH.HeaderText = "Khách Hàng";
+            this.colTenKH.Name = "colTenKH";
+            this.colTenKH.ReadOnly = true;
+            this.colTenKH.Width = 100;
+            // 
+            // colWeight
+            // 
+            this.colWeight.DataPropertyName = "Weight";
+            this.colWeight.HeaderText = "Khối Lượng";
+            this.colWeight.Name = "colWeight";
+            this.colWeight.ReadOnly = true;
+            this.colWeight.Width = 100;
+            // 
+            // colPrice
+            // 
+            this.colPrice.DataPropertyName = "Price";
+            this.colPrice.HeaderText = "Đơn Giá";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Width = 100;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ThanhTien";
+            this.Column1.HeaderText = "Thành Tiền";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 100;
+            // 
+            // colPayNow
+            // 
+            this.colPayNow.DataPropertyName = "PayNow";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = false;
+            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colPayNow.FalseValue = "0";
+            this.colPayNow.HeaderText = "Thanh Toán";
+            this.colPayNow.IndeterminateValue = null;
+            this.colPayNow.Name = "colPayNow";
+            this.colPayNow.ReadOnly = true;
+            this.colPayNow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPayNow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colPayNow.TrueValue = "1";
+            // 
+            // colKieuMu
+            // 
+            this.colKieuMu.DataPropertyName = "MuType";
+            this.colKieuMu.HeaderText = "Kiểu Mủ";
+            this.colKieuMu.Name = "colKieuMu";
+            this.colKieuMu.ReadOnly = true;
+            this.colKieuMu.Width = 100;
+            // 
+            // colDo
+            // 
+            this.colDo.DataPropertyName = "Degree";
+            this.colDo.HeaderText = "Độ";
+            this.colDo.Name = "colDo";
+            this.colDo.ReadOnly = true;
+            this.colDo.Width = 100;
+            // 
+            // colNote
+            // 
+            this.colNote.DataPropertyName = "Note";
+            this.colNote.HeaderText = "Ghi Chú";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            this.colNote.Width = 100;
+            // 
             // kryptonPage2
             // 
             this.kryptonPage2.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.kryptonPage2.Controls.Add(this._dgTamUng);
             this.kryptonPage2.Flags = 65534;
             this.kryptonPage2.LastVisibleSet = true;
-            this.kryptonPage2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.kryptonPage2.Margin = new System.Windows.Forms.Padding(6);
             this.kryptonPage2.MinimumSize = new System.Drawing.Size(92, 92);
             this.kryptonPage2.Name = "kryptonPage2";
             this.kryptonPage2.Size = new System.Drawing.Size(2015, 1267);
@@ -217,101 +312,6 @@ namespace QuanLyThuMua
             this.kryptonDataGridViewTextBoxColumn10.ReadOnly = true;
             this.kryptonDataGridViewTextBoxColumn10.Width = 100;
             // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Width = 100;
-            // 
-            // colCreatedDate
-            // 
-            this.colCreatedDate.DataPropertyName = "CreatedDate";
-            this.colCreatedDate.HeaderText = "Ngày Mua";
-            this.colCreatedDate.Name = "colCreatedDate";
-            this.colCreatedDate.ReadOnly = true;
-            this.colCreatedDate.Width = 100;
-            // 
-            // colType
-            // 
-            this.colType.DataPropertyName = "Type";
-            this.colType.HeaderText = "Kiểu";
-            this.colType.Name = "colType";
-            this.colType.ReadOnly = true;
-            this.colType.Width = 100;
-            // 
-            // colTenKH
-            // 
-            this.colTenKH.DataPropertyName = "TenKhachHang";
-            this.colTenKH.HeaderText = "Khách Hàng";
-            this.colTenKH.Name = "colTenKH";
-            this.colTenKH.ReadOnly = true;
-            this.colTenKH.Width = 100;
-            // 
-            // colWeight
-            // 
-            this.colWeight.DataPropertyName = "Weight";
-            this.colWeight.HeaderText = "Khối Lượng";
-            this.colWeight.Name = "colWeight";
-            this.colWeight.ReadOnly = true;
-            this.colWeight.Width = 100;
-            // 
-            // colPrice
-            // 
-            this.colPrice.DataPropertyName = "Price";
-            this.colPrice.HeaderText = "Đơn Giá";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Width = 100;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "ThanhTien";
-            this.Column1.HeaderText = "Thành Tiền";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 100;
-            // 
-            // colPayNow
-            // 
-            this.colPayNow.DataPropertyName = "PayNow";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = false;
-            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colPayNow.FalseValue = "0";
-            this.colPayNow.HeaderText = "Thanh Toán";
-            this.colPayNow.IndeterminateValue = null;
-            this.colPayNow.Name = "colPayNow";
-            this.colPayNow.ReadOnly = true;
-            this.colPayNow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPayNow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colPayNow.TrueValue = "1";
-            // 
-            // colKieuMu
-            // 
-            this.colKieuMu.DataPropertyName = "MuType";
-            this.colKieuMu.HeaderText = "Kiểu Mủ";
-            this.colKieuMu.Name = "colKieuMu";
-            this.colKieuMu.ReadOnly = true;
-            this.colKieuMu.Width = 100;
-            // 
-            // colDo
-            // 
-            this.colDo.DataPropertyName = "Degree";
-            this.colDo.HeaderText = "Độ";
-            this.colDo.Name = "colDo";
-            this.colDo.ReadOnly = true;
-            this.colDo.Width = 100;
-            // 
-            // colNote
-            // 
-            this.colNote.DataPropertyName = "Note";
-            this.colNote.HeaderText = "Ghi Chú";
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
-            this.colNote.Width = 100;
-            // 
             // kryptonPage3
             // 
             this.kryptonPage3.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
@@ -330,7 +330,7 @@ namespace QuanLyThuMua
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucBaoCao";
             this.Size = new System.Drawing.Size(2017, 1300);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();

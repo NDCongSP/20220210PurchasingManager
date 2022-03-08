@@ -191,7 +191,11 @@ namespace QuanLyThuMua
         private void _btnXuatExcel_Click(object sender, EventArgs e)
         {
 
-
+            if (ActivePage is ucBaoCao uc)
+            {
+                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text);
+            }
 
         }
 
