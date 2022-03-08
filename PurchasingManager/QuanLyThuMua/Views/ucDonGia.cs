@@ -17,6 +17,8 @@ namespace QuanLyThuMua
         {
             InitializeComponent();
             Load += UcDonGia_Load;
+
+            kryGridGia.AutoGenerateColumns = false;
         }
 
         private void UcDonGia_Load(object sender, EventArgs e)

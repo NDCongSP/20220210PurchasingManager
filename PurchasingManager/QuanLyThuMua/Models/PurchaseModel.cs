@@ -56,7 +56,10 @@ namespace QuanLyThuMua
         [DisplayName("Lưu ý")]
         public string Note { get; set; }
 
+        [Browsable(false)]
         public string TenKhachHang { get; set; }
+
+        [Browsable(false)]
         public string ThanhTien { get; set; }
     }
 }

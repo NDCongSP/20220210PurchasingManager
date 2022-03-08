@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace QuanLyThuMua
 {
@@ -27,8 +28,8 @@ namespace QuanLyThuMua
             gvPurchaseList.CellValueChanged += GvPurchaseList_CellValueChanged;
             //gvPurchaseList.CellValidating += GvPurchaseList_CellValidating;
             gvPurchaseList.CellEndEdit += GvPurchaseList_CellEndEdit;
-          
-          
+
+            gvPurchaseList.AutoGenerateColumns = true;
         }
 
 
@@ -70,6 +71,7 @@ namespace QuanLyThuMua
             if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
             {
                 MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                row.Cells["Degree"].Value = CurrentValue;
                 return;
             }
             if (isUpdate && MessageBox.Show("Cập nhật lại số độ?","Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -77,7 +79,12 @@ namespace QuanLyThuMua
                 if (UpdatePurchase(Id, Sodo) >0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông tin", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
-                    GetData();
+                    // GetData();
+
+                }
+                else
+                {
+                    row.Cells["Degree"].Value = CurrentValue;
                 }
             }
         }
@@ -100,7 +107,7 @@ namespace QuanLyThuMua
         }
 
         private void UcThuMua_Load(object sender, EventArgs e)
-        {
+        {   
             GetData();
             Console.WriteLine(this.Height);
             gvPurchaseList.Height = GridHeight - 50;

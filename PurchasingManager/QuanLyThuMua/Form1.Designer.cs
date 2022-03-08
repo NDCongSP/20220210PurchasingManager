@@ -183,12 +183,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonGroupTriple3.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
             this._btnThemDonGia,
             this._btnSuaDonGia});
-            // 
-            // _btnRefreshGia
-            // 
-            this._btnRefreshGia.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnRefreshGia.ImageLarge")));
-            this._btnRefreshGia.TextLine1 = "Tải lại";
-            this._btnRefreshGia.Click += new System.EventHandler(this._btnRefreshGia_Click);
+
             // 
             // _btnThemDonGia
             // 

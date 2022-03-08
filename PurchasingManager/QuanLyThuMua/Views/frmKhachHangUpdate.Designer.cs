@@ -42,7 +42,7 @@ namespace QuanLyThuMua
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.ckbStatus = new Krypton.Toolkit.KryptonCheckBox();
+            this.ckbStatus = new  ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krpCboCustomer)).BeginInit();
@@ -78,7 +78,6 @@ namespace QuanLyThuMua
             this.krpCboCustomer.DropDownWidth = 330;
 
             this.krpCboCustomer.Location = new System.Drawing.Point(195, 53);
-            this.krpCboCustomer.IntegralHeight = false;
 
             this.krpCboCustomer.Name = "krpCboCustomer";
             this.krpCboCustomer.Size = new System.Drawing.Size(334, 31);
@@ -236,6 +235,6 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
-        private Krypton.Toolkit.KryptonCheckBox ckbStatus;
+        private  ComponentFactory.Krypton.Toolkit.KryptonCheckBox ckbStatus;
     }
 }

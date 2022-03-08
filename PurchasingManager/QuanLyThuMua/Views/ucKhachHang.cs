@@ -16,7 +16,7 @@ namespace QuanLyThuMua
         public ucKhachHang()
         {
             InitializeComponent();
-
+            kryGridCustomer.AutoGenerateColumns = false;
             RefreshData();
         }
 

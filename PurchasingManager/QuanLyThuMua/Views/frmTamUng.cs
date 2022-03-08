@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using ComponentFactory.Krypton.Toolkit;
 using Dapper;
 using Krypton.Toolkit;
 using System;

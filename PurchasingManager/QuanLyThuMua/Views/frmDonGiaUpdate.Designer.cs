@@ -42,10 +42,10 @@ namespace QuanLyThuMua
             this.label2 = new System.Windows.Forms.Label();
             this.txtPriceCaoSu = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.krpCboGiaCaoSu = new Krypton.Toolkit.KryptonComboBox();
+            this.krpCboGiaCaoSu = new  ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.krpCboGiaDieu = new Krypton.Toolkit.KryptonComboBox();
+            this.krpCboGiaDieu = new  ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaCaoSu)).BeginInit();
@@ -196,19 +196,15 @@ namespace QuanLyThuMua
             // 
             this.krpCboGiaCaoSu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.krpCboGiaCaoSu.DisplayMember = "CreatedDate";
-            this.krpCboGiaCaoSu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.krpCboGiaCaoSu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.krpCboGiaCaoSu.DropDownWidth = 330;
-            this.krpCboGiaCaoSu.IntegralHeight = false;
             this.krpCboGiaCaoSu.Location = new System.Drawing.Point(21, 66);
             this.krpCboGiaCaoSu.Name = "krpCboGiaCaoSu";
             this.krpCboGiaCaoSu.Size = new System.Drawing.Size(293, 31);
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Border.Rounding = 5F;
+            this.krpCboGiaCaoSu.StateCommon.ComboBox.Border.DrawBorders = (( ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)(((( ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top |  ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            |  ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            |  ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.krpCboGiaCaoSu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.krpCboGiaCaoSu.TabIndex = 12;
             this.krpCboGiaCaoSu.ValueMember = "Id";
             // 
@@ -236,19 +232,15 @@ namespace QuanLyThuMua
             // 
             this.krpCboGiaDieu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.krpCboGiaDieu.DisplayMember = "CreatedDate";
-            this.krpCboGiaDieu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.krpCboGiaDieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.krpCboGiaDieu.DropDownWidth = 330;
-            this.krpCboGiaDieu.IntegralHeight = false;
             this.krpCboGiaDieu.Location = new System.Drawing.Point(21, 67);
             this.krpCboGiaDieu.Name = "krpCboGiaDieu";
             this.krpCboGiaDieu.Size = new System.Drawing.Size(293, 31);
-            this.krpCboGiaDieu.StateCommon.ComboBox.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.krpCboGiaDieu.StateCommon.ComboBox.Border.Rounding = 5F;
+            this.krpCboGiaDieu.StateCommon.ComboBox.Border.DrawBorders = (( ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)(((( ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top |  ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            |  ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            |  ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.krpCboGiaDieu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.krpCboGiaDieu.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.krpCboGiaDieu.TabIndex = 14;
             this.krpCboGiaDieu.ValueMember = "Id";
             // 
@@ -291,8 +283,8 @@ namespace QuanLyThuMua
         private System.Windows.Forms.TextBox txtPriceCaoSu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
-        private Krypton.Toolkit.KryptonComboBox krpCboGiaDieu;
+        private  ComponentFactory.Krypton.Toolkit.KryptonComboBox krpCboGiaDieu;
         private System.Windows.Forms.Label label1;
-        private Krypton.Toolkit.KryptonComboBox krpCboGiaCaoSu;
+        private  ComponentFactory.Krypton.Toolkit.KryptonComboBox krpCboGiaCaoSu;
     }
 }
