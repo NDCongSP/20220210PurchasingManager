@@ -157,5 +157,10 @@ namespace QuanLyThuMua
             var result = GlobalVariable.ConnectionDb.Query<TamUngModel>(query).AsList();
             return result;
         }
+
+        public void ThanhToan()
+        {
+
+        }
     }
 }

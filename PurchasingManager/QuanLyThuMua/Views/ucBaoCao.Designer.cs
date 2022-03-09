@@ -29,7 +29,8 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -47,12 +48,13 @@ namespace QuanLyThuMua
             this.colNote = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.kryptonPage2 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this._dgTamUng = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonPage3 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonDataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.kryptonDataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.kryptonDataGridViewTextBoxColumn4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.kryptonDataGridViewTextBoxColumn7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
             this.kryptonDataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonPage3 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -88,7 +90,7 @@ namespace QuanLyThuMua
             this.kryptonPage1,
             this.kryptonPage2,
             this.kryptonPage3});
-            this.kryptonNavigator1.SelectedIndex = 1;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(2017, 1300);
             this.kryptonNavigator1.StateCommon.Tab.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonNavigator1.StateCommon.Tab.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -198,9 +200,9 @@ namespace QuanLyThuMua
             // colPayNow
             // 
             this.colPayNow.DataPropertyName = "PayNow";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = false;
-            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = false;
+            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle4;
             this.colPayNow.FalseValue = "0";
             this.colPayNow.HeaderText = "Thanh Toán";
             this.colPayNow.IndeterminateValue = null;
@@ -258,6 +260,7 @@ namespace QuanLyThuMua
             this.kryptonDataGridViewTextBoxColumn2,
             this.kryptonDataGridViewTextBoxColumn4,
             this.kryptonDataGridViewTextBoxColumn7,
+            this.Column2,
             this.kryptonDataGridViewTextBoxColumn10});
             this._dgTamUng.Dock = System.Windows.Forms.DockStyle.Fill;
             this._dgTamUng.Location = new System.Drawing.Point(0, 0);
@@ -271,6 +274,18 @@ namespace QuanLyThuMua
             this._dgTamUng.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this._dgTamUng.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this._dgTamUng.TabIndex = 1;
+            // 
+            // kryptonPage3
+            // 
+            this.kryptonPage3.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.kryptonPage3.Flags = 65534;
+            this.kryptonPage3.LastVisibleSet = true;
+            this.kryptonPage3.MinimumSize = new System.Drawing.Size(50, 50);
+            this.kryptonPage3.Name = "kryptonPage3";
+            this.kryptonPage3.Size = new System.Drawing.Size(2015, 1267);
+            this.kryptonPage3.Text = "Biểu Đồ";
+            this.kryptonPage3.ToolTipTitle = "Page ToolTip";
+            this.kryptonPage3.UniqueName = "6526D67F061A4CF2AD9E4DFD9A3419A7";
             // 
             // kryptonDataGridViewTextBoxColumn1
             // 
@@ -304,6 +319,19 @@ namespace QuanLyThuMua
             this.kryptonDataGridViewTextBoxColumn7.ReadOnly = true;
             this.kryptonDataGridViewTextBoxColumn7.Width = 100;
             // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Payed";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = false;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column2.FalseValue = "0";
+            this.Column2.HeaderText = "Đã Thu Hồi";
+            this.Column2.IndeterminateValue = null;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.TrueValue = "1";
+            // 
             // kryptonDataGridViewTextBoxColumn10
             // 
             this.kryptonDataGridViewTextBoxColumn10.DataPropertyName = "Note";
@@ -311,18 +339,6 @@ namespace QuanLyThuMua
             this.kryptonDataGridViewTextBoxColumn10.Name = "kryptonDataGridViewTextBoxColumn10";
             this.kryptonDataGridViewTextBoxColumn10.ReadOnly = true;
             this.kryptonDataGridViewTextBoxColumn10.Width = 100;
-            // 
-            // kryptonPage3
-            // 
-            this.kryptonPage3.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.kryptonPage3.Flags = 65534;
-            this.kryptonPage3.LastVisibleSet = true;
-            this.kryptonPage3.MinimumSize = new System.Drawing.Size(50, 50);
-            this.kryptonPage3.Name = "kryptonPage3";
-            this.kryptonPage3.Size = new System.Drawing.Size(2015, 1267);
-            this.kryptonPage3.Text = "Biểu Đồ";
-            this.kryptonPage3.ToolTipTitle = "Page ToolTip";
-            this.kryptonPage3.UniqueName = "6526D67F061A4CF2AD9E4DFD9A3419A7";
             // 
             // ucBaoCao
             // 
@@ -367,11 +383,12 @@ namespace QuanLyThuMua
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colDo;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colNote;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView _dgTamUng;
+        private ComponentFactory.Krypton.Navigator.KryptonPage kryptonPage3;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn2;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn4;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn7;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn Column2;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn10;
-        private ComponentFactory.Krypton.Navigator.KryptonPage kryptonPage3;
     }
 }

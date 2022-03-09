@@ -213,5 +213,13 @@ namespace QuanLyThuMua
             }
             catch { }
         }
+
+        private void _btnThanhToan_Click(object sender, EventArgs e)
+        {
+            if (ActivePage is ucBaoCao uc)
+            {
+                uc.ThanhToan();
+            }
+        }
     }
 }
