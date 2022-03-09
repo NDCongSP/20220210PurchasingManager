@@ -59,7 +59,6 @@ namespace QuanLyThuMua
         [Browsable(false)]
         public string TenKhachHang { get; set; }
 
-        [Browsable(false)]
-        public string ThanhTien { get; set; }
+        public object Handle { get; set; }
     }
 }

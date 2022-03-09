@@ -37,9 +37,10 @@ namespace QuanLyThuMua
                     if (_activePage != null)
                     {
                         _activePage.Dock = DockStyle.Fill;
+                        panelContainer.Controls.Add(_activePage);
+                        _activePage?.Focus();
                     }
 
-                    panelContainer.Controls.Add(_activePage);
                 }
             }
         }
@@ -183,8 +184,16 @@ namespace QuanLyThuMua
             {
 
                 CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
-
-                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text);
+                int payNow = -1;
+                if (_radioNotPayed.Checked)
+                {
+                    payNow = 0;
+                }
+                else if (_radioPayed.Checked)
+                {
+                    payNow = 1;
+                }
+                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
             }
         }
 
@@ -194,7 +203,16 @@ namespace QuanLyThuMua
             if (ActivePage is ucBaoCao uc)
             {
                 CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
-                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text);
+                int payNow = -1;
+                if (_radioNotPayed.Checked)
+                {
+                    payNow = 0;
+                }
+                else if (_radioPayed.Checked)
+                {
+                    payNow = 1;
+                }
+                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
             }
 
         }
@@ -205,6 +223,11 @@ namespace QuanLyThuMua
             {
                 var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
                 _cobBaoCaoKH.Items.Clear();
+
+                _cobBaoCaoKH.Items.Add(new CustomerModel()
+                {
+                    Name = "Tất Cả"
+                });
 
                 foreach (var item in result)
                 {

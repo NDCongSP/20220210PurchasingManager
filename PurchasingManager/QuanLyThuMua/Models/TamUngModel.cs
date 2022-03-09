@@ -16,5 +16,7 @@ namespace QuanLyThuMua
         public int Payed { get; set; }
 
         public string TenKhachHang { get; set; }
+
+        public object Handle { get; set; }
     }
 }
