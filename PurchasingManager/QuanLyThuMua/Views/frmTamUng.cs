@@ -59,9 +59,9 @@ namespace QuanLyThuMua
         private int InsertTamUng(TamUngModel tamUng)
         {
             var param = new DynamicParameters();
-            param.Add("@customerId", tamUng.CustomerId);
-            param.Add("@Money", tamUng.Money);
-            param.Add("@note", tamUng.Note);
+            param.Add("@_customerId", tamUng.CustomerId);
+            param.Add("@_money", tamUng.Money);
+            param.Add("@_note", tamUng.Note);
             return GlobalVariable.ConnectionDb.Execute("spTamUngInsert", param, commandType: CommandType.StoredProcedure);
         }
 

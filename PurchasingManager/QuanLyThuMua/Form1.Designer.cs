@@ -64,6 +64,7 @@ namespace QuanLyThuMua
             this._cobKieuBaoCao = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupComboBox();
             this.kryptonRibbonGroupLabel4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLabel();
             this.kryptonRibbonGroupTriple10 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
+            this._radioPayNowTotal = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
             this._radioPayed = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
             this._radioNotPayed = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
             this.kryptonRibbonGroup5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
@@ -75,7 +76,6 @@ namespace QuanLyThuMua
             this._btnXoaDonGia = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.panelContainer = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this._radioPayNowTotal = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContainer)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +90,6 @@ namespace QuanLyThuMua
             this.kryptonRibbonTab2,
             this.kryptonRibbonTab3,
             this.kryptonRibbonTab4});
-            this.kryptonRibbon1.SelectedContext = null;
             this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab4;
             this.kryptonRibbon1.Size = new System.Drawing.Size(1924, 145);
             this.kryptonRibbon1.StateCommon.RibbonGeneral.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,7 +283,7 @@ namespace QuanLyThuMua
             this._cobKieuBaoCao.ItemHeight = 15;
             this._cobKieuBaoCao.Items.AddRange(new object[] {
             "Tất Cả",
-            "Cao Su",
+            "Cao su",
             "Điều"});
             this._cobKieuBaoCao.Text = "";
             // 
@@ -299,6 +298,11 @@ namespace QuanLyThuMua
             this._radioPayed,
             this._radioNotPayed});
             this.kryptonRibbonGroupTriple10.MaximumSize = ComponentFactory.Krypton.Ribbon.GroupItemSize.Small;
+            // 
+            // _radioPayNowTotal
+            // 
+            this._radioPayNowTotal.Checked = true;
+            this._radioPayNowTotal.TextLine1 = "Tất Cả";
             // 
             // _radioPayed
             // 
@@ -345,11 +349,6 @@ namespace QuanLyThuMua
             this.panelContainer.Size = new System.Drawing.Size(1924, 916);
             this.panelContainer.TabIndex = 1;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
-            // 
-            // _radioPayNowTotal
-            // 
-            this._radioPayNowTotal.Checked = true;
-            this._radioPayNowTotal.TextLine1 = "Tất Cả";
             // 
             // Form1
             // 

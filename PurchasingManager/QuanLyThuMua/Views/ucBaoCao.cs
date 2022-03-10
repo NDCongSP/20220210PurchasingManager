@@ -70,7 +70,7 @@ namespace QuanLyThuMua
             _lbTuNgay.Text = $"{_fromTime:dd/MM/yyyy HH:mm:ss}";
             _lbDenNgay.Text = $"{_toTime:dd/MM/yyyy HH:mm:ss}";
 
-            double klCaoSu = _purchaseModels.Where(x => x.Type == "Cao Su").Sum(x => x.Weight);
+            double klCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
             double klDieu = _purchaseModels.Where(x => x.Type == "Điều").Sum(x => x.Weight);
             _lbKLCaoSu.Text = $"{klCaoSu} Kg";
             _lbKLDieu.Text = $"{klDieu} Kg";
@@ -230,7 +230,7 @@ namespace QuanLyThuMua
 
             if (payNow == 1 || payNow == 0)
             {
-                query = query + $" and purchaseinfo.PayNow = '{kieu}'";
+                query = query + $" and purchaseinfo.PayNow = {payNow}";
             }
 
             var result = GlobalVariable.ConnectionDb.Query<PurchaseModel>(query).AsList();
