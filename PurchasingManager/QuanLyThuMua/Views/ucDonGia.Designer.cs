@@ -34,12 +34,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.kryGridGia = new Krypton.Toolkit.KryptonDataGridView();
-            this.Column1 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column5 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column2 = new Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
-            this.Column3 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column4 = new Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryGridGia = new  ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column5 = new  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column2 = new  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
+            this.Column3 = new  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column4 = new  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryGridGia)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             this.kryGridGia.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryGridGia.RowTemplate.Height = 50;
             this.kryGridGia.Size = new System.Drawing.Size(933, 530);
-            this.kryGridGia.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.kryGridGia.StateCommon.BackStyle =  ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.kryGridGia.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryGridGia.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.kryGridGia.StateCommon.HeaderRow.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -137,11 +137,11 @@
 
         #endregion
 
-        private Krypton.Toolkit.KryptonDataGridView kryGridGia;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column5;
-        private Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn Column2;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
-        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
+        private  ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryGridGia;
+        private  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
+        private  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column5;
+        private  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn Column2;
+        private  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
+        private  ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
     }
 }

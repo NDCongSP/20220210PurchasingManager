@@ -29,7 +29,18 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
-            this.gvPurchaseList = new Krypton.Toolkit.KryptonDataGridView();
+
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.gvPurchaseList = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column3 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column5 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvPurchaseList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +57,6 @@ namespace QuanLyThuMua
             this.gvPurchaseList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.gvPurchaseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvPurchaseList.Size = new System.Drawing.Size(1060, 660);
-            this.gvPurchaseList.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.gvPurchaseList.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvPurchaseList.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvPurchaseList.TabIndex = 2;
@@ -67,6 +77,12 @@ namespace QuanLyThuMua
 
         #endregion
 
-        private Krypton.Toolkit.KryptonDataGridView gvPurchaseList;
+
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView gvPurchaseList;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column2;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column5;
     }
 }

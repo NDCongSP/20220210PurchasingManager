@@ -49,11 +49,13 @@ namespace QuanLyThuMua
         [DisplayName("Thành tiền")]
         public double Money
         {
-            get { return  Price * (Degree == 0?1: Degree) * Weight ; }
+            get { return  Math.Round(Price * (Degree == 0 ? 1 : Degree) * Weight ,2); }
             set { _money = value; }
         }
 
         [DisplayName("Lưu ý")]
         public string Note { get; set; }
+
+        public object Handle { get; set; }
     }
 }

@@ -30,9 +30,9 @@ namespace QuanLyThuMua
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHangUpdate));
-            this.kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
+            this.kryptonContextMenu1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.krpCboCustomer = new Krypton.Toolkit.KryptonComboBox();
+            this.krpCboCustomer =  new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtAdd = new System.Windows.Forms.TextBox();
@@ -42,7 +42,7 @@ namespace QuanLyThuMua
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.ckbStatus = new Krypton.Toolkit.KryptonCheckBox();
+            this.ckbStatus = new  ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krpCboCustomer)).BeginInit();
@@ -74,19 +74,15 @@ namespace QuanLyThuMua
             // krpCboCustomer
             // 
             this.krpCboCustomer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.krpCboCustomer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.krpCboCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.krpCboCustomer.DropDownWidth = 330;
-            this.krpCboCustomer.IntegralHeight = false;
-            this.krpCboCustomer.Location = new System.Drawing.Point(195, 57);
+
+            this.krpCboCustomer.Location = new System.Drawing.Point(195, 53);
+
             this.krpCboCustomer.Name = "krpCboCustomer";
             this.krpCboCustomer.Size = new System.Drawing.Size(334, 31);
-            this.krpCboCustomer.StateCommon.ComboBox.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.krpCboCustomer.StateCommon.ComboBox.Border.Rounding = 5F;
+            this.krpCboCustomer.StateCommon.ComboBox.Border.Rounding = 5;
             this.krpCboCustomer.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.krpCboCustomer.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.krpCboCustomer.TabIndex = 10;
             // 
             // label4
@@ -226,7 +222,7 @@ namespace QuanLyThuMua
 
         #endregion
 
-        private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtAdd;
@@ -235,10 +231,10 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
-        private Krypton.Toolkit.KryptonComboBox krpCboCustomer;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox krpCboCustomer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
-        private Krypton.Toolkit.KryptonCheckBox ckbStatus;
+        private  ComponentFactory.Krypton.Toolkit.KryptonCheckBox ckbStatus;
     }
 }
