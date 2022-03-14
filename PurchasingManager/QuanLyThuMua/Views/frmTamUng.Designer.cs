@@ -36,7 +36,7 @@ namespace QuanLyThuMua
             this.txtSotien = new System.Windows.Forms.TextBox();
             this.txtDiachi = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
-            this.cbbKH = new Krypton.Toolkit.KryptonComboBox();
+            this.cbbKH = new  ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblDongia = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -135,14 +135,11 @@ namespace QuanLyThuMua
             // 
             // cbbKH
             // 
-            this.cbbKH.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbbKH.DropDownWidth = 862;
-            this.cbbKH.IntegralHeight = false;
             this.cbbKH.Location = new System.Drawing.Point(238, 37);
             this.cbbKH.Name = "cbbKH";
             this.cbbKH.Size = new System.Drawing.Size(862, 27);
             this.cbbKH.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbKH.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.cbbKH.TabIndex = 0;
             // 
             // label5
@@ -226,7 +223,7 @@ namespace QuanLyThuMua
         private System.Windows.Forms.TextBox txtSotien;
         private System.Windows.Forms.TextBox txtDiachi;
         private System.Windows.Forms.TextBox txtSdt;
-        private Krypton.Toolkit.KryptonComboBox cbbKH;
+        private  ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbKH;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblDongia;
         private System.Windows.Forms.Label label3;

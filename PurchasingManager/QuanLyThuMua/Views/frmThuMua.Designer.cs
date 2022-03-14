@@ -30,9 +30,9 @@ namespace QuanLyThuMua
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdDieu = new Krypton.Toolkit.KryptonRadioButton();
-            this.rdCaosu = new Krypton.Toolkit.KryptonRadioButton();
-            this.ckbPayNow = new Krypton.Toolkit.KryptonCheckBox();
+            this.rdDieu = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.rdCaosu = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.ckbPayNow = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.txtThanhtien = new System.Windows.Forms.TextBox();
             this.txtDongia = new System.Windows.Forms.TextBox();
             this.txtSodo = new System.Windows.Forms.TextBox();
@@ -41,8 +41,8 @@ namespace QuanLyThuMua
             this.txtKL = new System.Windows.Forms.TextBox();
             this.txtDiachi = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
-            this.cbbLoaimu = new Krypton.Toolkit.KryptonComboBox();
-            this.cbbKH = new Krypton.Toolkit.KryptonComboBox();
+            this.cbbLoaimu = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cbbKH = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblDongia = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -212,9 +212,7 @@ namespace QuanLyThuMua
             // 
             // cbbLoaimu
             // 
-            this.cbbLoaimu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbbLoaimu.DropDownWidth = 862;
-            this.cbbLoaimu.IntegralHeight = false;
             this.cbbLoaimu.Items.AddRange(new object[] {
             "Không phải mủ chén",
             "Mủ chén"});
@@ -222,20 +220,16 @@ namespace QuanLyThuMua
             this.cbbLoaimu.Name = "cbbLoaimu";
             this.cbbLoaimu.Size = new System.Drawing.Size(395, 27);
             this.cbbLoaimu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoaimu.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.cbbLoaimu.TabIndex = 1;
             this.cbbLoaimu.Text = "Không phải mủ chén";
             // 
             // cbbKH
             // 
-            this.cbbKH.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbbKH.DropDownWidth = 862;
-            this.cbbKH.IntegralHeight = false;
             this.cbbKH.Location = new System.Drawing.Point(208, 88);
             this.cbbKH.Name = "cbbKH";
             this.cbbKH.Size = new System.Drawing.Size(862, 27);
             this.cbbKH.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbKH.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.cbbKH.TabIndex = 0;
             // 
             // label6
@@ -371,15 +365,13 @@ namespace QuanLyThuMua
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(1110, 713);
             this.Controls.Add(this.groupBox1);
-            this.CornerRoundingRadius = 5F;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.Name = "frmThuMua";
-            this.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.StateCommon.Border.Rounding = 5F;
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbLoaimu)).EndInit();
@@ -396,7 +388,7 @@ namespace QuanLyThuMua
         private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.TextBox txtDiachi;
         private System.Windows.Forms.TextBox txtSdt;
-        private Krypton.Toolkit.KryptonComboBox cbbKH;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbKH;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblLoaimu;
         private System.Windows.Forms.Label label3;
@@ -404,12 +396,12 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSodo;
         private System.Windows.Forms.TextBox txtKL;
-        private Krypton.Toolkit.KryptonComboBox cbbLoaimu;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbLoaimu;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblSodo;
-        private Krypton.Toolkit.KryptonCheckBox ckbPayNow;
-        private Krypton.Toolkit.KryptonRadioButton rdDieu;
-        private Krypton.Toolkit.KryptonRadioButton rdCaosu;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox ckbPayNow;
+        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton rdDieu;
+        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton rdCaosu;
         private System.Windows.Forms.TextBox txtDongia;
         private System.Windows.Forms.Label lblDongia;
         private System.Windows.Forms.Label label4;
