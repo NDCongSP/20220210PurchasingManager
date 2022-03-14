@@ -19,6 +19,8 @@ namespace QuanLyThuMua
             Load += UcDonGia_Load;
 
             kryGridGia.AutoGenerateColumns = false;
+
+            kryGridGia.Focus();
         }
 
         private void UcDonGia_Load(object sender, EventArgs e)

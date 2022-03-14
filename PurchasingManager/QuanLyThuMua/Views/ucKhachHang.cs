@@ -18,6 +18,8 @@ namespace QuanLyThuMua
             InitializeComponent();
             kryGridCustomer.AutoGenerateColumns = false;
             RefreshData();
+
+            kryGridCustomer.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)

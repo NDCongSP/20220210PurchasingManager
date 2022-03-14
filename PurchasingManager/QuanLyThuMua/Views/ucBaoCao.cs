@@ -3,6 +3,8 @@ using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
@@ -15,6 +17,7 @@ namespace QuanLyThuMua
         private List<TamUngModel> _tamUngModels;
         DateTime _fromTime;
         DateTime _toTime;
+        CultureInfo culture = CultureInfo.GetCultureInfo("en-US");
 
         public ucBaoCao()
         {
@@ -26,6 +29,10 @@ namespace QuanLyThuMua
 
             _dgBaoCao.AutoGenerateColumns = false;
             _dgTamUng.AutoGenerateColumns = false;
+
+            _dgBaoCao.Focus();
+
+            kryptonNavigator1.SelectedIndex = 2;
         }
 
         public void CapNhat(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
@@ -34,6 +41,9 @@ namespace QuanLyThuMua
             {
                 _fromTime = fromTime;
                 _toTime = toTime;
+
+                labFromDate.Text = _fromTime.ToString("HH:mm:ss dd/MM/yyyy");
+                labToDate.Text = _toTime.ToString("HH:mm:ss dd/MM/yyyy");
 
                 _purchaseModels = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
 
@@ -67,8 +77,8 @@ namespace QuanLyThuMua
 
         private void CapNhatThongKe()
         {
-            _lbTuNgay.Text = $"{_fromTime:dd/MM/yyyy HH:mm:ss}";
-            _lbDenNgay.Text = $"{_toTime:dd/MM/yyyy HH:mm:ss}";
+            labFromDate.Text = $"{_fromTime:dd/MM/yyyy HH:mm:ss}";
+            labToDate.Text = $"{_toTime:dd/MM/yyyy HH:mm:ss}";
 
             double klCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
             double klDieu = _purchaseModels.Where(x => x.Type == "Điều").Sum(x => x.Weight);
@@ -107,9 +117,9 @@ namespace QuanLyThuMua
 
                     using (var wb = new XLWorkbook())
                     {
+                        var wsThongKe = wb.Worksheets.Add("ThongKe");
                         var wsThuMua = wb.Worksheets.Add("ThuMua");
                         var wsTamUng = wb.Worksheets.Add("TamUng");
-                        var wsThongKe = wb.Worksheets.Add("ThongKe");
 
                         DataTable dtThuMua = new DataTable();
                         dtThuMua.Columns.Add("Ngày Mua", typeof(DateTime));
@@ -125,14 +135,15 @@ namespace QuanLyThuMua
 
                         foreach (var item in dsThuMua)
                         {
-                            dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.TenKhachHang, item.Weight, item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "",
+                            dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.Name, item.Weight, item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "",
                                 item.MuTypeName, item.Degree, item.Note);
                         }
-                        wsThuMua.Cell(1, 1).Value = "DANH SÁCH THU MUA";
+                        wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
                         wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
-                        wsThuMua.Cell(2, 1).InsertTable(dtThuMua.AsEnumerable());
-                        wsThuMua.Columns().AdjustToContents();
+                        wsThuMua.Cell("A2").InsertTable(dtThuMua.AsEnumerable());
 
+                        wsThuMua.Columns().AdjustToContents();
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         var dsTamUng = GetTamUngs(fromTime, toTime, customerId, payNow);
                         DataTable dtTamUng = new DataTable();
                         dtTamUng.Columns.Add("Ngày Ứng", typeof(DateTime));
@@ -149,49 +160,138 @@ namespace QuanLyThuMua
                         wsTamUng.Cell(2, 1).InsertTable(dtTamUng.AsEnumerable());
                         wsTamUng.Columns().AdjustToContents();
 
-                        double klCaoSu = dsThuMua.Where(x => x.Type == "Cao Su").Sum(x => x.Weight);
-                        double klDieu = dsThuMua.Where(x => x.Type == "Điều").Sum(x => x.Weight);
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        if (customerId != null && customerId != 0)
+                        {
+                            CustomerModel _customerInfo = GlobalVariable.ConnectionDb.Query<CustomerModel>($"select * from customerinfo where Id = {customerId}").First();
+                            double klCaoSu = dsThuMua.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
+                            double klDieu = dsThuMua.Where(x => x.Type == "Điều").Sum(x => x.Weight);
 
-                        double tongTienThuMua = dsThuMua.Sum(x => x.Money);
-                        double tienThuMuaDaThanhToan = dsThuMua.Where(x => x.PayNow == 1).Sum(x => x.Money);
-                        double tienThuMuaConLai = tongTienThuMua - tienThuMuaDaThanhToan;
+                            double tongTienThuMua = dsThuMua.Sum(x => x.Money);
+                            double tienThuMuaDaThanhToan = dsThuMua.Where(x => x.PayNow == 1).Sum(x => x.Money);
+                            double tienThuMuaConLai = tongTienThuMua - tienThuMuaDaThanhToan;
 
-                        double tongTienTamUng = dsTamUng.Sum(x => x.Money);
-                        double tienTamUngDaTra = dsTamUng.Where(x => x.Payed == 1).Sum(X => X.Money);
-                        double tienTamUngConNo = tongTienTamUng - tienTamUngDaTra;
+                            double tongTienTamUng = dsTamUng.Sum(x => x.Money);
+                            double tienTamUngDaTra = dsTamUng.Where(x => x.Payed == 1).Sum(X => X.Money);
+                            double tienTamUngConNo = tongTienTamUng - tienTamUngDaTra;
 
-                        double tongTienPhaiTra = tienThuMuaConLai - tienTamUngConNo;
+                            double tongTienPhaiTra = tienThuMuaConLai - tienTamUngConNo;
 
-                        wsThongKe.Cell(1, 1).Value = "THỐNG KÊ";
-                        wsThongKe.Range(1, 1, 1, 4).Merge().AddToNamed("Titles");
-                        wsThongKe.Range(2, 1, 2, 4).Merge().Value = "Từ ngày: - Đến Ngày: ";
+                            wsThongKe.Range("A1:E25").Style.Font.FontName = "Times New Roman";
 
-                        wsThongKe.Range(3, 1, 3, 2).Merge().Value = "THU MUA";
-                        wsThongKe.Range(3, 3, 3, 4).Merge().Value = "TẠM ỨNG";
+                            wsThongKe.Cell("A1").Value = "ĐẠI LÝ THU MUA NÔNG SẢN HAI HỔ";
+                            wsThongKe.Range("A1:E1").Merge();//.AddToNamed("Titles");
+                            wsThongKe.Range("A1:E1").Style.Font.FontSize = 20;
 
-                        wsThongKe.Cell(4, 1).Value = "Khối lượng cao su";
-                        wsThongKe.Cell(5, 1).Value = "Khối lượng điều";
-                        wsThongKe.Cell(6, 1).Value = "Tống tiền";
-                        wsThongKe.Cell(7, 1).Value = "Đã thanh toán";
-                        wsThongKe.Cell(8, 1).Value = "Còn lại";
-                        wsThongKe.Cell(4, 2).Value = klCaoSu;
-                        wsThongKe.Cell(5, 2).Value = klDieu;
-                        wsThongKe.Cell(6, 2).Value = tongTienThuMua;
-                        wsThongKe.Cell(7, 2).Value = tienThuMuaDaThanhToan;
-                        wsThongKe.Cell(8, 2).Value = tienThuMuaConLai;
+                            wsThongKe.Cell("A2").Value = "Chuyên thu mua: CAO SU - ĐIỀU - CÀ PHÊ";
+                            wsThongKe.Range("A2:E2").Merge();//.AddToNamed("Titles");
+                            wsThongKe.Cell("A3").Value = "ĐC: Ấp Sắc Di - Xã Tân Phước - Đồng Phú - Bình Phước";
+                            wsThongKe.Range("A3:E3").Merge();//.AddToNamed("Titles");
+                            wsThongKe.Cell("A4").Value = "ĐT: 0918 88 00 24";
+                            wsThongKe.Range("A4:E4").Merge();//.AddToNamed("Titles");
+                            wsThongKe.Range("A2:E4").Style.Font.FontSize = 16;
 
-                        wsThongKe.Cell(4, 3).Value = "Tổng tiền";
-                        wsThongKe.Cell(5, 3).Value = "Đã trả";
-                        wsThongKe.Cell(6, 3).Value = "Còn nợ";
+                            wsThongKe.Cell("A6").Value = "BIÊN LAI THANH TOÁN";
+                            wsThongKe.Range("A6:E6").Merge();
+                            wsThongKe.Range("A6:E6").Style.Font.FontSize = 20;
 
-                        wsThongKe.Cell(4, 4).Value = tongTienTamUng;
-                        wsThongKe.Cell(5, 4).Value = tienTamUngDaTra;
-                        wsThongKe.Cell(6, 4).Value = tienTamUngConNo;
+                            wsThongKe.Range("A1:E6").Style
+                                .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center)
+                                .Alignment.SetVertical(XLAlignmentVerticalValues.Center);
 
-                        wsThongKe.Range(8,1, 8, 4).Merge().Value = $"{tienThuMuaConLai:#,###} - {tienTamUngConNo:#,###} = {tongTienPhaiTra:#,###} VND";
+                            wsThongKe.Range("A7:E7").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                            wsThongKe.Range("A7:E7").Merge();
+                            wsThongKe.Range("A7:E7").Style
+                               .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
+                               .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                               .Font.FontSize = 12;
 
-                        wsThongKe.CellsUsed().Style.Border.SetOutsideBorder(XLBorderStyleValues.Hair);
-                        wsThongKe.Columns().AdjustToContents();
+                            wsThongKe.Range("A1:E7").Style.Font.Bold = true;
+
+                            wsThongKe.Cell("A9").Value = "Tên khách hàng:";
+                            wsThongKe.Cell("B9").Value = _customerInfo.Name;
+                            wsThongKe.Range("B9:E9").Merge();//.AddToNamed("Titles");
+
+                            wsThongKe.Cell("A10").Value = "Số điện thoại:";
+                            wsThongKe.Cell("B10").Value = $"'{_customerInfo.Phone}";
+                            wsThongKe.Range("B10:E10").Merge();//.AddToNamed("Titles");
+
+                            wsThongKe.Cell("A11").Value = "Địa chỉ:";
+                            wsThongKe.Cell("B11").Value = _customerInfo.Address;
+                            wsThongKe.Range("B11:E11").Merge();//.AddToNamed("Titles");
+                            wsThongKe.Range("A9:E11").Style.Font.FontSize = 14;
+                            wsThongKe.Range("B9:E11").Style.Font.Bold = true;
+
+                            wsThongKe.Range("A13:B13").Merge().Value = "THU MUA";
+                            wsThongKe.Range("C13:D13").Merge().Value = "TẠM ỨNG";
+                            wsThongKe.Range("A13:D13").Style
+                                .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center)
+                                .Font.Bold = true;
+
+                            wsThongKe.Cell("A14").Value = "Khối lượng cao su";
+                            wsThongKe.Cell("A15").Value = "Khối lượng điều";
+                            wsThongKe.Cell("A16").Value = "Tống tiền";
+                            wsThongKe.Cell("A17").Value = "Đã thanh toán";
+                            wsThongKe.Cell("A18").Value = "Còn lại (a)";
+                            wsThongKe.Cell("B14").Value = $"{klCaoSu}";
+                            wsThongKe.Cell("B15").Value = $"{klDieu}";
+                            wsThongKe.Range("B14:B15").Style
+                                .Font.SetBold(true)
+                                .NumberFormat.Format = "#,##0.00";
+                            wsThongKe.Range("B14:B15").DataType = XLDataType.Number;
+
+                            wsThongKe.Cell("B16").Value = $"{tongTienThuMua}";
+                            wsThongKe.Cell("B17").Value = $"{tienThuMuaDaThanhToan}";
+                            wsThongKe.Cell("B18").Value = $"{tienThuMuaConLai}";
+                            wsThongKe.Range("B16:B18").Style
+                                .Font.SetBold(true)
+                                .Alignment.SetShrinkToFit(true)
+                                .NumberFormat.Format = "#,##0";
+                            wsThongKe.Range("B16:B18").DataType = XLDataType.Number;
+
+                            wsThongKe.Cell("C14").Value = "Tổng tiền";
+                            wsThongKe.Cell("C15").Value = "Đã trả";
+                            wsThongKe.Cell("C16").Value = "Còn nợ (b)";
+
+                            wsThongKe.Cell("D14").Value = tongTienTamUng;
+                            wsThongKe.Cell("D15").Value = tienTamUngDaTra;
+                            wsThongKe.Cell("D16").Value = tienTamUngConNo;
+                            wsThongKe.Range("D14:D16").Style
+                                .Font.SetBold(true)
+                                .NumberFormat.Format = "#,##0";
+                            wsThongKe.Range("D14:D16").DataType = XLDataType.Number;
+
+                            wsThongKe.Range("A13:D18").Style.Border.SetInsideBorder(XLBorderStyleValues.Thin)
+                                   .Border.SetOutsideBorder(XLBorderStyleValues.Thin)
+                                   .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                                   .Font.FontSize = 14;
+
+                            wsThongKe.Cell("A20").Value = "SỐ TIỀN CẦN THANH THOÁN (a - b)";
+                            //wsThongKe.Cell("A16").Style.Alignment.WrapText = true;
+                            wsThongKe.Range("A20:D20").Merge();
+                            wsThongKe.Range("A21:D21").Merge().Value = $"{tienThuMuaConLai:#,###} - {tienTamUngConNo:#,###} = {tongTienPhaiTra:#,###}";
+                            //wsThongKe.Range("A21:D21").Merge();
+                            wsThongKe.Range("A20:A21").Style
+                                    .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                                    .Font.FontSize = 14;
+                            wsThongKe.Range("A20:A21").Style.Font.Bold = true;
+
+                            wsThongKe.Cell("A24").Value = "Xác nhận bên bán";
+                            wsThongKe.Range("A24").Style
+                                    .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                                    .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left)
+                                    .Font.FontSize = 14;
+
+                            wsThongKe.Cell("E24").Value = "Xác nhận bên thu mua";
+                            wsThongKe.Range("E24").Style
+                                    .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                                    .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left)
+                                    .Font.FontSize = 14;
+
+                            
+
+                            wsThongKe.Columns().AdjustToContents();
+                        }
 
                         // Prepare the style for the titles
                         var titlesStyle = wb.Style;
@@ -214,7 +314,7 @@ namespace QuanLyThuMua
 
         public List<PurchaseModel> GetPurchaseModels(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
         {
-            string query = $"select purchaseinfo.*, customerinfo.Name as TenKhachHang" +
+            string query = $"select purchaseinfo.*, customerinfo.Name as Name" +
                 $" from purchaseinfo inner JOIN customerinfo ON customerinfo.Id = purchaseinfo.CustomerId" +
                 $" where purchaseinfo.CreatedDate > '{fromTime:yyyy-MM-dd HH:mm:ss}' and purchaseinfo.CreatedDate < '{toTime:yyyy-MM-dd HH:mm:ss}'";
 

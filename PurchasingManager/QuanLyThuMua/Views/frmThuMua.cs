@@ -352,7 +352,7 @@ namespace QuanLyThuMua
 
             if (rd.Name == "rdDieu")
             {
-                Type = "Dieu";
+                Type = "Điều";
                 GetLastestPrice(Type);
                 //lblLoaimu.Visible = false;
                 //cbbLoaimu.Visible = false;

@@ -111,6 +111,8 @@ namespace QuanLyThuMua
             GetData();
             Console.WriteLine(this.Height);
             gvPurchaseList.Height = GridHeight - 50;
+
+            gvPurchaseList.Focus();
         }
 
         public void GetData()
