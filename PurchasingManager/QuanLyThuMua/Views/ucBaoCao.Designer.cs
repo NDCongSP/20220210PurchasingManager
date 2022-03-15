@@ -70,6 +70,10 @@ namespace QuanLyThuMua
             this.xacNhanDaThuHoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kryptonPage3 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this._chart2 = new LiveCharts.WinForms.CartesianChart();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this._chart1 = new LiveCharts.WinForms.CartesianChart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labToDate = new System.Windows.Forms.Label();
             this.labFromDate = new System.Windows.Forms.Label();
@@ -97,10 +101,6 @@ namespace QuanLyThuMua
             this.label21 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this._chart1 = new LiveCharts.WinForms.CartesianChart();
-            this._chart2 = new LiveCharts.WinForms.CartesianChart();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -116,11 +116,11 @@ namespace QuanLyThuMua
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).BeginInit();
             this.kryptonPage3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -463,6 +463,51 @@ namespace QuanLyThuMua
             this.panel1.Size = new System.Drawing.Size(2015, 1267);
             this.panel1.TabIndex = 0;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this._chart2);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(519, 407);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1476, 845);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Tiền";
+            // 
+            // _chart2
+            // 
+            this._chart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._chart2.Location = new System.Drawing.Point(3, 25);
+            this._chart2.Name = "_chart2";
+            this._chart2.Size = new System.Drawing.Size(1470, 817);
+            this._chart2.TabIndex = 0;
+            this._chart2.Text = "cartesianChart1";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this._chart1);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(519, 15);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1479, 384);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Khối lượng";
+            // 
+            // _chart1
+            // 
+            this._chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._chart1.Location = new System.Drawing.Point(3, 25);
+            this._chart1.Name = "_chart1";
+            this._chart1.Size = new System.Drawing.Size(1473, 356);
+            this._chart1.TabIndex = 0;
+            this._chart1.Text = "cartesianChart1";
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -782,49 +827,6 @@ namespace QuanLyThuMua
             this.label1.TabIndex = 0;
             this.label1.Text = "Từ ngày: ";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this._chart1);
-            this.groupBox4.Location = new System.Drawing.Point(519, 15);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1479, 609);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Thu Mua";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this._chart2);
-            this.groupBox5.Location = new System.Drawing.Point(522, 630);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1476, 622);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
-            // 
-            // _chart1
-            // 
-            this._chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._chart1.Location = new System.Drawing.Point(3, 25);
-            this._chart1.Name = "_chart1";
-            this._chart1.Size = new System.Drawing.Size(1473, 581);
-            this._chart1.TabIndex = 0;
-            this._chart1.Text = "cartesianChart1";
-            // 
-            // _chart2
-            // 
-            this._chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._chart2.Location = new System.Drawing.Point(3, 25);
-            this._chart2.Name = "_chart2";
-            this._chart2.Size = new System.Drawing.Size(1470, 594);
-            this._chart2.TabIndex = 0;
-            this._chart2.Text = "cartesianChart1";
-            // 
             // ucBaoCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -849,14 +851,14 @@ namespace QuanLyThuMua
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage3)).EndInit();
             this.kryptonPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

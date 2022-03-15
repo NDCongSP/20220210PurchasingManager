@@ -12,11 +12,7 @@ using LiveCharts.Configurations;
 
 namespace QuanLyThuMua
 {
-    public class DateModel
-    {
-        public System.DateTime DateTime { get; set; }
-        public double Value { get; set; }
-    }
+
 
     public partial class ucBaoCao : UserControl
     {
@@ -42,6 +38,8 @@ namespace QuanLyThuMua
             kryptonNavigator1.SelectedIndex = 2;
 
             _chart1.Series = new SeriesCollection();
+            _chart1.LegendLocation = LegendLocation.Right;
+        
             _chart1.Series.Add(new ColumnSeries()
             {
                 Title = "Cao su",
@@ -50,6 +48,11 @@ namespace QuanLyThuMua
             _chart1.Series.Add(new ColumnSeries()
             {
                 Title = "Điều",
+                Values = new ChartValues<double> { }
+            });
+            _chart1.Series.Add(new ColumnSeries()
+            {
+                Title = "Tổng",
                 Values = new ChartValues<double> { }
             });
             _chart1.AxisX.Add(new Axis
@@ -70,7 +73,8 @@ namespace QuanLyThuMua
                 .X(dayModel => (double)dayModel.DateTime.Ticks)
                 .Y(dayModel => dayModel.Value);
 
-            _chart2.Series = new SeriesCollection();
+            _chart2.LegendLocation = LegendLocation.Right;
+            _chart2.Series = new SeriesCollection(dayConfig);
             _chart2.Series.Add(new LineSeries()
             {
                 Title = "Cao su",
@@ -90,7 +94,7 @@ namespace QuanLyThuMua
             _chart2.AxisX.Add(new Axis()
             {
                 Title = "Thời gian",
-                LabelFormatter = value => new System.DateTime((long)(value)).ToString("yyyy-MM-dd HH:mm"),
+                LabelFormatter = value => new System.DateTime((long)(value)).ToString("yyyy-MM-dd"),  
                 // LabelFormatter = value => new System.DateTime((long)(value * TimeSpan.FromHours(1).Ticks)).ToString("yyyy-MM-dd HH:mm"),
                 LabelsRotation = 45
             });
@@ -115,6 +119,8 @@ namespace QuanLyThuMua
                 CapNhatTamUng(fromTime, toTime, customerId, payNow);
 
                 CapNhatThongKe();
+
+                CapNhatChartLine();
             }
             catch (Exception ex)
             {
@@ -126,7 +132,9 @@ namespace QuanLyThuMua
         {
             _chart1.Series[0].Values.Clear();
             _chart1.Series[1].Values.Clear();
-            _chart1.AxisX[0].Labels.Clear();
+            _chart1.Series[2].Values.Clear();
+
+            List<string> labels = new List<string>();
 
             var groups = _purchaseModels.GroupBy(x => x.CreatedDate.ToString("yyyy-MM-dd"));
             foreach (var group in groups)
@@ -138,19 +146,20 @@ namespace QuanLyThuMua
                 {
                     if (item.Type == "Cao su")
                     {
-                        caosu += item.Money;
+                        caosu += item.Weight;
                     }
                     else
                     {
-                        dieu += item.Money;
+                        dieu += item.Weight;
                     }
                 }
 
                 _chart1.Series[0].Values.Add(dieu);
                 _chart1.Series[1].Values.Add(caosu);
-                _chart1.AxisX[0].Labels.Add(group.Key);
+                _chart1.Series[2].Values.Add(dieu + caosu);
+                labels.Add(group.Key);
             }
-
+            _chart1.AxisX[0].Labels = labels;
             _chart1.Update(true, true);
         }
 
@@ -158,8 +167,9 @@ namespace QuanLyThuMua
         {
             _chart2.Series[0].Values.Clear();
             _chart2.Series[1].Values.Clear();
+            _chart2.Series[2].Values.Clear();
 
-            foreach (var item in _purchaseModels)
+            foreach (var item in _purchaseModels.OrderBy(x => x.CreatedDate))
             {
                 DateModel model = new DateModel();
                 model.Value = item.Money;
@@ -175,7 +185,7 @@ namespace QuanLyThuMua
                 }
             }
 
-            foreach (var item in _tamUngModels)
+            foreach (var item in _tamUngModels.OrderBy(x => x.CreatedDate))
             {
                 DateModel model = new DateModel();
                 model.Value = item.Money;
@@ -543,5 +553,11 @@ namespace QuanLyThuMua
                 }
             }
         }
+    }
+
+    public class DateModel
+    {
+        public System.DateTime DateTime { get; set; }
+        public double Value { get; set; }
     }
 }
