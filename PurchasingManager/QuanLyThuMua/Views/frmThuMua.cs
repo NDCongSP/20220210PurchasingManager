@@ -446,8 +446,7 @@ namespace QuanLyThuMua
            
             UpdateTotalMoney();
         }
+
         #endregion
-
-
     }
 }

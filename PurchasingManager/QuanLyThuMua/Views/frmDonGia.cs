@@ -35,7 +35,7 @@ namespace QuanLyThuMua
                 }
             }
 
-            _res = GlobalVariable.ConnectionDb.Query<PriceModel>("call spPriceGetLatestPrice('Dieu')");
+            _res = GlobalVariable.ConnectionDb.Query<PriceModel>("call spPriceGetLatestPrice('Điều')");
 
             if (_res != null)
             {

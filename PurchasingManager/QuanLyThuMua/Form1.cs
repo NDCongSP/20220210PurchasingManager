@@ -199,7 +199,6 @@ namespace QuanLyThuMua
 
         private void _btnXuatExcel_Click(object sender, EventArgs e)
         {
-
             if (ActivePage is ucBaoCao uc)
             {
                 CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
@@ -214,7 +213,6 @@ namespace QuanLyThuMua
                 }
                 uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
             }
-
         }
 
         private void _cobBaoCaoKH_DropDown(object sender, EventArgs e)
@@ -241,7 +239,18 @@ namespace QuanLyThuMua
         {
             if (ActivePage is ucBaoCao uc)
             {
-                uc.ThanhToan();
+                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                int payNow = -1;
+                if (_radioNotPayed.Checked)
+                {
+                    payNow = 0;
+                }
+                else if (_radioPayed.Checked)
+                {
+                    payNow = 1;
+                }
+                
+                uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
             }
         }
     }

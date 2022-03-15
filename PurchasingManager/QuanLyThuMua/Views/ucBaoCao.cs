@@ -10,6 +10,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.Configurations;
 using QuanLyThuMua.Utils;
+using System.IO;
 
 namespace QuanLyThuMua
 {
@@ -132,7 +133,7 @@ namespace QuanLyThuMua
                 LabelFormatter = value => value.ToString("N"),
                 Foreground = System.Windows.Media.Brushes.Red
             });
-            
+
         }
 
         public void CapNhat(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
@@ -306,15 +307,15 @@ namespace QuanLyThuMua
             _lbTongTienPhaiTra.Text = $"{tienThuMuaConLai:#,##0} - {tienTamUngConNo:#,##0} = {tongTienPhaiTra:#,##0} VND";
         }
 
-        public void XuatExcel(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        public void XuatExcelThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
         {
             try
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Excel File |*.xlsx";
-                sfd.FileName = "BaoCao";
+                //SaveFileDialog sfd = new SaveFileDialog();
+                //sfd.Filter = "Excel File |*.xlsx";
+                //sfd.FileName = "BaoCao";
 
-                if (sfd.ShowDialog() == DialogResult.OK)
+                //if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     var dsThuMua = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
 
@@ -343,7 +344,15 @@ namespace QuanLyThuMua
                         }
                         wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
                         wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
-                        wsThuMua.Cell("A2").InsertTable(dtThuMua.AsEnumerable());
+
+                        wsThuMua.Range("A2").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                        wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Merge();
+                        wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Style
+                           .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
+                           .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                           .Font.FontSize = 12;
+
+                        wsThuMua.Cell("A3").InsertTable(dtThuMua.AsEnumerable());
 
                         wsThuMua.Columns().AdjustToContents();
                         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -360,13 +369,22 @@ namespace QuanLyThuMua
                         }
                         wsTamUng.Cell(1, 1).Value = "DANH SÁCH TẠM ỨNG";
                         wsTamUng.Range(1, 1, 1, dtTamUng.Columns.Count).Merge().AddToNamed("Titles");
-                        wsTamUng.Cell(2, 1).InsertTable(dtTamUng.AsEnumerable());
+
+                        wsThuMua.Range("A2").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                        wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Merge();
+                        wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Style
+                           .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
+                           .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                           .Font.FontSize = 12;
+
+                        wsTamUng.Cell(3, 1).InsertTable(dtTamUng.AsEnumerable());
                         wsTamUng.Columns().AdjustToContents();
 
                         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        CustomerModel _customerInfo = new CustomerModel();
                         if (customerId != null && customerId != 0)
                         {
-                            CustomerModel _customerInfo = GlobalVariable.ConnectionDb.Query<CustomerModel>($"select * from customerinfo where Id = {customerId}").First();
+                            _customerInfo = GlobalVariable.ConnectionDb.Query<CustomerModel>($"select * from customerinfo where Id = {customerId}").First();
                             double klCaoSu = dsThuMua.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
                             double klDieu = dsThuMua.Where(x => x.Type == "Điều").Sum(x => x.Weight);
 
@@ -440,6 +458,7 @@ namespace QuanLyThuMua
                             wsThongKe.Cell("B15").Value = $"{klDieu}";
                             wsThongKe.Range("B14:B15").Style
                                 .Font.SetBold(true)
+                                .Alignment.SetShrinkToFit(true)
                                 .NumberFormat.Format = "#,##0.00";
                             wsThongKe.Range("B14:B15").DataType = XLDataType.Number;
 
@@ -461,6 +480,7 @@ namespace QuanLyThuMua
                             wsThongKe.Cell("D16").Value = tienTamUngConNo;
                             wsThongKe.Range("D14:D16").Style
                                 .Font.SetBold(true)
+                                .Alignment.SetShrinkToFit(true)
                                 .NumberFormat.Format = "#,##0";
                             wsThongKe.Range("D14:D16").DataType = XLDataType.Number;
 
@@ -491,8 +511,6 @@ namespace QuanLyThuMua
                                     .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left)
                                     .Font.FontSize = 14;
 
-
-
                             wsThongKe.Columns().AdjustToContents();
                         }
 
@@ -504,10 +522,126 @@ namespace QuanLyThuMua
 
                         // Format all titles in one shot
                         wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
-                        wb.SaveAs(sfd.FileName);
+
+                        string _pathOpen = Path.Combine(GlobalVariable.PathFile, $"ThanhToan");
+                        if (Directory.Exists($"{_pathOpen}"))
+                        {
+                            _pathOpen = Path.Combine(_pathOpen, $"{DateTime.Now.ToString("yyyyMMdd_HHmmss")}_ThanhToan_{_customerInfo.Name}.xlsx");
+                            wb.SaveAs(_pathOpen);
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(_pathOpen);
+                            _pathOpen = Path.Combine(_pathOpen, $"{DateTime.Now.ToString("yyyyMMdd_HHmmss")}_ThanhToan_{_customerInfo.Name}.xlsx");
+                            wb.SaveAs(_pathOpen);
+                        }
+                        //wb.SaveAs(sfd.FileName);
+                        SUtils.OpenFile(_pathOpen);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi: {ex}");
+            }
+        }
+
+        public void XuatExcel(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        {
+            try
+            {
+                //SaveFileDialog sfd = new SaveFileDialog();
+                //sfd.Filter = "Excel File |*.xlsx";
+                //sfd.FileName = "BaoCao";
+
+                //if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    var dsThuMua = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
+
+                    using (var wb = new XLWorkbook())
+                    {
+                        var wsThuMua = wb.Worksheets.Add("ThuMua");
+                        var wsTamUng = wb.Worksheets.Add("TamUng");
+
+                        DataTable dtThuMua = new DataTable();
+                        dtThuMua.Columns.Add("Ngày Mua", typeof(DateTime));
+                        dtThuMua.Columns.Add("Kiểu", typeof(string));
+                        dtThuMua.Columns.Add("Khách Hàng", typeof(string));
+                        dtThuMua.Columns.Add("Khối Lượng", typeof(double));
+                        dtThuMua.Columns.Add("Đơn Giá", typeof(double));
+                        dtThuMua.Columns.Add("Thành Tiền", typeof(double));
+                        dtThuMua.Columns.Add("Thanh Toán", typeof(string));
+                        dtThuMua.Columns.Add("Kiểu Mủ", typeof(string));
+                        dtThuMua.Columns.Add("Độ", typeof(double));
+                        dtThuMua.Columns.Add("Ghi Chú", typeof(string));
+
+                        foreach (var item in dsThuMua)
+                        {
+                            dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.Name, item.Weight, item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "",
+                                item.MuTypeName, item.Degree, item.Note);
+                        }
+                        wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
+                        wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
+                        wsThuMua.Range("A2").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                        wsThuMua.Range(2,1,2,dtThuMua.Columns.Count).Merge();
+                        wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Style
+                           .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
+                           .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                           .Font.FontSize = 12;
+                        wsThuMua.Cell("A3").InsertTable(dtThuMua.AsEnumerable());
+
+                        wsThuMua.Columns().AdjustToContents();
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        var dsTamUng = GetTamUngs(fromTime, toTime, customerId, payNow);
+                        DataTable dtTamUng = new DataTable();
+                        dtTamUng.Columns.Add("Ngày Ứng", typeof(DateTime));
+                        dtTamUng.Columns.Add("Khách Hàng", typeof(string));
+                        dtTamUng.Columns.Add("Số Tiền", typeof(double));
+                        dtTamUng.Columns.Add("Ghi Chú", typeof(string));
+
+                        foreach (var item in dsTamUng)
+                        {
+                            dtTamUng.Rows.Add(item.CreatedDate, item.TenKhachHang, item.Money, item.Note);
+                        }
+                        wsTamUng.Cell(1, 1).Value = "DANH SÁCH TẠM ỨNG";
+                        wsTamUng.Range(1, 1, 1, dtTamUng.Columns.Count).Merge().AddToNamed("Titles");
+
+                        wsThuMua.Range("A2").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                        wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Merge();
+                        wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Style
+                           .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
+                           .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
+                           .Font.FontSize = 12;
+
+                        wsTamUng.Cell(3, 1).InsertTable(dtTamUng.AsEnumerable());
+                        wsTamUng.Columns().AdjustToContents();
+
+                        // Prepare the style for the titles
+                        var titlesStyle = wb.Style;
+                        titlesStyle.Font.Bold = true;
+                        titlesStyle.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        titlesStyle.Fill.BackgroundColor = XLColor.BlueGreen;
+
+                        // Format all titles in one shot
+                        wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
+
+                        string _pathOpen = Path.Combine(GlobalVariable.PathFile, $"BaoCao");
+                        if (Directory.Exists($"{_pathOpen}"))
+                        {
+                            _pathOpen = Path.Combine(_pathOpen, $"{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx");
+                            wb.SaveAs(_pathOpen);
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(_pathOpen);
+                            _pathOpen = Path.Combine(_pathOpen, $"{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx");
+                            wb.SaveAs(_pathOpen);
+                        }
+
+                        //wb.SaveAs(sfd.FileName);
                         if (MessageBox.Show($"Xuất báo cáo thành công! Bạn có muốn mở file không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            SUtils.OpenFile(sfd.FileName);
+                            SUtils.OpenFile(_pathOpen);
                         }
                     }
                 }
@@ -563,9 +697,12 @@ namespace QuanLyThuMua
             return result;
         }
 
-        public void ThanhToan()
+        public void ThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
         {
-
+            if (MessageBox.Show($"Bạn có chắc chắn muốn thanh toán?", "CẢNH BẢO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                XuatExcelThanhToan(fromTime, toTime, customerId,kieu, payNow);
+            }
         }
 
         private void thanhToanDonDaChonToolStripMenuItem_Click(object sender, EventArgs e)
