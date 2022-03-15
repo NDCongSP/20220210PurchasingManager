@@ -148,17 +148,17 @@
     <Compile Include="Views\frmKhachHangUpdate.Designer.cs">
       <DependentUpon>frmKhachHangUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucDonGia.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\ucDonGia.Designer.cs">
-      <DependentUpon>ucDonGia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ucBaoCao.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\ucBaoCao.Designer.cs">
       <DependentUpon>ucBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucDonGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucDonGia.Designer.cs">
+      <DependentUpon>ucDonGia.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ucKhachHang.cs">
       <SubType>UserControl</SubType>
