@@ -154,9 +154,7 @@
     <Compile Include="Views\ucDonGia.Designer.cs">
       <DependentUpon>ucDonGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucBaoCao.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Views\ucBaoCao.cs" />
     <Compile Include="Views\ucBaoCao.Designer.cs">
       <DependentUpon>ucBaoCao.cs</DependentUpon>
     </Compile>

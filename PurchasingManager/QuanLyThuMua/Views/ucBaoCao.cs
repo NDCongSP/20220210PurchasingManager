@@ -3,14 +3,21 @@ using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Configurations;
 
 namespace QuanLyThuMua
 {
+    public class DateModel
+    {
+        public System.DateTime DateTime { get; set; }
+        public double Value { get; set; }
+    }
+
     public partial class ucBaoCao : UserControl
     {
         private List<PurchaseModel> _purchaseModels;
@@ -33,6 +40,60 @@ namespace QuanLyThuMua
             _dgBaoCao.Focus();
 
             kryptonNavigator1.SelectedIndex = 2;
+
+            _chart1.Series = new SeriesCollection();
+            _chart1.Series.Add(new ColumnSeries()
+            {
+                Title = "Cao su",
+                Values = new ChartValues<double> { }
+            });
+            _chart1.Series.Add(new ColumnSeries()
+            {
+                Title = "Điều",
+                Values = new ChartValues<double> { }
+            });
+            _chart1.AxisX.Add(new Axis
+            {
+                Title = "Thời Gian",
+                Labels = new string[] { },
+                LabelsRotation = 45
+            });
+
+            _chart1.AxisY.Add(new Axis
+            {
+                Title = "",
+                LabelFormatter = value => value.ToString("N")
+            });
+
+            // .X(dayModel => (double)dayModel.DateTime.Ticks / TimeSpan.FromHours(1).Ticks)
+            var dayConfig = Mappers.Xy<DateModel>()
+                .X(dayModel => (double)dayModel.DateTime.Ticks)
+                .Y(dayModel => dayModel.Value);
+
+            _chart2.Series = new SeriesCollection();
+            _chart2.Series.Add(new LineSeries()
+            {
+                Title = "Cao su",
+                Values = new ChartValues<DateModel>()
+            });
+            _chart2.Series.Add(new LineSeries()
+            {
+                Title = "Điều",
+                Values = new ChartValues<DateModel>()
+            });
+            _chart2.Series.Add(new LineSeries()
+            {
+                Title = "Tạm Ứng",
+                Values = new ChartValues<DateModel>()
+            });
+
+            _chart2.AxisX.Add(new Axis()
+            {
+                Title = "Thời gian",
+                LabelFormatter = value => new System.DateTime((long)(value)).ToString("yyyy-MM-dd HH:mm"),
+                // LabelFormatter = value => new System.DateTime((long)(value * TimeSpan.FromHours(1).Ticks)).ToString("yyyy-MM-dd HH:mm"),
+                LabelsRotation = 45
+            });
         }
 
         public void CapNhat(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
@@ -46,6 +107,7 @@ namespace QuanLyThuMua
                 labToDate.Text = _toTime.ToString("HH:mm:ss dd/MM/yyyy");
 
                 _purchaseModels = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
+                CapNhatChartThuMua();
 
                 _dgBaoCao.DataSource = _purchaseModels;
                 _dgBaoCao.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -58,6 +120,70 @@ namespace QuanLyThuMua
             {
                 MessageBox.Show($"Có lỗi: {ex}");
             }
+        }
+
+        private void CapNhatChartThuMua()
+        {
+            _chart1.Series[0].Values.Clear();
+            _chart1.Series[1].Values.Clear();
+            _chart1.AxisX[0].Labels.Clear();
+
+            var groups = _purchaseModels.GroupBy(x => x.CreatedDate.ToString("yyyy-MM-dd"));
+            foreach (var group in groups)
+            {
+                double caosu = 0;
+                double dieu = 0;
+
+                foreach (var item in group)
+                {
+                    if (item.Type == "Cao su")
+                    {
+                        caosu += item.Money;
+                    }
+                    else
+                    {
+                        dieu += item.Money;
+                    }
+                }
+
+                _chart1.Series[0].Values.Add(dieu);
+                _chart1.Series[1].Values.Add(caosu);
+                _chart1.AxisX[0].Labels.Add(group.Key);
+            }
+
+            _chart1.Update(true, true);
+        }
+
+        private void CapNhatChartLine()
+        {
+            _chart2.Series[0].Values.Clear();
+            _chart2.Series[1].Values.Clear();
+
+            foreach (var item in _purchaseModels)
+            {
+                DateModel model = new DateModel();
+                model.Value = item.Money;
+                model.DateTime = item.CreatedDate;
+
+                if (item.Type == "Cao su")
+                {
+                    _chart2.Series[0].Values.Add(model);
+                }
+                else
+                {
+                    _chart2.Series[1].Values.Add(model);
+                }
+            }
+
+            foreach (var item in _tamUngModels)
+            {
+                DateModel model = new DateModel();
+                model.Value = item.Money;
+                model.DateTime = item.CreatedDate;
+                _chart2.Series[2].Values.Add(model);
+            }
+
+            _chart2.Update(true, true);
         }
 
         private void CapNhatTamUng(DateTime fromTime, DateTime toTime, int? customerId, int payNow)
