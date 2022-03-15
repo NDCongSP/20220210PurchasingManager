@@ -95,9 +95,9 @@ namespace QuanLyThuMua
             // rdDieu
             // 
             this.rdDieu.AutoSize = false;
-            this.rdDieu.Location = new System.Drawing.Point(396, 36);
+            this.rdDieu.Location = new System.Drawing.Point(396, 28);
             this.rdDieu.Name = "rdDieu";
-            this.rdDieu.Size = new System.Drawing.Size(159, 25);
+            this.rdDieu.Size = new System.Drawing.Size(159, 42);
             this.rdDieu.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdDieu.TabIndex = 11;
             this.rdDieu.Values.Text = "Điều";
@@ -106,9 +106,9 @@ namespace QuanLyThuMua
             // 
             this.rdCaosu.AutoSize = false;
             this.rdCaosu.Checked = true;
-            this.rdCaosu.Location = new System.Drawing.Point(208, 36);
+            this.rdCaosu.Location = new System.Drawing.Point(208, 28);
             this.rdCaosu.Name = "rdCaosu";
-            this.rdCaosu.Size = new System.Drawing.Size(159, 25);
+            this.rdCaosu.Size = new System.Drawing.Size(159, 42);
             this.rdCaosu.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdCaosu.TabIndex = 11;
             this.rdCaosu.Values.Text = "Cao su";
@@ -116,9 +116,9 @@ namespace QuanLyThuMua
             // ckbPayNow
             // 
             this.ckbPayNow.AutoSize = false;
-            this.ckbPayNow.Location = new System.Drawing.Point(420, 327);
+            this.ckbPayNow.Location = new System.Drawing.Point(420, 323);
             this.ckbPayNow.Name = "ckbPayNow";
-            this.ckbPayNow.Size = new System.Drawing.Size(183, 25);
+            this.ckbPayNow.Size = new System.Drawing.Size(183, 29);
             this.ckbPayNow.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckbPayNow.TabIndex = 4;
             this.ckbPayNow.Values.Text = "Thanh toán ngay";

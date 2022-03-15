@@ -49,7 +49,7 @@ namespace QuanLyThuMua
         {
             InitializeComponent();
             kryptonRibbon1_SelectedTabChanged(null, null);
-           
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void OnActivePageTextChanged()

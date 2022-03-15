@@ -9,11 +9,10 @@ using System.Windows.Forms;
 using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.Configurations;
+using QuanLyThuMua.Utils;
 
 namespace QuanLyThuMua
 {
-
-
     public partial class ucBaoCao : UserControl
     {
         private List<PurchaseModel> _purchaseModels;
@@ -39,7 +38,7 @@ namespace QuanLyThuMua
 
             _chart1.Series = new SeriesCollection();
             _chart1.LegendLocation = LegendLocation.Right;
-        
+
             _chart1.Series.Add(new ColumnSeries()
             {
                 Title = "Cao su",
@@ -59,45 +58,81 @@ namespace QuanLyThuMua
             {
                 Title = "Thời Gian",
                 Labels = new string[] { },
-                LabelsRotation = 45
+                LabelsRotation = 45,
+                Foreground = System.Windows.Media.Brushes.Red
             });
 
             _chart1.AxisY.Add(new Axis
             {
-                Title = "",
-                LabelFormatter = value => value.ToString("N")
+                Title = "Kg",
+                LabelFormatter = value => value.ToString("N"),
+                Foreground = System.Windows.Media.Brushes.Red
             });
 
             // .X(dayModel => (double)dayModel.DateTime.Ticks / TimeSpan.FromHours(1).Ticks)
-            var dayConfig = Mappers.Xy<DateModel>()
+            var dayConfig = Mappers.Xy<DataModel>()
                 .X(dayModel => (double)dayModel.DateTime.Ticks)
                 .Y(dayModel => dayModel.Value);
 
+            //_chart2.LegendLocation = LegendLocation.Right;
+            //_chart2.Series = new SeriesCollection(dayConfig);
+            //_chart2.Series.Add(new LineSeries()
+            //{
+            //    Title = "Cao su",
+            //    Values = new ChartValues<DateModel>()
+            //});
+            //_chart2.Series.Add(new LineSeries()
+            //{
+            //    Title = "Điều",
+            //    Values = new ChartValues<DateModel>()
+            //});
+            //_chart2.Series.Add(new LineSeries()
+            //{
+            //    Title = "Tạm Ứng",
+            //    Values = new ChartValues<DateModel>()
+            //});
+
+            //_chart2.AxisX.Add(new Axis()
+            //{
+            //    Title = "Thời gian",
+            //    LabelFormatter = value => new System.DateTime((long)(value)).ToString("yyyy-MM-dd"),  
+            //    // LabelFormatter = value => new System.DateTime((long)(value * TimeSpan.FromHours(1).Ticks)).ToString("yyyy-MM-dd HH:mm"),
+            //    LabelsRotation = 45
+            //});
+
             _chart2.LegendLocation = LegendLocation.Right;
-            _chart2.Series = new SeriesCollection(dayConfig);
+            _chart2.Series = new SeriesCollection();
             _chart2.Series.Add(new LineSeries()
             {
                 Title = "Cao su",
-                Values = new ChartValues<DateModel>()
+                Values = new ChartValues<double>()
             });
             _chart2.Series.Add(new LineSeries()
             {
                 Title = "Điều",
-                Values = new ChartValues<DateModel>()
+                Values = new ChartValues<double>()
             });
             _chart2.Series.Add(new LineSeries()
             {
-                Title = "Tạm Ứng",
-                Values = new ChartValues<DateModel>()
+                Title = "Tổng",
+                Values = new ChartValues<double>()
             });
 
             _chart2.AxisX.Add(new Axis()
             {
                 Title = "Thời gian",
-                LabelFormatter = value => new System.DateTime((long)(value)).ToString("yyyy-MM-dd"),  
-                // LabelFormatter = value => new System.DateTime((long)(value * TimeSpan.FromHours(1).Ticks)).ToString("yyyy-MM-dd HH:mm"),
-                LabelsRotation = 45
+                LabelFormatter = value => new System.DateTime((long)(value)).ToString("yyyy-MM-dd"),
+                Labels = new string[] { },
+                LabelsRotation = 45,
+                Foreground = System.Windows.Media.Brushes.Red
             });
+            _chart2.AxisY.Add(new Axis
+            {
+                Title = "VNĐ",
+                LabelFormatter = value => value.ToString("N"),
+                Foreground = System.Windows.Media.Brushes.Red
+            });
+            
         }
 
         public void CapNhat(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
@@ -136,7 +171,7 @@ namespace QuanLyThuMua
 
             List<string> labels = new List<string>();
 
-            var groups = _purchaseModels.GroupBy(x => x.CreatedDate.ToString("yyyy-MM-dd"));
+            var groups = _purchaseModels.GroupBy(x => x.CreatedDate.ToString("yyyy-MM-dd")).OrderBy(x => x.Key);
             foreach (var group in groups)
             {
                 double caosu = 0;
@@ -154,8 +189,8 @@ namespace QuanLyThuMua
                     }
                 }
 
-                _chart1.Series[0].Values.Add(dieu);
-                _chart1.Series[1].Values.Add(caosu);
+                _chart1.Series[0].Values.Add(caosu);
+                _chart1.Series[1].Values.Add(dieu);
                 _chart1.Series[2].Values.Add(dieu + caosu);
                 labels.Add(group.Key);
             }
@@ -169,29 +204,57 @@ namespace QuanLyThuMua
             _chart2.Series[1].Values.Clear();
             _chart2.Series[2].Values.Clear();
 
-            foreach (var item in _purchaseModels.OrderBy(x => x.CreatedDate))
-            {
-                DateModel model = new DateModel();
-                model.Value = item.Money;
-                model.DateTime = item.CreatedDate;
+            //foreach (var item in _purchaseModels.OrderBy(x => x.CreatedDate))
+            //{
+            //    DateModel model = new DateModel();
+            //    model.Value = item.Money;
+            //    model.DateTime = item.CreatedDate;
 
-                if (item.Type == "Cao su")
-                {
-                    _chart2.Series[0].Values.Add(model);
-                }
-                else
-                {
-                    _chart2.Series[1].Values.Add(model);
-                }
-            }
+            //    if (item.Type == "Cao su")
+            //    {
+            //        _chart2.Series[0].Values.Add(model);
+            //    }
+            //    else
+            //    {
+            //        _chart2.Series[1].Values.Add(model);
+            //    }
+            //}
 
-            foreach (var item in _tamUngModels.OrderBy(x => x.CreatedDate))
+            //foreach (var item in _tamUngModels.OrderBy(x => x.CreatedDate))
+            //{
+            //    DateModel model = new DateModel();
+            //    model.Value = item.Money;
+            //    model.DateTime = item.CreatedDate;
+            //    _chart2.Series[2].Values.Add(model);
+            //}
+
+            List<string> labels = new List<string>();
+
+            var groups = _purchaseModels.GroupBy(x => x.CreatedDate.ToString("yyyy-MM-dd")).OrderBy(x => x.Key);
+
+            foreach (var group in groups)
             {
-                DateModel model = new DateModel();
-                model.Value = item.Money;
-                model.DateTime = item.CreatedDate;
-                _chart2.Series[2].Values.Add(model);
+                double caosu = 0;
+                double dieu = 0;
+
+                foreach (var item in group)
+                {
+                    if (item.Type == "Cao su")
+                    {
+                        caosu += item.Money;
+                    }
+                    else
+                    {
+                        dieu += item.Money;
+                    }
+                }
+
+                _chart2.Series[0].Values.Add(caosu);
+                _chart2.Series[1].Values.Add(dieu);
+                _chart2.Series[2].Values.Add(dieu + caosu);
+                labels.Add(group.Key);
             }
+            _chart2.AxisX[0].Labels = labels;
 
             _chart2.Update(true, true);
         }
@@ -218,25 +281,29 @@ namespace QuanLyThuMua
 
             double klCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
             double klDieu = _purchaseModels.Where(x => x.Type == "Điều").Sum(x => x.Weight);
-            _lbKLCaoSu.Text = $"{klCaoSu} Kg";
-            _lbKLDieu.Text = $"{klDieu} Kg";
+            _lbKLCaoSu.Text = $"{klCaoSu:#,##0.00} Kg";
+            _lbKLDieu.Text = $"{klDieu:#,##0.00} Kg";
 
+            double tongTienCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Money);
+            double tongTienDieu = _purchaseModels.Where(x => x.Type == "Điều").Sum(x => x.Money);
             double tongTienThuMua = _purchaseModels.Sum(x => x.Money);
             double tienThuMuaDaThanhToan = _purchaseModels.Where(x => x.PayNow == 1).Sum(x => x.Money);
             double tienThuMuaConLai = tongTienThuMua - tienThuMuaDaThanhToan;
-            _lbTongTienThuMua.Text = $"{tongTienThuMua:#,###} VND";
-            _lbThuMuaDaThanhToan.Text = $"{tienThuMuaDaThanhToan:#,###} VND";
-            _lbTienThuMuaConLai.Text = $"{tienThuMuaConLai:#,###} VND";
+            _lbTongTienThuMua.Text = $"{tongTienThuMua:#,##0} VND";
+            _lbThuMuaDaThanhToan.Text = $"{tienThuMuaDaThanhToan:#,##0} VND";
+            _lbTienThuMuaConLai.Text = $"{tienThuMuaConLai:#,##0} VND";
+            labTienCaoSu.Text = $"{tongTienCaoSu:#,##0} VND";
+            labTienDieu.Text = $"{tongTienDieu:#,##0} VND";
 
             double tongTienTamUng = _tamUngModels.Sum(x => x.Money);
             double tienTamUngDaTra = _tamUngModels.Where(x => x.Payed == 1).Sum(X => X.Money);
             double tienTamUngConNo = tongTienTamUng - tienTamUngDaTra;
-            _lbTongTienTamUng.Text = $"{tongTienTamUng:#,###} VND";
-            _lbTienTamUngDaTra.Text = $"{tienTamUngDaTra:#,###} VND";
-            _lbConNo.Text = $"{tienTamUngConNo:#,###} VND";
+            _lbTongTienTamUng.Text = $"{tongTienTamUng:#,##0} VND";
+            _lbTienTamUngDaTra.Text = $"{tienTamUngDaTra:#,##0} VND";
+            _lbConNo.Text = $"{tienTamUngConNo:#,##0} VND";
 
             double tongTienPhaiTra = tienThuMuaConLai - tienTamUngConNo;
-            _lbTongTienPhaiTra.Text = $"{tienThuMuaConLai:#,###} - {tienTamUngConNo:#,###} = {tongTienPhaiTra:#,###} VND";
+            _lbTongTienPhaiTra.Text = $"{tienThuMuaConLai:#,##0} - {tienTamUngConNo:#,##0} = {tongTienPhaiTra:#,##0} VND";
         }
 
         public void XuatExcel(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
@@ -405,7 +472,7 @@ namespace QuanLyThuMua
                             wsThongKe.Cell("A20").Value = "SỐ TIỀN CẦN THANH THOÁN (a - b)";
                             //wsThongKe.Cell("A16").Style.Alignment.WrapText = true;
                             wsThongKe.Range("A20:D20").Merge();
-                            wsThongKe.Range("A21:D21").Merge().Value = $"{tienThuMuaConLai:#,###} - {tienTamUngConNo:#,###} = {tongTienPhaiTra:#,###}";
+                            wsThongKe.Range("A21:D21").Merge().Value = $"{tienThuMuaConLai:#,##0} - {tienTamUngConNo:#,##0} = {tongTienPhaiTra:#,##0}";
                             //wsThongKe.Range("A21:D21").Merge();
                             wsThongKe.Range("A20:A21").Style
                                     .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
@@ -424,7 +491,7 @@ namespace QuanLyThuMua
                                     .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left)
                                     .Font.FontSize = 14;
 
-                            
+
 
                             wsThongKe.Columns().AdjustToContents();
                         }
@@ -438,7 +505,10 @@ namespace QuanLyThuMua
                         // Format all titles in one shot
                         wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
                         wb.SaveAs(sfd.FileName);
-                        MessageBox.Show($"Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (MessageBox.Show($"Xuất báo cáo thành công! Bạn có muốn mở file không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            SUtils.OpenFile(sfd.FileName);
+                        }
                     }
                 }
             }
@@ -450,7 +520,7 @@ namespace QuanLyThuMua
 
         public List<PurchaseModel> GetPurchaseModels(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
         {
-            string query = $"select purchaseinfo.*, customerinfo.Name as Name" +
+            string query = $"select purchaseinfo.*, customerinfo.Name as Name, case when purchaseinfo.MuType = 1 then 'Mủ chén' when purchaseinfo.MuType = 0 then 'Không phải mủ chén' else '' end MuTypeName" +
                 $" from purchaseinfo inner JOIN customerinfo ON customerinfo.Id = purchaseinfo.CustomerId" +
                 $" where purchaseinfo.CreatedDate > '{fromTime:yyyy-MM-dd HH:mm:ss}' and purchaseinfo.CreatedDate < '{toTime:yyyy-MM-dd HH:mm:ss}'";
 
@@ -469,7 +539,7 @@ namespace QuanLyThuMua
                 query = query + $" and purchaseinfo.PayNow = {payNow}";
             }
 
-            var result = GlobalVariable.ConnectionDb.Query<PurchaseModel>(query).AsList();
+            var result = GlobalVariable.ConnectionDb.Query<PurchaseModel>(query + " order by Id desc").AsList();
             return result;
         }
 
@@ -555,7 +625,7 @@ namespace QuanLyThuMua
         }
     }
 
-    public class DateModel
+    public class DataModel
     {
         public System.DateTime DateTime { get; set; }
         public double Value { get; set; }

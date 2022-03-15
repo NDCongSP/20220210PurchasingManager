@@ -23,7 +23,7 @@ namespace QuanLyThuMua
         [Browsable(false)]
         public string PathFileExcelOpen { get; set; }
         [Browsable(false)]
-        public int MuType { get; set; }
+        public int? MuType { get; set; }
 
         [DisplayName("Tên khách hàng")]
         public string  Name { get; set; }
@@ -37,11 +37,22 @@ namespace QuanLyThuMua
         public int PriceId { get; set; }
         [DisplayName("Đơn giá")]
         public double Price { get; set; }
-        [DisplayName("Thanh toán ngay")]
+        [Browsable(false)]
         public int PayNow { get; set; }
-      
+
+        private bool _customPayNow;
+        [DisplayName("Thanh toán ngay")]
+        public bool CustomPayNow
+        {
+            get { return PayNow == 1 ? true : false; }
+            set
+            {
+                _customPayNow = value;
+            }
+        }
         [DisplayName("Loại mủ")]
         public string MuTypeName { get; set; }
+
         [DisplayName("Số độ")]
         public double Degree { get; set; } 
     
@@ -55,7 +66,7 @@ namespace QuanLyThuMua
 
         [DisplayName("Lưu ý")]
         public string Note { get; set; }
-
+        [Browsable(false)]
         public object Handle { get; set; }
     }
 }

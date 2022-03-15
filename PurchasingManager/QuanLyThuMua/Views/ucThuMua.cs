@@ -119,12 +119,33 @@ namespace QuanLyThuMua
         {
             List<PurchaseModel> purchaseModels = GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
             gvPurchaseList.DataSource = purchaseModels;
+            gvPurchaseList.Columns["Id"].Width = 50;
             gvPurchaseList.Columns["CreatedDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             gvPurchaseList.Columns["Weight"].DefaultCellStyle.Format = "#,###.##";
             gvPurchaseList.Columns["Price"].DefaultCellStyle.Format = "#,###";
             gvPurchaseList.Columns["Money"].DefaultCellStyle.Format = "#,###";
-            //gvPurchaseList.Columns["CustomerId"].Visible = false;
-            //gvPurchaseList.Columns["PriceId"].Visible = false;
+
+            var properties = typeof(PurchaseModel).GetProperties();
+
+            foreach (var p in properties)
+            {
+                var column = gvPurchaseList.Columns[p.Name];
+                if (column != null)
+                {
+                    if (p.PropertyType == typeof(string))
+                    {
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    }
+                    else if (p.PropertyType == typeof(bool))
+                    {
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+                    else
+                    {
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    }
+                }
+            }
         }
         private int UpdatePurchase(long Id, int Sodo)
         {

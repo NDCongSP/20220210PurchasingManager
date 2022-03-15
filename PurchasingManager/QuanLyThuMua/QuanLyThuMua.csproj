@@ -136,6 +136,7 @@
     <Compile Include="Models\PriceModel.cs" />
     <Compile Include="Models\PurchaseModel.cs" />
     <Compile Include="Models\TamUngModel.cs" />
+    <Compile Include="Utils\SUtils.cs" />
     <Compile Include="Views\frmDonGiaUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
