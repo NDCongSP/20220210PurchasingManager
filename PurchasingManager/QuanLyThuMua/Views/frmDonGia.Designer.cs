@@ -243,7 +243,10 @@ namespace QuanLyThuMua
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDonGia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm đơn giá";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace QuanLyThuMua
 {
@@ -27,8 +28,8 @@ namespace QuanLyThuMua
             gvPurchaseList.CellValueChanged += GvPurchaseList_CellValueChanged;
             //gvPurchaseList.CellValidating += GvPurchaseList_CellValidating;
             gvPurchaseList.CellEndEdit += GvPurchaseList_CellEndEdit;
-          
-          
+
+            gvPurchaseList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
 
@@ -70,6 +71,7 @@ namespace QuanLyThuMua
             if (Sodo > GlobalVariable.SoDoMax || Sodo < GlobalVariable.SoDoMin)
             {
                 MessageBox.Show($"Số độ nằm trong khoảng giá trị từ  {GlobalVariable.SoDoMin} đến  {GlobalVariable.SoDoMax} ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                row.Cells["Degree"].Value = CurrentValue;
                 return;
             }
             if (isUpdate && MessageBox.Show("Cập nhật lại số độ?","Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -77,7 +79,12 @@ namespace QuanLyThuMua
                 if (UpdatePurchase(Id, Sodo) >0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông tin", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
-                    GetData();
+                    // GetData();
+
+                }
+                else
+                {
+                    row.Cells["Degree"].Value = CurrentValue;
                 }
             }
         }
@@ -100,22 +107,47 @@ namespace QuanLyThuMua
         }
 
         private void UcThuMua_Load(object sender, EventArgs e)
-        {
+        {   
             GetData();
             Console.WriteLine(this.Height);
             gvPurchaseList.Height = GridHeight - 50;
+
+            gvPurchaseList.Focus();
         }
 
         public void GetData()
         {
             List<PurchaseModel> purchaseModels = GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
             gvPurchaseList.DataSource = purchaseModels;
+            gvPurchaseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gvPurchaseList.Columns["Id"].Width = 50;
             gvPurchaseList.Columns["CreatedDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+            gvPurchaseList.Columns["PaidDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             gvPurchaseList.Columns["Weight"].DefaultCellStyle.Format = "#,###.##";
             gvPurchaseList.Columns["Price"].DefaultCellStyle.Format = "#,###";
             gvPurchaseList.Columns["Money"].DefaultCellStyle.Format = "#,###";
-            //gvPurchaseList.Columns["CustomerId"].Visible = false;
-            //gvPurchaseList.Columns["PriceId"].Visible = false;
+
+            var properties = typeof(PurchaseModel).GetProperties();
+
+            foreach (var p in properties)
+            {
+                var column = gvPurchaseList.Columns[p.Name];
+                if (column != null)
+                {
+                    if (p.PropertyType == typeof(string))
+                    {
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    }
+                    else if (p.PropertyType == typeof(bool))
+                    {
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+                    else
+                    {
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    }
+                }
+            }
         }
         private int UpdatePurchase(long Id, int Sodo)
         {

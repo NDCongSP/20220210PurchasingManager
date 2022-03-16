@@ -1,13 +1,6 @@
-﻿using Dapper;
-using Krypton.Toolkit;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Dapper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyThuMua
@@ -42,7 +35,7 @@ namespace QuanLyThuMua
                 }
             }
 
-            _res = GlobalVariable.ConnectionDb.Query<PriceModel>("call spPriceGetLatestPrice('Dieu')");
+            _res = GlobalVariable.ConnectionDb.Query<PriceModel>("call spPriceGetLatestPrice('Điều')");
 
             if (_res != null)
             {

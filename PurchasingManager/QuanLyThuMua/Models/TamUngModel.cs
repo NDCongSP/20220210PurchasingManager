@@ -13,5 +13,11 @@ namespace QuanLyThuMua
         public int CustomerId { get; set; }
         public double Money { get; set; }
         public string Note { get; set; }
+        public int Payed { get; set; }
+
+        public string TenKhachHang { get; set; }
+
+        public object Handle { get; set; }
+        public DateTime? PaidDate { get; set; }
     }
 }
