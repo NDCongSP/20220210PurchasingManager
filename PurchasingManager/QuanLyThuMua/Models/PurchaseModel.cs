@@ -41,7 +41,7 @@ namespace QuanLyThuMua
         public int PayNow { get; set; }
 
         private bool _customPayNow;
-        [DisplayName("Thanh toán ngay")]
+        [DisplayName("TT ngay")]
         public bool CustomPayNow
         {
             get { return PayNow == 1 ? true : false; }
@@ -68,5 +68,9 @@ namespace QuanLyThuMua
         public string Note { get; set; }
         [Browsable(false)]
         public object Handle { get; set; }
+
+        [Browsable(true)]
+        [DisplayName("Ngày TT")]
+        public DateTime? PaidDate { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace QuanLyThuMua
             //gvPurchaseList.CellValidating += GvPurchaseList_CellValidating;
             gvPurchaseList.CellEndEdit += GvPurchaseList_CellEndEdit;
 
-            gvPurchaseList.AutoGenerateColumns = true;
+            gvPurchaseList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
 
@@ -119,8 +119,10 @@ namespace QuanLyThuMua
         {
             List<PurchaseModel> purchaseModels = GlobalVariable.ConnectionDb.Query<PurchaseModel>("spPurchaseSelectAll", null, commandType: CommandType.StoredProcedure).ToList();
             gvPurchaseList.DataSource = purchaseModels;
+            gvPurchaseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gvPurchaseList.Columns["Id"].Width = 50;
             gvPurchaseList.Columns["CreatedDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+            gvPurchaseList.Columns["PaidDate"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             gvPurchaseList.Columns["Weight"].DefaultCellStyle.Format = "#,###.##";
             gvPurchaseList.Columns["Price"].DefaultCellStyle.Format = "#,###";
             gvPurchaseList.Columns["Money"].DefaultCellStyle.Format = "#,###";

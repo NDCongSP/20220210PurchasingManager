@@ -30,17 +30,17 @@ namespace QuanLyThuMua
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -49,23 +49,18 @@ namespace QuanLyThuMua
             this.colCreatedDate = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colType = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colTenKH = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.colKieuMu = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.colDo = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colWeight = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colPrice = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.Column1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colPayNow = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
-            this.colKieuMu = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.colDo = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column3 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.colNote = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.thanhToanDonDaChonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kryptonPage2 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this._dgTamUng = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.kryptonDataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Column2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
-            this.kryptonDataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xacNhanDaThuHoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kryptonPage3 = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -85,6 +80,10 @@ namespace QuanLyThuMua
             this._lbTienTamUngDaTra = new System.Windows.Forms.Label();
             this._lbConNo = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labTienCaoSu = new System.Windows.Forms.Label();
+            this.labTienDieu = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -101,10 +100,13 @@ namespace QuanLyThuMua
             this.label21 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labTienCaoSu = new System.Windows.Forms.Label();
-            this.labTienDieu = new System.Windows.Forms.Label();
+            this.kryptonDataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Column2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
+            this.Column4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.kryptonDataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -149,7 +151,7 @@ namespace QuanLyThuMua
             this.kryptonPage1,
             this.kryptonPage2,
             this.kryptonPage3});
-            this.kryptonNavigator1.SelectedIndex = 2;
+            this.kryptonNavigator1.SelectedIndex = 1;
             this.kryptonNavigator1.Size = new System.Drawing.Size(2017, 1300);
             this.kryptonNavigator1.StateCommon.Tab.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonNavigator1.StateCommon.Tab.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -181,12 +183,13 @@ namespace QuanLyThuMua
             this.colCreatedDate,
             this.colType,
             this.colTenKH,
+            this.colKieuMu,
+            this.colDo,
             this.colWeight,
             this.colPrice,
             this.Column1,
             this.colPayNow,
-            this.colKieuMu,
-            this.colDo,
+            this.Column3,
             this.colNote});
             this._dgBaoCao.ContextMenuStrip = this.contextMenuStrip1;
             this._dgBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,8 +207,8 @@ namespace QuanLyThuMua
             // colId
             // 
             this.colId.DataPropertyName = "Id";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colId.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colId.DefaultCellStyle = dataGridViewCellStyle1;
             this.colId.HeaderText = "Id";
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
@@ -214,8 +217,8 @@ namespace QuanLyThuMua
             // colCreatedDate
             // 
             this.colCreatedDate.DataPropertyName = "CreatedDate";
-            dataGridViewCellStyle13.Format = "dd/MM/yyyy HH:mm:ss";
-            this.colCreatedDate.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
+            this.colCreatedDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colCreatedDate.HeaderText = "Ngày Mua";
             this.colCreatedDate.Name = "colCreatedDate";
             this.colCreatedDate.ReadOnly = true;
@@ -237,55 +240,6 @@ namespace QuanLyThuMua
             this.colTenKH.ReadOnly = true;
             this.colTenKH.Width = 100;
             // 
-            // colWeight
-            // 
-            this.colWeight.DataPropertyName = "Weight";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0";
-            this.colWeight.DefaultCellStyle = dataGridViewCellStyle14;
-            this.colWeight.HeaderText = "Khối Lượng";
-            this.colWeight.Name = "colWeight";
-            this.colWeight.ReadOnly = true;
-            this.colWeight.Width = 100;
-            // 
-            // colPrice
-            // 
-            this.colPrice.DataPropertyName = "Price";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "#,###";
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle15;
-            this.colPrice.HeaderText = "Đơn Giá";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Width = 100;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Money";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "#,###";
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle16;
-            this.Column1.HeaderText = "Thành Tiền";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 100;
-            // 
-            // colPayNow
-            // 
-            this.colPayNow.DataPropertyName = "CustomPayNow";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.NullValue = false;
-            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle17;
-            this.colPayNow.FalseValue = "0";
-            this.colPayNow.HeaderText = "Thanh Toán";
-            this.colPayNow.IndeterminateValue = null;
-            this.colPayNow.Name = "colPayNow";
-            this.colPayNow.ReadOnly = true;
-            this.colPayNow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPayNow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colPayNow.TrueValue = "1";
-            // 
             // colKieuMu
             // 
             this.colKieuMu.DataPropertyName = "MuTypeName";
@@ -297,12 +251,70 @@ namespace QuanLyThuMua
             // colDo
             // 
             this.colDo.DataPropertyName = "Degree";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colDo.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colDo.DefaultCellStyle = dataGridViewCellStyle3;
             this.colDo.HeaderText = "Độ";
             this.colDo.Name = "colDo";
             this.colDo.ReadOnly = true;
             this.colDo.Width = 100;
+            // 
+            // colWeight
+            // 
+            this.colWeight.DataPropertyName = "Weight";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.colWeight.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colWeight.HeaderText = "Khối Lượng";
+            this.colWeight.Name = "colWeight";
+            this.colWeight.ReadOnly = true;
+            this.colWeight.Width = 100;
+            // 
+            // colPrice
+            // 
+            this.colPrice.DataPropertyName = "Price";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "#,###";
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colPrice.HeaderText = "Đơn Giá";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Width = 100;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Money";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "#,###";
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column1.HeaderText = "Thành Tiền";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 100;
+            // 
+            // colPayNow
+            // 
+            this.colPayNow.DataPropertyName = "CustomPayNow";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.NullValue = false;
+            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colPayNow.FalseValue = "0";
+            this.colPayNow.HeaderText = "Thanh Toán";
+            this.colPayNow.IndeterminateValue = null;
+            this.colPayNow.Name = "colPayNow";
+            this.colPayNow.ReadOnly = true;
+            this.colPayNow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPayNow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colPayNow.TrueValue = "1";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "PaidDate";
+            this.Column3.HeaderText = "Ngày Thanh Toán";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 175;
             // 
             // colNote
             // 
@@ -352,6 +364,7 @@ namespace QuanLyThuMua
             this.kryptonDataGridViewTextBoxColumn4,
             this.kryptonDataGridViewTextBoxColumn7,
             this.Column2,
+            this.Column4,
             this.kryptonDataGridViewTextBoxColumn10});
             this._dgTamUng.ContextMenuStrip = this.contextMenuStrip2;
             this._dgTamUng.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -366,67 +379,6 @@ namespace QuanLyThuMua
             this._dgTamUng.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this._dgTamUng.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this._dgTamUng.TabIndex = 1;
-            // 
-            // kryptonDataGridViewTextBoxColumn1
-            // 
-            this.kryptonDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.kryptonDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle19;
-            this.kryptonDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.kryptonDataGridViewTextBoxColumn1.Name = "kryptonDataGridViewTextBoxColumn1";
-            this.kryptonDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.kryptonDataGridViewTextBoxColumn1.Width = 100;
-            // 
-            // kryptonDataGridViewTextBoxColumn2
-            // 
-            this.kryptonDataGridViewTextBoxColumn2.DataPropertyName = "CreatedDate";
-            dataGridViewCellStyle20.Format = "dd/MM/yyyy HH:mm:ss";
-            this.kryptonDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle20;
-            this.kryptonDataGridViewTextBoxColumn2.HeaderText = "Ngày Ứng";
-            this.kryptonDataGridViewTextBoxColumn2.Name = "kryptonDataGridViewTextBoxColumn2";
-            this.kryptonDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.kryptonDataGridViewTextBoxColumn2.Width = 100;
-            // 
-            // kryptonDataGridViewTextBoxColumn4
-            // 
-            this.kryptonDataGridViewTextBoxColumn4.DataPropertyName = "TenKhachHang";
-            this.kryptonDataGridViewTextBoxColumn4.HeaderText = "Khách Hàng";
-            this.kryptonDataGridViewTextBoxColumn4.Name = "kryptonDataGridViewTextBoxColumn4";
-            this.kryptonDataGridViewTextBoxColumn4.ReadOnly = true;
-            this.kryptonDataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // kryptonDataGridViewTextBoxColumn7
-            // 
-            this.kryptonDataGridViewTextBoxColumn7.DataPropertyName = "Money";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Format = "#,###";
-            this.kryptonDataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle21;
-            this.kryptonDataGridViewTextBoxColumn7.HeaderText = "Số Tiền";
-            this.kryptonDataGridViewTextBoxColumn7.Name = "kryptonDataGridViewTextBoxColumn7";
-            this.kryptonDataGridViewTextBoxColumn7.ReadOnly = true;
-            this.kryptonDataGridViewTextBoxColumn7.Width = 100;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Payed";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.NullValue = false;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle22;
-            this.Column2.FalseValue = "0";
-            this.Column2.HeaderText = "Đã Thu Hồi";
-            this.Column2.IndeterminateValue = null;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.TrueValue = "1";
-            this.Column2.Width = 250;
-            // 
-            // kryptonDataGridViewTextBoxColumn10
-            // 
-            this.kryptonDataGridViewTextBoxColumn10.DataPropertyName = "Note";
-            this.kryptonDataGridViewTextBoxColumn10.HeaderText = "Ghi Chú";
-            this.kryptonDataGridViewTextBoxColumn10.Name = "kryptonDataGridViewTextBoxColumn10";
-            this.kryptonDataGridViewTextBoxColumn10.ReadOnly = true;
-            this.kryptonDataGridViewTextBoxColumn10.Width = 100;
             // 
             // contextMenuStrip2
             // 
@@ -665,6 +617,50 @@ namespace QuanLyThuMua
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thu mua";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(6, 162);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 24);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Tiền cao su:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label4.Location = new System.Drawing.Point(6, 224);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 24);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Tiền điều:";
+            // 
+            // labTienCaoSu
+            // 
+            this.labTienCaoSu.AutoSize = true;
+            this.labTienCaoSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTienCaoSu.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labTienCaoSu.Location = new System.Drawing.Point(6, 193);
+            this.labTienCaoSu.Name = "labTienCaoSu";
+            this.labTienCaoSu.Size = new System.Drawing.Size(70, 24);
+            this.labTienCaoSu.TabIndex = 17;
+            this.labTienCaoSu.Text = "0 VND";
+            // 
+            // labTienDieu
+            // 
+            this.labTienDieu.AutoSize = true;
+            this.labTienDieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTienDieu.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labTienDieu.Location = new System.Drawing.Point(6, 255);
+            this.labTienDieu.Name = "labTienDieu";
+            this.labTienDieu.Size = new System.Drawing.Size(70, 24);
+            this.labTienDieu.TabIndex = 18;
+            this.labTienDieu.Text = "0 VND";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -835,49 +831,76 @@ namespace QuanLyThuMua
             this.label1.TabIndex = 0;
             this.label1.Text = "Từ ngày: ";
             // 
-            // label2
+            // kryptonDataGridViewTextBoxColumn1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(6, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 24);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Tiền cao su:";
+            this.kryptonDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.kryptonDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.kryptonDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.kryptonDataGridViewTextBoxColumn1.Name = "kryptonDataGridViewTextBoxColumn1";
+            this.kryptonDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.kryptonDataGridViewTextBoxColumn1.Width = 100;
             // 
-            // label4
+            // kryptonDataGridViewTextBoxColumn2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label4.Location = new System.Drawing.Point(6, 224);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 24);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Tiền điều:";
+            this.kryptonDataGridViewTextBoxColumn2.DataPropertyName = "CreatedDate";
+            dataGridViewCellStyle9.Format = "dd/MM/yyyy HH:mm:ss";
+            this.kryptonDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle9;
+            this.kryptonDataGridViewTextBoxColumn2.HeaderText = "Ngày Ứng";
+            this.kryptonDataGridViewTextBoxColumn2.Name = "kryptonDataGridViewTextBoxColumn2";
+            this.kryptonDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.kryptonDataGridViewTextBoxColumn2.Width = 100;
             // 
-            // labTienCaoSu
+            // kryptonDataGridViewTextBoxColumn4
             // 
-            this.labTienCaoSu.AutoSize = true;
-            this.labTienCaoSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTienCaoSu.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labTienCaoSu.Location = new System.Drawing.Point(6, 193);
-            this.labTienCaoSu.Name = "labTienCaoSu";
-            this.labTienCaoSu.Size = new System.Drawing.Size(70, 24);
-            this.labTienCaoSu.TabIndex = 17;
-            this.labTienCaoSu.Text = "0 VND";
+            this.kryptonDataGridViewTextBoxColumn4.DataPropertyName = "TenKhachHang";
+            this.kryptonDataGridViewTextBoxColumn4.HeaderText = "Khách Hàng";
+            this.kryptonDataGridViewTextBoxColumn4.Name = "kryptonDataGridViewTextBoxColumn4";
+            this.kryptonDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.kryptonDataGridViewTextBoxColumn4.Width = 200;
             // 
-            // labTienDieu
+            // kryptonDataGridViewTextBoxColumn7
             // 
-            this.labTienDieu.AutoSize = true;
-            this.labTienDieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTienDieu.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labTienDieu.Location = new System.Drawing.Point(6, 255);
-            this.labTienDieu.Name = "labTienDieu";
-            this.labTienDieu.Size = new System.Drawing.Size(70, 24);
-            this.labTienDieu.TabIndex = 18;
-            this.labTienDieu.Text = "0 VND";
+            this.kryptonDataGridViewTextBoxColumn7.DataPropertyName = "Money";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "#,###";
+            this.kryptonDataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle10;
+            this.kryptonDataGridViewTextBoxColumn7.HeaderText = "Số Tiền";
+            this.kryptonDataGridViewTextBoxColumn7.Name = "kryptonDataGridViewTextBoxColumn7";
+            this.kryptonDataGridViewTextBoxColumn7.ReadOnly = true;
+            this.kryptonDataGridViewTextBoxColumn7.Width = 100;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "Payed";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.NullValue = false;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column2.FalseValue = "0";
+            this.Column2.HeaderText = "Đã Thu Hồi";
+            this.Column2.IndeterminateValue = null;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.TrueValue = "1";
+            this.Column2.Width = 105;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column4.DataPropertyName = "PaidDate";
+            this.Column4.HeaderText = "Ngày TT";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 103;
+            // 
+            // kryptonDataGridViewTextBoxColumn10
+            // 
+            this.kryptonDataGridViewTextBoxColumn10.DataPropertyName = "Note";
+            this.kryptonDataGridViewTextBoxColumn10.HeaderText = "Ghi Chú";
+            this.kryptonDataGridViewTextBoxColumn10.Name = "kryptonDataGridViewTextBoxColumn10";
+            this.kryptonDataGridViewTextBoxColumn10.ReadOnly = true;
+            this.kryptonDataGridViewTextBoxColumn10.Width = 100;
             // 
             // ucBaoCao
             // 
@@ -956,30 +979,32 @@ namespace QuanLyThuMua
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labToDate;
         private System.Windows.Forms.Label labFromDate;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private LiveCharts.WinForms.CartesianChart _chart1;
+        private LiveCharts.WinForms.CartesianChart _chart2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labTienCaoSu;
+        private System.Windows.Forms.Label labTienDieu;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colId;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colCreatedDate;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colType;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colTenKH;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colKieuMu;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colDo;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colWeight;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colPrice;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn colPayNow;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column3;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colNote;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn2;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn4;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn7;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn Column2;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column4;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn10;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private LiveCharts.WinForms.CartesianChart _chart1;
-        private LiveCharts.WinForms.CartesianChart _chart2;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colId;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colCreatedDate;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colType;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colTenKH;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colWeight;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colPrice;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Column1;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn colPayNow;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colKieuMu;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colDo;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn colNote;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labTienCaoSu;
-        private System.Windows.Forms.Label labTienDieu;
     }
 }

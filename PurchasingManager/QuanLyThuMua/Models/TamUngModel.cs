@@ -18,5 +18,6 @@ namespace QuanLyThuMua
         public string TenKhachHang { get; set; }
 
         public object Handle { get; set; }
+        public DateTime? PaidDate { get; set; }
     }
 }
