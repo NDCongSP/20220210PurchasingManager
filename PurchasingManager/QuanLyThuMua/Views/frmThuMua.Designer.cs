@@ -29,6 +29,7 @@ namespace QuanLyThuMua
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThuMua));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdDieu = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.rdCaosu = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
@@ -95,9 +96,9 @@ namespace QuanLyThuMua
             // rdDieu
             // 
             this.rdDieu.AutoSize = false;
-            this.rdDieu.Location = new System.Drawing.Point(396, 36);
+            this.rdDieu.Location = new System.Drawing.Point(396, 28);
             this.rdDieu.Name = "rdDieu";
-            this.rdDieu.Size = new System.Drawing.Size(159, 25);
+            this.rdDieu.Size = new System.Drawing.Size(159, 42);
             this.rdDieu.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdDieu.TabIndex = 11;
             this.rdDieu.Values.Text = "Điều";
@@ -106,9 +107,9 @@ namespace QuanLyThuMua
             // 
             this.rdCaosu.AutoSize = false;
             this.rdCaosu.Checked = true;
-            this.rdCaosu.Location = new System.Drawing.Point(208, 36);
+            this.rdCaosu.Location = new System.Drawing.Point(208, 28);
             this.rdCaosu.Name = "rdCaosu";
-            this.rdCaosu.Size = new System.Drawing.Size(159, 25);
+            this.rdCaosu.Size = new System.Drawing.Size(159, 42);
             this.rdCaosu.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdCaosu.TabIndex = 11;
             this.rdCaosu.Values.Text = "Cao su";
@@ -116,9 +117,9 @@ namespace QuanLyThuMua
             // ckbPayNow
             // 
             this.ckbPayNow.AutoSize = false;
-            this.ckbPayNow.Location = new System.Drawing.Point(420, 327);
+            this.ckbPayNow.Location = new System.Drawing.Point(420, 323);
             this.ckbPayNow.Name = "ckbPayNow";
-            this.ckbPayNow.Size = new System.Drawing.Size(183, 25);
+            this.ckbPayNow.Size = new System.Drawing.Size(183, 29);
             this.ckbPayNow.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckbPayNow.TabIndex = 4;
             this.ckbPayNow.Values.Text = "Thanh toán ngay";
@@ -160,6 +161,8 @@ namespace QuanLyThuMua
             // 
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSave.Location = new System.Drawing.Point(648, 587);
             this.btnSave.Name = "btnSave";
@@ -366,12 +369,16 @@ namespace QuanLyThuMua
             this.ClientSize = new System.Drawing.Size(1110, 713);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmThuMua";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Text = "Thu mua";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbLoaimu)).EndInit();

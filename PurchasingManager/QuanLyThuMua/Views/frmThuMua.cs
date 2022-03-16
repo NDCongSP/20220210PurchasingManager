@@ -2,6 +2,7 @@
 using ComponentFactory.Krypton.Toolkit;
 using Dapper;
 using Krypton.Toolkit;
+using QuanLyThuMua.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -162,16 +163,7 @@ namespace QuanLyThuMua
                     p.Kill();
                 }
         }
-        private void OpenFile(string fileName)
-        {
-            ProcessStartInfo info = new ProcessStartInfo();
-            info.FileName = fileName;
-            info.CreateNoWindow = true;
-            info.WindowStyle = ProcessWindowStyle.Normal;
-            Process p = new Process();
-            p.StartInfo = info;
-            p.Start();
-        }
+  
 
         void UpdateTotalMoney()
         {
@@ -316,7 +308,24 @@ namespace QuanLyThuMua
             purchaseModel.PriceId = ckbPayNow.Checked ? 0 : LastestPrice.Id;
             purchaseModel.Price = ckbPayNow.Checked ? Convert.ToDouble(txtDongia.Text) : LastestPrice.Price;
             purchaseModel.PayNow = Convert.ToInt32(ckbPayNow.Checked);
-            purchaseModel.MuType = cbbLoaimu.Text == "Mủ chén" ? 1 : 0;
+            int? muType = null;
+            if (rdCaosu.Checked)
+            {
+                if (cbbLoaimu.Text == "Mủ chén")
+                {
+                    muType = 1;
+                }
+                else
+                {
+                    muType = 0;
+                }
+            }
+            else
+            {
+                muType = null;
+            }
+
+            purchaseModel.MuType = muType;
             purchaseModel.Degree = Double.TryParse(txtSodo.Text, out double res) ? res : 0;
             purchaseModel.Note = rtbNote.Text;
             CustomerModel selectedCus = ls_CustomerInfo.FirstOrDefault(c => c.Id == purchaseModel.CustomerId);
@@ -334,7 +343,7 @@ namespace QuanLyThuMua
                 {
                     LoadTemplate();
                     //SendToPrinter(fileName);
-                    OpenFile(purchaseModel.PathFileExcelOpen);
+                    SUtils.OpenFile(purchaseModel.PathFileExcelOpen);
                 }
                 OnPurchaseInserted(this, e);
             }
@@ -437,8 +446,7 @@ namespace QuanLyThuMua
            
             UpdateTotalMoney();
         }
+
         #endregion
-
-
     }
 }

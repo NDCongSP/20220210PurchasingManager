@@ -14,5 +14,9 @@ namespace QuanLyThuMua
         public static float SoDoMin { get; set; }
         public static float SoDoMax { get; set; }
 
+        public static string ActivedApp { get; set; }
+
+        public static bool IsActivedApp { get; set; }
+
     }
 }
