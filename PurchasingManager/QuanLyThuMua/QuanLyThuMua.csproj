@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LogoPT.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
@@ -130,12 +133,25 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalVariable.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\PriceModel.cs" />
     <Compile Include="Models\PurchaseModel.cs" />
     <Compile Include="Models\TamUngModel.cs" />
+    <Compile Include="Views\ucContact.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucContact.Designer.cs">
+      <DependentUpon>ucContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\SUtils.cs" />
     <Compile Include="Views\frmDonGiaUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,17 +164,17 @@
     <Compile Include="Views\frmKhachHangUpdate.Designer.cs">
       <DependentUpon>frmKhachHangUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucDonGia.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\ucDonGia.Designer.cs">
-      <DependentUpon>ucDonGia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ucBaoCao.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\ucBaoCao.Designer.cs">
       <DependentUpon>ucBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucDonGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucDonGia.Designer.cs">
+      <DependentUpon>ucDonGia.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ucKhachHang.cs">
       <SubType>UserControl</SubType>
@@ -201,6 +217,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -210,6 +229,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ucContact.resx">
+      <DependentUpon>ucContact.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmDonGia.resx">
       <DependentUpon>frmDonGia.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,7 +281,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LogoPT.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
