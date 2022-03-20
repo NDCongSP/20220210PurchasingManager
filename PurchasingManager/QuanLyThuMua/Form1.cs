@@ -10,6 +10,8 @@ namespace QuanLyThuMua
         UserControl _activePage;
         string _activePageText;
 
+        private System.Timers.Timer nTimer = new System.Timers.Timer();
+
         public string ActivePageText
         {
             get => _activePageText;
@@ -37,9 +39,10 @@ namespace QuanLyThuMua
                     if (_activePage != null)
                     {
                         _activePage.Dock = DockStyle.Fill;
+                        panelContainer.Controls.Add(_activePage);
+                        _activePage?.Focus();
                     }
 
-                    panelContainer.Controls.Add(_activePage);
                 }
             }
         }
@@ -47,16 +50,65 @@ namespace QuanLyThuMua
         public Form1()
         {
             InitializeComponent();
+            nTimer.Interval = 100;
+            nTimer.Elapsed += NTimer_Elapsed;
+            nTimer.Enabled = true;
+
             kryptonRibbon1_SelectedTabChanged(null, null);
-           
+            this.WindowState = FormWindowState.Maximized;
+            this.FormClosing += Form1_FormClosing;
+
+            kryptonRibbon1.SelectedTab = kryptonRibbonTab1;
+        }
+
+        private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            nTimer.Enabled = false;
+            if (GlobalVariable.IsActivedApp)
+            {
+                #region nếu app chưa active, thì check ngày tháng để khóa
+                if (GlobalVariable.ActivedApp != "Actived")
+                {
+                    if (DateTime.Now >= Convert.ToDateTime(GlobalVariable.ActivedApp))
+                    {
+                        GlobalVariable.IsActivedApp = false;
+                    }
+                }
+                #endregion
+            }
+            else
+            {
+                if (kryptonRibbon1.InvokeRequired)
+                {
+                    kryptonRibbon1.Invoke(new Action(() =>
+                    {
+                        kryptonRibbon1.Enabled = false;
+                    }));
+                }
+                else
+                {
+                    kryptonRibbon1.Enabled = false;
+                }
+                
+                MessageBox.Show("Bạn đã hết thời gian dùng thử, vui lòng liên hệ để lấy license.", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+            nTimer.Enabled = true;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
 
         private void OnActivePageTextChanged()
         {
             UserControl page = null;
+
             if (_activePageText == "Thu Mua")
             {
-                page = new ucThuMua() { GridHeight = panelContainer .Height};
+                page = new ucThuMua() { GridHeight = panelContainer.Height };
             }
             else if (_activePageText == "Khách Hàng")
             {
@@ -69,6 +121,10 @@ namespace QuanLyThuMua
             else if (_activePageText == "Báo Cáo")
             {
                 page = new ucBaoCao();
+            }
+            else if (_activePageText == "Liên Hệ")
+            {
+                page = new ucContact();
             }
             ActivePage = page;
         }
@@ -183,16 +239,35 @@ namespace QuanLyThuMua
             {
 
                 CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
-
-                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text);
+                int payNow = -1;
+                if (_radioNotPayed.Checked)
+                {
+                    payNow = 0;
+                }
+                else if (_radioPayed.Checked)
+                {
+                    payNow = 1;
+                }
+                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
             }
         }
 
         private void _btnXuatExcel_Click(object sender, EventArgs e)
         {
-
-
-
+            if (ActivePage is ucBaoCao uc)
+            {
+                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                int payNow = -1;
+                if (_radioNotPayed.Checked)
+                {
+                    payNow = 0;
+                }
+                else if (_radioPayed.Checked)
+                {
+                    payNow = 1;
+                }
+                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+            }
         }
 
         private void _cobBaoCaoKH_DropDown(object sender, EventArgs e)
@@ -202,12 +277,52 @@ namespace QuanLyThuMua
                 var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
                 _cobBaoCaoKH.Items.Clear();
 
+                _cobBaoCaoKH.Items.Add(new CustomerModel()
+                {
+                    Name = "Tất Cả"
+                });
+
                 foreach (var item in result)
                 {
                     _cobBaoCaoKH.Items.Add(item);
                 }
             }
             catch { }
+        }
+
+        private void _btnThanhToan_Click(object sender, EventArgs e)
+        {
+            if (ActivePage is ucBaoCao uc)
+            {
+                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                int payNow = -1;
+                if (_radioNotPayed.Checked)
+                {
+                    payNow = 0;
+                }
+                else if (_radioPayed.Checked)
+                {
+                    payNow = 1;
+                }
+
+                uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+            }
+        }
+
+        private void _btnRefresh_Click(object sender, EventArgs e)
+        {
+            if (ActivePage is ucDonGia uc)
+            {
+                uc.RefreshData();
+            }
+        }
+
+        private void _btnRefreshThumua_Click(object sender, EventArgs e)
+        {
+            if (ActivePage is ucThuMua uc)
+            {
+                uc.GetData();
+            }
         }
     }
 }

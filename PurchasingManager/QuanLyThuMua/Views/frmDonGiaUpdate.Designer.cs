@@ -32,24 +32,24 @@ namespace QuanLyThuMua
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDonGiaUpdate));
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.krpCboGiaDieu = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNoteDieu = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPriceDieu = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.krpCboGiaCaoSu = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoteCaosu = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPriceCaoSu = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.krpCboGiaCaoSu = new Krypton.Toolkit.KryptonComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.krpCboGiaDieu = new Krypton.Toolkit.KryptonComboBox();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaDieu)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaCaoSu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaDieu)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -84,6 +84,32 @@ namespace QuanLyThuMua
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Điều";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(293, 24);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Chọn thời gian muốn cập nhật giá";
+            // 
+            // krpCboGiaDieu
+            // 
+            this.krpCboGiaDieu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.krpCboGiaDieu.DisplayMember = "CreatedDate";
+            this.krpCboGiaDieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.krpCboGiaDieu.DropDownWidth = 330;
+            this.krpCboGiaDieu.Location = new System.Drawing.Point(21, 67);
+            this.krpCboGiaDieu.Name = "krpCboGiaDieu";
+            this.krpCboGiaDieu.Size = new System.Drawing.Size(293, 27);
+            this.krpCboGiaDieu.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.krpCboGiaDieu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.krpCboGiaDieu.TabIndex = 14;
+            this.krpCboGiaDieu.ValueMember = "Id";
             // 
             // label6
             // 
@@ -143,6 +169,32 @@ namespace QuanLyThuMua
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cao su";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(293, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Chọn thời gian muốn cập nhật giá";
+            // 
+            // krpCboGiaCaoSu
+            // 
+            this.krpCboGiaCaoSu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.krpCboGiaCaoSu.DisplayMember = "CreatedDate";
+            this.krpCboGiaCaoSu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.krpCboGiaCaoSu.DropDownWidth = 330;
+            this.krpCboGiaCaoSu.Location = new System.Drawing.Point(21, 66);
+            this.krpCboGiaCaoSu.Name = "krpCboGiaCaoSu";
+            this.krpCboGiaCaoSu.Size = new System.Drawing.Size(293, 27);
+            this.krpCboGiaCaoSu.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.krpCboGiaCaoSu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.krpCboGiaCaoSu.TabIndex = 12;
+            this.krpCboGiaCaoSu.ValueMember = "Id";
+            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -192,66 +244,6 @@ namespace QuanLyThuMua
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // krpCboGiaCaoSu
-            // 
-            this.krpCboGiaCaoSu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.krpCboGiaCaoSu.DisplayMember = "CreatedDate";
-            this.krpCboGiaCaoSu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.krpCboGiaCaoSu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.krpCboGiaCaoSu.DropDownWidth = 330;
-            this.krpCboGiaCaoSu.IntegralHeight = false;
-            this.krpCboGiaCaoSu.Location = new System.Drawing.Point(21, 66);
-            this.krpCboGiaCaoSu.Name = "krpCboGiaCaoSu";
-            this.krpCboGiaCaoSu.Size = new System.Drawing.Size(293, 31);
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Border.Rounding = 5F;
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.krpCboGiaCaoSu.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.krpCboGiaCaoSu.TabIndex = 12;
-            this.krpCboGiaCaoSu.ValueMember = "Id";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 24);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Chọn thời gian muốn cập nhật giá";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(293, 24);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Chọn thời gian muốn cập nhật giá";
-            // 
-            // krpCboGiaDieu
-            // 
-            this.krpCboGiaDieu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.krpCboGiaDieu.DisplayMember = "CreatedDate";
-            this.krpCboGiaDieu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.krpCboGiaDieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.krpCboGiaDieu.DropDownWidth = 330;
-            this.krpCboGiaDieu.IntegralHeight = false;
-            this.krpCboGiaDieu.Location = new System.Drawing.Point(21, 67);
-            this.krpCboGiaDieu.Name = "krpCboGiaDieu";
-            this.krpCboGiaDieu.Size = new System.Drawing.Size(293, 31);
-            this.krpCboGiaDieu.StateCommon.ComboBox.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.krpCboGiaDieu.StateCommon.ComboBox.Border.Rounding = 5F;
-            this.krpCboGiaDieu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.krpCboGiaDieu.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.krpCboGiaDieu.TabIndex = 14;
-            this.krpCboGiaDieu.ValueMember = "Id";
-            // 
             // frmDonGiaUpdate
             // 
             this.AcceptButton = this.btnSave;
@@ -264,14 +256,17 @@ namespace QuanLyThuMua
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDonGiaUpdate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cập nhật giá cao su và điều";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaDieu)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaCaoSu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krpCboGiaDieu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,8 +286,8 @@ namespace QuanLyThuMua
         private System.Windows.Forms.TextBox txtPriceCaoSu;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
-        private Krypton.Toolkit.KryptonComboBox krpCboGiaDieu;
+        private  ComponentFactory.Krypton.Toolkit.KryptonComboBox krpCboGiaDieu;
         private System.Windows.Forms.Label label1;
-        private Krypton.Toolkit.KryptonComboBox krpCboGiaCaoSu;
+        private  ComponentFactory.Krypton.Toolkit.KryptonComboBox krpCboGiaCaoSu;
     }
 }
