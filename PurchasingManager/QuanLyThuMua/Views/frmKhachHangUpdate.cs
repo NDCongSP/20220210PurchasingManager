@@ -17,7 +17,7 @@ namespace QuanLyThuMua
         private int customerId;
         private CustomerModel customerInfo = new CustomerModel();
         private bool isActived = false;
-
+        public event EventHandler OnCustomerChanged;
         public frmKhachHangUpdate()
         {
             InitializeComponent();
@@ -95,6 +95,7 @@ namespace QuanLyThuMua
             {
                 if (GlobalVariable.ConnectionDb.Execute($"call spCustomerUpdate ({customerInfo.Id},'{txtName.Text}','{txtPhoneNum.Text}','{txtAdd.Text}',{isActived});") > 0)
                 {
+                    OnCustomerChanged?.Invoke(this, e);
                     MessageBox.Show("Cập nhật thành công.");
                 }
                 else
@@ -102,6 +103,8 @@ namespace QuanLyThuMua
                     MessageBox.Show("Cập nhật thất bại.");
                 }
             }
+
+            this.Close();
         }
     }
 }

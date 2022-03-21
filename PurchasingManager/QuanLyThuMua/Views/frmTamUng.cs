@@ -35,10 +35,15 @@ namespace QuanLyThuMua
             btnSave.Click += BtnLuu_Click;
             txtSotien.Validating += TxtSoTien_Validating;
             txtSotien.Validated += TxtSoTien_Validated;
+            txtSotien.TextChanged += TxtSotien_TextChanged;
             btnExit.Click += BtnExit_Click;
-           
         }
-      
+
+        private void TxtSotien_TextChanged(object sender, EventArgs e)
+        {
+            Handle_TextChanged(sender,e);
+        }
+
         #region Props
         public string Type { get; set; } = "Cao su";
         #endregion
@@ -64,7 +69,18 @@ namespace QuanLyThuMua
             param.Add("@_note", tamUng.Note);
             return GlobalVariable.ConnectionDb.Execute("spTamUngInsert", param, commandType: CommandType.StoredProcedure);
         }
-
+        private void Handle_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
+                //tb.Text = double.Parse(tb.Text).ToString("#,##0", culture.NumberFormat);
+                tb.Text = $"{ double.Parse(tb.Text):#,###}";
+                tb.Select(tb.TextLength, 0);
+            }
+        }
         #endregion
         #region Events
 
@@ -107,15 +123,7 @@ namespace QuanLyThuMua
         }
         private void TxtSoTien_Validated(object sender, EventArgs e)
         {
-            TextBox tb = sender as TextBox;
-            if (!string.IsNullOrEmpty(tb.Text))
-            {
-                //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
-                tb.Text = double.Parse(tb.Text).ToString("#,###", culture.NumberFormat);
-                //tb.Text = double.Parse(tb.Text).ToString("C", cul.NumberFormat);
-                //tb.Text = String.Format("{0:C}", tb.Text).ToString("C",cul.NumberFormat);
-            }
+            Handle_TextChanged(sender, e);
         }
   
 
@@ -139,7 +147,7 @@ namespace QuanLyThuMua
             {
                 MessageBox.Show("Thêm thành công", "Thông tin", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
             }
-
+            Close();
             //    customerId,_type, weight, priceId, price, payNow, muType, degree,note
         }
         #endregion

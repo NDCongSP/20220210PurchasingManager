@@ -201,9 +201,9 @@ namespace QuanLyThuMua
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(21, 116);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 24);
+            this.label5.Size = new System.Drawing.Size(76, 24);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Chi chú";
+            this.label5.Text = "Ghi chú";
             // 
             // txtNoteCaosu
             // 

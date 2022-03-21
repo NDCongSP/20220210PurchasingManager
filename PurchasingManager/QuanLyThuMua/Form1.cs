@@ -179,7 +179,16 @@ namespace QuanLyThuMua
             frmKhachHang form = new frmKhachHang();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnCustomerChanged += Form_OnCustomerChanged; ;
             form.ShowDialog();
+        }
+
+        private void Form_OnCustomerChanged(object sender, EventArgs e)
+        {
+            if (_activePage is ucKhachHang uc)
+            {
+                uc.RefreshData();
+            }
         }
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
@@ -187,6 +196,7 @@ namespace QuanLyThuMua
             frmKhachHangUpdate form = new frmKhachHangUpdate();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnCustomerChanged += Form_OnCustomerChanged;
             form.ShowDialog();
         }
 
@@ -200,7 +210,16 @@ namespace QuanLyThuMua
             frmDonGia form = new frmDonGia();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
             form.ShowDialog();
+        }
+
+        private void Form_OnPriceChanged(object sender, EventArgs e)
+        {
+            if (_activePage is ucDonGia uc)
+            {
+                uc.RefreshData();
+            }
         }
 
         private void _btnSuaDonGia_Click(object sender, EventArgs e)

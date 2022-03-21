@@ -164,10 +164,20 @@ namespace QuanLyThuMua
                 }
         }
   
-
         void UpdateTotalMoney()
         {
             txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 1)).ToString("#,###", culture.NumberFormat);
+        }
+        private void Handle_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
+                tb.Text = double.Parse(tb.Text).ToString("#,###", culture.NumberFormat);
+                tb.Select(tb.TextLength, 0);
+                UpdateTotalMoney();
+            }
         }
         #endregion
         #region Events
@@ -177,6 +187,7 @@ namespace QuanLyThuMua
             //Initial Data
             GetListCustomer();
             GetLastestPrice(Type);
+            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
             strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //This will strip just the working path name:
             //C:\Program Files\MyApplication
@@ -207,7 +218,7 @@ namespace QuanLyThuMua
         }
         private void TxtKL_Validated(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            Handle_TextChanged(sender, e);
         }
         private void CbbLoaimu_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -250,32 +261,24 @@ namespace QuanLyThuMua
         }
         private void TxtDongia_Validated(object sender, EventArgs e)
         {
-            TextBox tb = sender as TextBox;
-            if (!string.IsNullOrEmpty(tb.Text))
-            {
-                //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
-                tb.Text = double.Parse(tb.Text).ToString("#,###", culture.NumberFormat);
-                UpdateTotalMoney();
-                //tb.Text = double.Parse(tb.Text).ToString("C", cul.NumberFormat);
-                //tb.Text = String.Format("{0:C}", tb.Text).ToString("C",cul.NumberFormat);
-            }
+            Handle_TextChanged(sender, e);
         }
         private void CkbPayNow_CheckedChanged(object sender, EventArgs e)
         {
             KryptonCheckBox cb = sender as KryptonCheckBox;
             if (cb.Checked)
             {
-                txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
-                txtDongia.Visible = true;
-                lblDongia.Visible = true;
+                
+                txtDongia.Enabled = true;
+                lblDongia.Enabled = true;
                 txtDongia.Focus();
             }
             else
             {
-                txtDongia.Visible = false;
-                lblDongia.Visible = false;
+                txtDongia.Enabled = false;
+                lblDongia.Enabled = false;
             }
+            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
         }
       
         private void BtnExit_Click(object sender, EventArgs e)
@@ -347,12 +350,13 @@ namespace QuanLyThuMua
                 }
                 OnPurchaseInserted(this, e);
             }
+            Close();
 
             //    customerId,_type, weight, priceId, price, payNow, muType, degree,note
         }
         private void TxtKL_TextChanged(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            Handle_TextChanged(sender, e);
         }
 
         private void RdType_CheckedChanged(object sender, EventArgs e)
@@ -391,6 +395,7 @@ namespace QuanLyThuMua
                 //lblSodo.Location = lblDongia.Location;
                 //txtSodo.Location = txtDongia.Location;
             }
+            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
         }
         private void TxtSodo_Validating(object sender, CancelEventArgs e)
         {
@@ -422,11 +427,11 @@ namespace QuanLyThuMua
         }
         private void TxtSodo_Validated(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            Handle_TextChanged(sender, e);
         }
         private void TxtSodo_TextChanged(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            Handle_TextChanged(sender, e);
         }
 
         private void TxtDongia_TextChanged(object sender, EventArgs e)
@@ -442,6 +447,7 @@ namespace QuanLyThuMua
             if (Decimal.TryParse(value, style, culture, out currency) && !string.IsNullOrEmpty(value))
             {
                 tb.Text = currency.ToString("#,###", culture.NumberFormat);
+                tb.Select(tb.TextLength, 0);
             }
            
             UpdateTotalMoney();
