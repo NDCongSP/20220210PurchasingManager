@@ -139,13 +139,13 @@ namespace QuanLyThuMua
             // txtDongia
             // 
             this.txtDongia.BackColor = System.Drawing.Color.White;
+            this.txtDongia.Enabled = false;
             this.txtDongia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtDongia.Location = new System.Drawing.Point(743, 323);
             this.txtDongia.Name = "txtDongia";
             this.txtDongia.Size = new System.Drawing.Size(327, 29);
             this.txtDongia.TabIndex = 5;
             this.txtDongia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDongia.Visible = false;
             // 
             // txtSodo
             // 
@@ -256,7 +256,6 @@ namespace QuanLyThuMua
             this.lblDongia.Size = new System.Drawing.Size(75, 24);
             this.lblDongia.TabIndex = 0;
             this.lblDongia.Text = "Đơn giá";
-            this.lblDongia.Visible = false;
             // 
             // label7
             // 
