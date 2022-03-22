@@ -59,6 +59,17 @@ namespace QuanLyThuMua
             this.FormClosing += Form1_FormClosing;
 
             kryptonRibbon1.SelectedTab = kryptonRibbonTab1;
+
+            _cobBaoCaoKH.SelectedIndex = 0;
+
+            if (GlobalVariable.UserInfo.Role=="1")
+            {
+                _btnCreatedUser.Visible = true;
+            }
+            else
+            {
+                _btnCreatedUser.Visible = false;
+            }
         }
 
         private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -122,9 +133,9 @@ namespace QuanLyThuMua
             {
                 page = new ucBaoCao();
             }
-            else if (_activePageText == "Liên Hệ")
+            else if (_activePageText == "Tài Khoản")
             {
-                page = new ucContact();
+                page = new ucAccount();
             }
             ActivePage = page;
         }
@@ -305,6 +316,9 @@ namespace QuanLyThuMua
                 {
                     _cobBaoCaoKH.Items.Add(item);
                 }
+
+                if (_cobBaoCaoKH.SelectedIndex == -1)
+                    _cobBaoCaoKH.SelectedIndex = 0;
             }
             catch { }
         }
@@ -342,6 +356,14 @@ namespace QuanLyThuMua
             {
                 uc.GetData();
             }
+        }
+
+        private void _btnCreatedUser_Click(object sender, EventArgs e)
+        {
+            frmCreatedUser form = new frmCreatedUser();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.ShowDialog();
         }
     }
 }

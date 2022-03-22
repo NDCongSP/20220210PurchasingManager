@@ -112,43 +112,47 @@ namespace QuanLyThuMua
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtPriceCaoSu.Text))
+            try
             {
-                var p = new DynamicParameters();
-                p.Add("_createdDate", dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss"));
-                p.Add("_type", priceType);
-                p.Add("_price",  double.TryParse(txtPriceCaoSu.Text,out double res)?res:0);
-                p.Add("_note", txtNoteCaosu.Text);
-
-                if (GlobalVariable.ConnectionDb.Execute("spPriceInsert", p, commandType: System.Data.CommandType.StoredProcedure) > 0)
+                if (!string.IsNullOrEmpty(txtPriceCaoSu.Text))
                 {
-                    OnPriceChanged?.Invoke(this, e);
-                    MessageBox.Show("Lưu thành công.");
+                    var p = new DynamicParameters();
+                    p.Add("_createdDate", dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+                    p.Add("_type", priceType);
+                    p.Add("_price", double.TryParse(txtPriceCaoSu.Text, out double res) ? res : 0);
+                    p.Add("_note", txtNoteCaosu.Text);
+
+                    if (GlobalVariable.ConnectionDb.Execute("spPriceInsert", p, commandType: System.Data.CommandType.StoredProcedure) > 0)
+                    {
+                        OnPriceChanged?.Invoke(this, e);
+                        MessageBox.Show("Lưu thành công.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu thất bại.");
+                    }
+
+                    //if (priceType == "Cao su")
+                    //{
+                    //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{priceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
+                    //    {
+                    //        _res += 1;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{priceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
+                    //    {
+                    //        _res += 1;
+                    //    }
+                    //}
                 }
                 else
                 {
-                    MessageBox.Show("Lưu thất bại.");
+                    MessageBox.Show($"Bạn chưa nhập giá.", "CẢNH BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                //if (priceType == "Cao su")
-                //{
-                //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{priceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
-                //    {
-                //        _res += 1;
-                //    }
-                //}
-                //else
-                //{
-                //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{priceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
-                //    {
-                //        _res += 1;
-                //    }
-                //}
             }
-            else
-            {
-                MessageBox.Show($"Bạn chưa nhập giá.", "CẢNH BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            catch { }
 
             this.Close();
         }
