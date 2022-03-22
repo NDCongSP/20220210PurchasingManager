@@ -18,5 +18,7 @@ namespace QuanLyThuMua
 
         public static bool IsActivedApp { get; set; }
 
+        public static AcountModel UserInfo { get; set; } = new AcountModel();
+
     }
 }

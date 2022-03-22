@@ -133,6 +133,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmCreatedUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmCreatedUser.Designer.cs">
+      <DependentUpon>frmCreatedUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     <Compile Include="Models\PriceModel.cs" />
     <Compile Include="Models\PurchaseModel.cs" />
     <Compile Include="Models\TamUngModel.cs" />
+    <Compile Include="Views\ucAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ucAccount.Designer.cs">
+      <DependentUpon>ucAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucContact.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +241,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\frmCreatedUser.resx">
+      <DependentUpon>frmCreatedUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ucAccount.resx">
+      <DependentUpon>ucAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ucContact.resx">
       <DependentUpon>ucContact.cs</DependentUpon>
     </EmbeddedResource>
