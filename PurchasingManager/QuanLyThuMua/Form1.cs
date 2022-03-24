@@ -169,6 +169,15 @@ namespace QuanLyThuMua
             form.ShowDialog();
         }
 
+        private void _btnTaoThuMuaDieu_Click(object sender, EventArgs e)
+        {
+            frmThuMua form = new frmThuMua();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.OnPurchaseInserted += Form_OnPurchaseInserted;
+            form.ShowDialog();
+        }
+
         private void Form_OnPurchaseInserted(object sender, EventArgs e)
         {
             if (ActivePage is ucThuMua thuMua)

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace QuanLyThuMua
 {
     partial class Form1
@@ -37,7 +39,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonGroupTriple1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
             this._btnRefreshThumua = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this._btnTaoThuMua = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this._btnTaoTamUng = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this._btnTaoThuMuaDieu = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupTriple4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
@@ -82,6 +84,8 @@ namespace QuanLyThuMua
             this._btnXoaDonGia = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.panelContainer = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonRibbonGroupTriple12 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
+            this._btnTaoTamUng = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContainer)).BeginInit();
             this.SuspendLayout();
@@ -97,8 +101,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonTab3,
             this.kryptonRibbonTab4,
             this.kryptonRibbonTabAccount});
-            this.kryptonRibbon1.SelectedContext = null;
-            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTabAccount;
+            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab1;
             this.kryptonRibbon1.Size = new System.Drawing.Size(1924, 145);
             this.kryptonRibbon1.StateCommon.RibbonGeneral.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRibbon1.TabIndex = 0;
@@ -113,7 +116,8 @@ namespace QuanLyThuMua
             // kryptonRibbonGroup1
             // 
             this.kryptonRibbonGroup1.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
-            this.kryptonRibbonGroupTriple1});
+            this.kryptonRibbonGroupTriple1,
+            this.kryptonRibbonGroupTriple12});
             this.kryptonRibbonGroup1.TextLine1 = "Thu Mua";
             // 
             // kryptonRibbonGroupTriple1
@@ -121,7 +125,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonGroupTriple1.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
             this._btnRefreshThumua,
             this._btnTaoThuMua,
-            this._btnTaoTamUng});
+            this._btnTaoThuMuaDieu});
             // 
             // _btnRefreshThumua
             // 
@@ -132,14 +136,14 @@ namespace QuanLyThuMua
             // _btnTaoThuMua
             // 
             this._btnTaoThuMua.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnTaoThuMua.ImageLarge")));
-            this._btnTaoThuMua.TextLine1 = "Tạo Thu Mua";
+            this._btnTaoThuMua.TextLine1 = "Tạo Thu Mua Cao Su";
             this._btnTaoThuMua.Click += new System.EventHandler(this._btnTaoThuMua_Click);
             // 
-            // _btnTaoTamUng
+            // _btnTaoThuMuaDieu
             // 
-            this._btnTaoTamUng.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnTaoTamUng.ImageLarge")));
-            this._btnTaoTamUng.TextLine1 = "Tạm Ứng";
-            this._btnTaoTamUng.Click += new System.EventHandler(this._btnTaoTamUng_Click);
+            this._btnTaoThuMuaDieu.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnTaoThuMuaDieu.ImageLarge")));
+            this._btnTaoThuMuaDieu.TextLine1 = "Tạo Thu Mua Điều";
+            this._btnTaoThuMuaDieu.Click += new System.EventHandler(this._btnTaoThuMuaDieu_Click);
             // 
             // kryptonRibbonTab2
             // 
@@ -248,6 +252,7 @@ namespace QuanLyThuMua
             // 
             // _dtpFromDay
             // 
+            this._dtpFromDay.CalendarTodayDate = new System.DateTime(2022, 3, 23, 0, 0, 0, 0);
             this._dtpFromDay.CalendarTodayFormat = "dd";
             this._dtpFromDay.CustomFormat = "yyyy-MM-dd 00:00:00";
             this._dtpFromDay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -266,6 +271,7 @@ namespace QuanLyThuMua
             // 
             // _dtpToDay
             // 
+            this._dtpToDay.CalendarTodayDate = new System.DateTime(2022, 3, 23, 0, 0, 0, 0);
             this._dtpToDay.CalendarTodayFormat = "dd";
             this._dtpToDay.CustomFormat = "yyyy-MM-dd 23:59:59";
             this._dtpToDay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -406,6 +412,17 @@ namespace QuanLyThuMua
             this.panelContainer.TabIndex = 1;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
             // 
+            // kryptonRibbonGroupTriple12
+            // 
+            this.kryptonRibbonGroupTriple12.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this._btnTaoTamUng});
+            // 
+            // _btnTaoTamUng
+            // 
+            this._btnTaoTamUng.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnTaoTamUng.ImageLarge")));
+            this._btnTaoTamUng.TextLine1 = "Tạm Ứng";
+            this._btnTaoTamUng.Click += new System.EventHandler(this._btnTaoTamUng_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -433,7 +450,7 @@ namespace QuanLyThuMua
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnTaoThuMua;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnTaoTamUng;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnTaoThuMuaDieu;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup2;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple2;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnThemKH;
@@ -478,6 +495,8 @@ namespace QuanLyThuMua
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup6;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple11;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnCreatedUser;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple12;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnTaoTamUng;
     }
 }
 
