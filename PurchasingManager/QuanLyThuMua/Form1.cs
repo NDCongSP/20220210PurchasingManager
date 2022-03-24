@@ -171,10 +171,10 @@ namespace QuanLyThuMua
 
         private void _btnTaoThuMuaDieu_Click(object sender, EventArgs e)
         {
-            frmThuMua form = new frmThuMua();
+            frmThuMuaDieu form = new frmThuMuaDieu();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
-            form.OnPurchaseInserted += Form_OnPurchaseInserted;
+            //form.OnPurchaseInserted += Form_OnPurchaseInserted;
             form.ShowDialog();
         }
 
