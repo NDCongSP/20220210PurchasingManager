@@ -47,8 +47,7 @@ namespace QuanLyThuMua
             txtDongia.TextChanged += TxtDongia_TextChanged;
             btnExit.Click += BtnExit_Click;
             ckbPayNow.CheckedChanged += CkbPayNow_CheckedChanged;
-            rdCaosu.CheckedChanged += RdType_CheckedChanged;
-            rdDieu.CheckedChanged += RdType_CheckedChanged;
+           
             txtSodo.Validating += TxtSodo_Validating;
             txtSodo.Validated += TxtSodo_Validated;
             txtSodo.TextChanged += TxtSodo_TextChanged;
@@ -312,21 +311,14 @@ namespace QuanLyThuMua
             purchaseModel.Price = ckbPayNow.Checked ? Convert.ToDouble(txtDongia.Text) : LastestPrice.Price;
             purchaseModel.PayNow = Convert.ToInt32(ckbPayNow.Checked);
             int? muType = null;
-            if (rdCaosu.Checked)
+            if (cbbLoaimu.Text == "Mủ chén")
             {
-                if (cbbLoaimu.Text == "Mủ chén")
-                {
-                    muType = 1;
-                }
-                else
-                {
-                    muType = 0;
-                }
+                muType = 1;
             }
             else
             {
-                muType = null;
-            }
+                muType = 0;
+            };
 
             purchaseModel.MuType = muType;
             purchaseModel.Degree = Double.TryParse(txtSodo.Text, out double res) ? res : 0;

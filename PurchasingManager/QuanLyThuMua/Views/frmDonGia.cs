@@ -11,8 +11,10 @@ namespace QuanLyThuMua
     public partial class frmDonGia : KryptonForm
     {
         public event EventHandler OnPriceChanged;
+        public string TitleForm = null;
+        public string PriceType = "Cao su";
+
         CultureInfo culture;
-        private string priceType = "Cao su";
         private bool dieu = false;
         private List<PriceModel> priceInfo = new List<PriceModel>();
 
@@ -23,8 +25,7 @@ namespace QuanLyThuMua
             Load += FrmDonGia_Load;
             txtPriceCaoSu.Validating += TxtPrice_Validating;
             txtPriceCaoSu.TextChanged += TxtPric_TextChanged;
-            radCaoSu.CheckedChanged += Rad_CheckedChanged;
-            radDieu.CheckedChanged += Rad_CheckedChanged;
+
         }
 
         private void Rad_CheckedChanged(object sender, EventArgs e)
@@ -33,13 +34,13 @@ namespace QuanLyThuMua
 
             if (rd.Name == "radCaoSu")
             {
-                priceType = "Cao su";
+                PriceType = "Cao su";
 
                 GetPriceInfo();
             }
             else
             {
-                priceType = "Điều";
+                PriceType = "Điều";
 
                 GetPriceInfo();
             }
@@ -83,6 +84,8 @@ namespace QuanLyThuMua
 
         private void FrmDonGia_Load(object sender, EventArgs e)
         {
+            labTitle.Text = TitleForm;
+
             GetPriceInfo();
 
             dtpCaoSu.Value = DateTime.Now;
@@ -94,7 +97,7 @@ namespace QuanLyThuMua
 
             if (priceInfo != null)
             {
-                var lastestPrice = priceInfo.Where(x => x.Type == priceType).OrderByDescending(x => x.Id);
+                var lastestPrice = priceInfo.Where(x => x.Type == PriceType).OrderByDescending(x => x.Id);
                 var _first = lastestPrice.First();
 
                 if (txtPriceCaoSu.InvokeRequired)
@@ -118,7 +121,7 @@ namespace QuanLyThuMua
                 {
                     var p = new DynamicParameters();
                     p.Add("_createdDate", dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss"));
-                    p.Add("_type", priceType);
+                    p.Add("_type", PriceType);
                     p.Add("_price", double.TryParse(txtPriceCaoSu.Text, out double res) ? res : 0);
                     p.Add("_note", txtNoteCaosu.Text);
 
@@ -132,16 +135,16 @@ namespace QuanLyThuMua
                         MessageBox.Show("Lưu thất bại.");
                     }
 
-                    //if (priceType == "Cao su")
+                    //if (PriceType == "Cao su")
                     //{
-                    //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{priceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
+                    //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{PriceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
                     //    {
                     //        _res += 1;
                     //    }
                     //}
                     //else
                     //{
-                    //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{priceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
+                    //    if (GlobalVariable.ConnectionDb.Execute($"call spPriceInsert ('{dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss")}','{PriceType}','{txtPriceCaoSu.Text}','{txtNoteCaosu.Text}')") > 0)
                     //    {
                     //        _res += 1;
                     //    }
@@ -153,8 +156,10 @@ namespace QuanLyThuMua
                 }
             }
             catch { }
-
-            this.Close();
+            finally
+            {
+                this.Close();
+            }
         }
     }
 }

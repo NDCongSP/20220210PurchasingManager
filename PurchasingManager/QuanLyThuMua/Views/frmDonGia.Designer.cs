@@ -39,8 +39,7 @@ namespace QuanLyThuMua
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.radCaoSu = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
-            this.radDieu = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.labTitle = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,8 +56,7 @@ namespace QuanLyThuMua
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.radDieu);
-            this.groupBox1.Controls.Add(this.radCaoSu);
+            this.groupBox1.Controls.Add(this.labTitle);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtNoteCaosu);
             this.groupBox1.Controls.Add(this.dtpCaoSu);
@@ -146,28 +144,16 @@ namespace QuanLyThuMua
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // radCaoSu
+            // labTitle
             // 
-            this.radCaoSu.AutoSize = false;
-            this.radCaoSu.Checked = true;
-            this.radCaoSu.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.radCaoSu.Location = new System.Drawing.Point(114, 38);
-            this.radCaoSu.Name = "radCaoSu";
-            this.radCaoSu.Size = new System.Drawing.Size(121, 34);
-            this.radCaoSu.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.radCaoSu.TabIndex = 1;
-            this.radCaoSu.Values.Text = "Cao su";
-            // 
-            // radDieu
-            // 
-            this.radDieu.AutoSize = false;
-            this.radDieu.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.radDieu.Location = new System.Drawing.Point(310, 38);
-            this.radDieu.Name = "radDieu";
-            this.radDieu.Size = new System.Drawing.Size(121, 34);
-            this.radDieu.StateNormal.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.radDieu.TabIndex = 2;
-            this.radDieu.Values.Text = "Điều";
+            this.labTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTitle.Location = new System.Drawing.Point(25, 25);
+            this.labTitle.Name = "labTitle";
+            this.labTitle.Size = new System.Drawing.Size(529, 54);
+            this.labTitle.TabIndex = 12;
+            this.labTitle.Text = "THÊM ĐƠN GIÁ";
+            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmDonGia
             // 
@@ -202,7 +188,6 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNoteCaosu;
         private System.Windows.Forms.Button button1;
-        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radCaoSu;
-        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radDieu;
+        private System.Windows.Forms.Label labTitle;
     }
 }

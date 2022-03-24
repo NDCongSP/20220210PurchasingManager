@@ -62,7 +62,7 @@ namespace QuanLyThuMua
 
             _cobBaoCaoKH.SelectedIndex = 0;
 
-            if (GlobalVariable.UserInfo.Role=="1")
+            if (GlobalVariable.UserInfo.Role == "1")
             {
                 _btnCreatedUser.Visible = true;
             }
@@ -70,6 +70,9 @@ namespace QuanLyThuMua
             {
                 _btnCreatedUser.Visible = false;
             }
+
+            _dtpFromDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            _dtpToDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
         }
 
         private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -100,7 +103,7 @@ namespace QuanLyThuMua
                 {
                     kryptonRibbon1.Enabled = false;
                 }
-                
+
                 MessageBox.Show("Bạn đã hết thời gian dùng thử, vui lòng liên hệ để lấy license.", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -174,7 +177,7 @@ namespace QuanLyThuMua
             frmThuMuaDieu form = new frmThuMuaDieu();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
-            //form.OnPurchaseInserted += Form_OnPurchaseInserted;
+            form.OnPurchaseInserted += Form_OnPurchaseInserted;
             form.ShowDialog();
         }
 
@@ -225,9 +228,11 @@ namespace QuanLyThuMua
 
         }
 
-        private void _btnThemDonGia_Click(object sender, EventArgs e)
+        private void _btnThemDonGiaCaoSu_Click(object sender, EventArgs e)
         {
             frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU";
+            form.PriceType = "Cao su";
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
             form.OnPriceChanged += Form_OnPriceChanged;
@@ -242,11 +247,14 @@ namespace QuanLyThuMua
             }
         }
 
-        private void _btnSuaDonGia_Click(object sender, EventArgs e)
+        private void _btnThemDonGiaDieu_Click(object sender, EventArgs e)
         {
             frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ ĐIỀU";
+            form.PriceType = "Điều";
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
             form.ShowDialog();
         }
 
