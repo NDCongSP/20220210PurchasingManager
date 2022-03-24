@@ -48,7 +48,7 @@ namespace QuanLyThuMua
             ckbPayNow.CheckedChanged += CkbPayNow_CheckedChanged;
         }
         #region Props
-        public string Type { get; set; } = "Cao su";
+        public string Type { get; set; } = "Điều";
         public event EventHandler OnPurchaseInserted;
 
         #endregion
@@ -115,7 +115,8 @@ namespace QuanLyThuMua
             ws.Cell("C12").Value = $"'{purchaseModel.Phone}";
             ws.Cell("C13").Value = $"{purchaseModel.Address}";
             ws.Cell("C15").Value = $"{purchaseModel.Weight.ToString("#,###.##", culture.NumberFormat)}";
-            ws.Cell("G15").Value = $"{purchaseModel.Degree}";
+            ws.Cell("F15").Value = $"";
+            ws.Cell("G15").Value = $"";
             ws.Cell("C16").Value = $"{purchaseModel.Price.ToString("#,###", culture.NumberFormat)} VNĐ";
 
             var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree : 1;
@@ -303,7 +304,7 @@ namespace QuanLyThuMua
                     //SendToPrinter(fileName);
                     SUtils.OpenFile(purchaseModel.PathFileExcelOpen);
                 }
-                OnPurchaseInserted(this, e);
+                OnPurchaseInserted?.Invoke(this, e);
             }
             Close();
 
