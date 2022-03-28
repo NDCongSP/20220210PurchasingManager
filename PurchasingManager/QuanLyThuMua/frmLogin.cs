@@ -26,6 +26,8 @@ namespace QuanLyThuMua
 
             if (GlobalVariable.UserInfo != null)
             {
+                this.Hide();
+
                 Form1 nF = new Form1();
 
                 if (nF.ShowDialog(this) == DialogResult.Cancel)
