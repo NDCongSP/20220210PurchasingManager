@@ -31,7 +31,7 @@ namespace QuanLyThuMua
         string fileName;
         bool LoaiCaoSu = true;//True:ko phải mủ chén; flase: mủ chén
         CultureInfo culture = CultureInfo.GetCultureInfo("en-US");
-       
+
         public frmThuMua()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace QuanLyThuMua
             txtDongia.TextChanged += TxtDongia_TextChanged;
             btnExit.Click += BtnExit_Click;
             ckbPayNow.CheckedChanged += CkbPayNow_CheckedChanged;
-           
+
             txtSodo.Validating += TxtSodo_Validating;
             txtSodo.Validated += TxtSodo_Validated;
             txtSodo.TextChanged += TxtSodo_TextChanged;
@@ -101,13 +101,15 @@ namespace QuanLyThuMua
 
                 if (LoaiCaoSu)//không phải mủ chens
                 {
-                    ws.Cell("C10").Value = $"Cao su";
+                    ws.Cell("C10").Value = $"Cao su (mủ nước)";
+                    ws.Cell("G15").Value = $"{purchaseModel.Degree}";
                 }
                 else//mủ chén
                 {
                     ws.Cell("C10").Value = $"Cao su (mủ chén)";
+                    ws.Cell("G15").Value = $"";
+                    ws.Cell("F15").Value = $"";
                 }
-                //cell.Value = $"Tên hàng: Cao su";
             }
             else
             {
@@ -121,10 +123,10 @@ namespace QuanLyThuMua
             ws.Cell("C12").Value = $"'{purchaseModel.Phone}";
             ws.Cell("C13").Value = $"{purchaseModel.Address}";
             ws.Cell("C15").Value = $"{purchaseModel.Weight.ToString("#,###.##", culture.NumberFormat)}";
-            ws.Cell("G15").Value = $"{purchaseModel.Degree}";
+            
             ws.Cell("C16").Value = $"{purchaseModel.Price.ToString("#,###", culture.NumberFormat)} VNĐ";
 
-            var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree : 1;
+            var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree / 10 : 1;
             double tongTien = purchaseModel.Price * Convert.ToDouble(degree) * purchaseModel.Weight;
 
             ws.Cell("C18").Value = $"{tongTien.ToString("#,###", culture.NumberFormat)} VNĐ";
@@ -162,10 +164,10 @@ namespace QuanLyThuMua
                     p.Kill();
                 }
         }
-  
+
         void UpdateTotalMoney()
         {
-            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 0)).ToString("#,###", culture.NumberFormat);
+            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 / 10 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 0)).ToString("#,###", culture.NumberFormat);
         }
         private void Handle_TextChanged(object sender, EventArgs e)
         {
@@ -197,7 +199,7 @@ namespace QuanLyThuMua
         }
         private void CbbKH_SelectedValueChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void TxtKL_Validating(object sender, CancelEventArgs e)
         {
@@ -267,7 +269,7 @@ namespace QuanLyThuMua
             KryptonCheckBox cb = sender as KryptonCheckBox;
             if (cb.Checked)
             {
-                
+
                 txtDongia.Enabled = true;
                 lblDongia.Enabled = true;
                 txtDongia.Focus();
@@ -279,7 +281,7 @@ namespace QuanLyThuMua
             }
             txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
         }
-      
+
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -324,7 +326,7 @@ namespace QuanLyThuMua
             purchaseModel.Degree = Double.TryParse(txtSodo.Text, out double res) ? res : 0;
             purchaseModel.Note = rtbNote.Text;
             CustomerModel selectedCus = ls_CustomerInfo.FirstOrDefault(c => c.Id == purchaseModel.CustomerId);
-            if (selectedCus !=null)
+            if (selectedCus != null)
             {
                 purchaseModel.Name = selectedCus.Name;
                 purchaseModel.Phone = selectedCus.Phone;
@@ -397,7 +399,7 @@ namespace QuanLyThuMua
             {
                 return;
             }
-            if (Type=="Cao su")
+            if (Type == "Cao su")
             {
                 if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out Sodo)) && !string.IsNullOrEmpty(tb.Text))
                 {
@@ -441,7 +443,7 @@ namespace QuanLyThuMua
                 tb.Text = currency.ToString("#,###", culture.NumberFormat);
                 tb.Select(tb.TextLength, 0);
             }
-           
+
             UpdateTotalMoney();
         }
 

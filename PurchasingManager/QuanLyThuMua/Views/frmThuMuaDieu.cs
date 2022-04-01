@@ -28,7 +28,7 @@ namespace QuanLyThuMua
         //C:\Program Files\MyApplication
         string strWorkPath;
         string fileName;
-        bool LoaiCaoSu = true;//True:ko phải mủ chén; flase: mủ chén
+        bool LoaiCaoSu = true;//True:mủ nước; flase: mủ chén
         CultureInfo culture = CultureInfo.GetCultureInfo("en-US");
 
         public frmThuMuaDieu()
@@ -93,9 +93,9 @@ namespace QuanLyThuMua
             {
                 loaiHang = "CaoSu";
 
-                if (LoaiCaoSu)//không phải mủ chens
+                if (LoaiCaoSu)//Mủ nước
                 {
-                    ws.Cell("C10").Value = $"Cao su";
+                    ws.Cell("C10").Value = $"Cao su (mủ nước)";
                 }
                 else//mủ chén
                 {
