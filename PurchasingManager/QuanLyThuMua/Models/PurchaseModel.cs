@@ -17,7 +17,7 @@ namespace QuanLyThuMua
         [Browsable(false)]
         public int CustomerId { get; set; }
         [Browsable(false)]
-        public string  Phone { get; set; }
+        public string Phone { get; set; }
         [Browsable(false)]
         public string Address { get; set; }
         [Browsable(false)]
@@ -26,7 +26,7 @@ namespace QuanLyThuMua
         public int? MuType { get; set; }
 
         [DisplayName("Tên khách hàng")]
-        public string  Name { get; set; }
+        public string Name { get; set; }
         [DisplayName("Ngày tạo")]
         public DateTime CreatedDate { get; set; }
         [DisplayName("Loại")]
@@ -54,13 +54,13 @@ namespace QuanLyThuMua
         public string MuTypeName { get; set; }
 
         [DisplayName("Số độ")]
-        public double Degree { get; set; } 
-    
+        public double Degree { get; set; }
+
         private double _money;
         [DisplayName("Thành tiền")]
         public double Money
         {
-            get { return  Math.Round(Price * (Degree == 0 ? 1 : Degree) * Weight ,2); }
+            get { return Math.Round(Price * (Degree == 0 ? 1 : Degree / 10) * Weight, 2); }
             set { _money = value; }
         }
 

@@ -28,7 +28,7 @@ namespace QuanLyThuMua
         //C:\Program Files\MyApplication
         string strWorkPath;
         string fileName;
-        bool LoaiCaoSu = true;//True:ko phải mủ chén; flase: mủ chén
+        bool LoaiCaoSu = true;//True:mủ nước; flase: mủ chén
         CultureInfo culture = CultureInfo.GetCultureInfo("en-US");
 
         public frmThuMuaDieu()
@@ -64,7 +64,7 @@ namespace QuanLyThuMua
         {
             var param = new DynamicParameters();
             param.Add("@_type", type);
-            LastestPrice = GlobalVariable.ConnectionDb.QueryFirst<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure);
+            LastestPrice = GlobalVariable.ConnectionDb.Query<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
         private int InsertPurchase(PurchaseModel purchaseModel)
         {
@@ -93,9 +93,9 @@ namespace QuanLyThuMua
             {
                 loaiHang = "CaoSu";
 
-                if (LoaiCaoSu)//không phải mủ chens
+                if (LoaiCaoSu)//Mủ nước
                 {
-                    ws.Cell("C10").Value = $"Cao su";
+                    ws.Cell("C10").Value = $"Cao su (mủ nước)";
                 }
                 else//mủ chén
                 {
@@ -160,7 +160,7 @@ namespace QuanLyThuMua
 
         void UpdateTotalMoney()
         {
-            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 1)).ToString("#,###", culture.NumberFormat);
+            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 0)).ToString("#,###", culture.NumberFormat);
         }
         private void Handle_TextChanged(object sender, EventArgs e)
         {

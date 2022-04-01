@@ -471,6 +471,7 @@ namespace QuanLyThuMua
                                     .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left)
                                     .Font.FontSize = 14;
 
+                            wsThongKe.Cell("E23").Value = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
                             wsThongKe.Cell("E24").Value = "Xác nhận bên thu mua";
                             wsThongKe.Range("E24").Style
                                     .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
@@ -501,8 +502,7 @@ namespace QuanLyThuMua
                             wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
                             wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
 
-                            wsThuMua.Range("A2").Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
-                            wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Merge();
+                            wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
                             wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Style
                                .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
                                .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
@@ -527,12 +527,11 @@ namespace QuanLyThuMua
                             wsTamUng.Cell(1, 1).Value = "DANH SÁCH TẠM ỨNG";
                             wsTamUng.Range(1, 1, 1, dtTamUng.Columns.Count).Merge().AddToNamed("Titles");
 
-                            wsThuMua.Range("A2").Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
-                            wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Merge();
-                            wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Style
+                            wsTamUng.Range(2, 1, 2, dtTamUng.Columns.Count).Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                            wsTamUng.Range(2, 1, 2, dtTamUng.Columns.Count).Style
                                .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
                                .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
-                               .Font.FontSize = 12;
+                               .Font.FontSize = 10;
 
                             wsTamUng.Cell(3, 1).InsertTable(dtTamUng.AsEnumerable());
                             wsTamUng.Columns().AdjustToContents();
@@ -612,12 +611,13 @@ namespace QuanLyThuMua
                         }
                         wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
                         wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
-                        wsThuMua.Range("A2").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
-                        wsThuMua.Range(2,1,2,dtThuMua.Columns.Count).Merge();
+
+                        wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
                         wsThuMua.Range(2, 1, 2, dtThuMua.Columns.Count).Style
                            .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
                            .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
                            .Font.FontSize = 12;
+
                         wsThuMua.Cell("A3").InsertTable(dtThuMua.AsEnumerable());
 
                         wsThuMua.Columns().AdjustToContents();
@@ -636,12 +636,11 @@ namespace QuanLyThuMua
                         wsTamUng.Cell(1, 1).Value = "DANH SÁCH TẠM ỨNG";
                         wsTamUng.Range(1, 1, 1, dtTamUng.Columns.Count).Merge().AddToNamed("Titles");
 
-                        wsThuMua.Range("A2").Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
-                        wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Merge();
-                        wsThuMua.Range(2, 1, 2, dtTamUng.Columns.Count).Style
+                        wsTamUng.Range(2, 1, 2, dtTamUng.Columns.Count).Merge().Value = $"Từ ngày: {fromTime} - Đến ngày: {toTime}";
+                        wsTamUng.Range(2, 1, 2, dtTamUng.Columns.Count).Style
                            .Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right)
                            .Alignment.SetVertical(XLAlignmentVerticalValues.Center)
-                           .Font.FontSize = 12;
+                           .Font.FontSize = 10;
 
                         wsTamUng.Cell(3, 1).InsertTable(dtTamUng.AsEnumerable());
                         wsTamUng.Columns().AdjustToContents();
@@ -684,7 +683,7 @@ namespace QuanLyThuMua
 
         public List<PurchaseModel> GetPurchaseModels(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
         {
-            string query = $"select purchaseinfo.*, customerinfo.Name as Name, case when purchaseinfo.MuType = 1 then 'Mủ chén' when purchaseinfo.MuType = 0 then 'Không phải mủ chén' else '' end MuTypeName" +
+            string query = $"select purchaseinfo.*, customerinfo.Name as Name, case when purchaseinfo.MuType = 1 then 'Mủ chén' when purchaseinfo.MuType = 0 then 'Mủ nước' else '' end MuTypeName" +
                 $" from purchaseinfo inner JOIN customerinfo ON customerinfo.Id = purchaseinfo.CustomerId" +
                 $" where purchaseinfo.CreatedDate > '{fromTime:yyyy-MM-dd HH:mm:ss}' and purchaseinfo.CreatedDate < '{toTime:yyyy-MM-dd HH:mm:ss}'";
 
