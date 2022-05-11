@@ -37,9 +37,11 @@ namespace QuanLyThuMua
             InitializeComponent();
             Load += FrmThuMua_Load;
             cbbKH.SelectedValueChanged += CbbKH_SelectedValueChanged;
-            txtKL.Validating += TxtKL_Validating;
-            txtKL.Validated += TxtKL_Validated;
+            //txtKL.Validating += TxtKL_Validating;
+            //txtKL.Validated += TxtKL_Validated;
             txtKL.TextChanged += TxtKL_TextChanged;
+            txtKL.KeyPress += TxtKL_KeyPress; 
+
             cbbLoaimu.SelectedValueChanged += CbbLoaimu_SelectedValueChanged;
             btnSave.Click += BtnLuu_Click;
             txtDongia.Validating += TxtDongia_Validating;
@@ -53,6 +55,21 @@ namespace QuanLyThuMua
             txtSodo.TextChanged += TxtSodo_TextChanged;
 
         }
+
+        private void TxtKL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
         #region Props
         public string Type { get; set; } = "Cao su";
         public event EventHandler OnPurchaseInserted;
@@ -123,7 +140,7 @@ namespace QuanLyThuMua
             ws.Cell("C12").Value = $"'{purchaseModel.Phone}";
             ws.Cell("C13").Value = $"{purchaseModel.Address}";
             ws.Cell("C15").Value = $"{purchaseModel.Weight.ToString("#,###.##", culture.NumberFormat)}";
-            
+
             ws.Cell("C16").Value = $"{purchaseModel.Price.ToString("#,###", culture.NumberFormat)} VNĐ";
 
             var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree / 10 : 1;
@@ -180,6 +197,19 @@ namespace QuanLyThuMua
                 UpdateTotalMoney();
             }
         }
+
+        private void HandleKL_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
+                tb.Text = float.Parse(tb.Text).ToString("#,###",culture.NumberFormat);
+                //tb.Text = $"{float.Parse(tb.Text).ToString():#,###}";
+                tb.Select(tb.TextLength, 0);
+                UpdateTotalMoney();
+            }
+        }
         #endregion
         #region Events
 
@@ -204,7 +234,7 @@ namespace QuanLyThuMua
         private void TxtKL_Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
-            if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out float res)) && !string.IsNullOrEmpty(tb.Text))
+            if (!float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
             {
 
                 tb.Text = "";
@@ -219,7 +249,7 @@ namespace QuanLyThuMua
         }
         private void TxtKL_Validated(object sender, EventArgs e)
         {
-            Handle_TextChanged(sender, e);
+            HandleKL_TextChanged(sender, e);
         }
         private void CbbLoaimu_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -350,7 +380,75 @@ namespace QuanLyThuMua
         }
         private void TxtKL_TextChanged(object sender, EventArgs e)
         {
-            Handle_TextChanged(sender, e);
+            //HandleKL_TextChanged(sender, e);
+
+            TextBox tb = sender as TextBox;
+
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = Puntos(tb.Text, 1);
+                tb.Select(tb.TextLength, 0);
+
+                UpdateTotalMoney();
+            }
+        }
+
+        /// <summary>
+        /// Method dùng để format lại cho textbox, phân cách theo đơn vị, và số thập phân.
+        /// </summary>
+        /// <param name="strValor">Nội dung.</param>
+        /// <param name="intNumDecimales">Chọn phần số lẻ cần hiển thị</param>
+        /// <returns></returns>
+        public string Puntos(string strValor, int intNumDecimales)
+        {
+            string strAux = null;
+            string strComas = null;
+            string strPuntos = null;
+            int intX = 0;
+            bool bolMenos = false;
+
+            strComas = "";
+            if (strValor.Length == 0) return "";
+            strValor = strValor.Replace(Application.CurrentCulture.NumberFormat.NumberGroupSeparator, "");
+            if (strValor.Contains(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator))
+            {
+                strAux = strValor.Substring(0, strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+                strComas = strValor.Substring(strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator) + 1);
+            }
+            else
+            {
+                strAux = strValor;
+            }
+
+            if (strAux.Substring(0, 1) == Application.CurrentCulture.NumberFormat.NegativeSign)
+            {
+                bolMenos = true;
+                strAux = strAux.Substring(1);
+            }
+
+            strPuntos = strAux;
+            strAux = "";
+            while (strPuntos.Length > 3)
+            {
+                strAux = Application.CurrentCulture.NumberFormat.NumberGroupSeparator + strPuntos.Substring(strPuntos.Length - 3, 3) + strAux;
+                strPuntos = strPuntos.Substring(0, strPuntos.Length - 3);
+            }
+            if (intNumDecimales > 0)
+            {
+                if (strValor.Contains(Application.CurrentCulture.NumberFormat.PercentDecimalSeparator))
+                {
+                    strComas = Application.CurrentCulture.NumberFormat.PercentDecimalSeparator + strValor.Substring(strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.PercentDecimalSeparator) + 1);
+                    if (strComas.Length > intNumDecimales)
+                    {
+                        strComas = strComas.Substring(0, intNumDecimales + 1);
+                    }
+
+                }
+            }
+            strAux = strPuntos + strAux + strComas;
+
+
+            return strAux;
         }
 
         private void RdType_CheckedChanged(object sender, EventArgs e)

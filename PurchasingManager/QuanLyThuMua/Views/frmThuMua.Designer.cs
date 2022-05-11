@@ -31,13 +31,13 @@ namespace QuanLyThuMua
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThuMua));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtKL = new System.Windows.Forms.TextBox();
             this.ckbPayNow = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.txtThanhtien = new System.Windows.Forms.TextBox();
             this.txtDongia = new System.Windows.Forms.TextBox();
             this.txtSodo = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
-            this.txtKL = new System.Windows.Forms.TextBox();
             this.txtDiachi = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.cbbLoaimu = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
@@ -59,13 +59,13 @@ namespace QuanLyThuMua
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtKL);
             this.groupBox1.Controls.Add(this.ckbPayNow);
             this.groupBox1.Controls.Add(this.txtThanhtien);
             this.groupBox1.Controls.Add(this.txtDongia);
             this.groupBox1.Controls.Add(this.txtSodo);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.rtbNote);
-            this.groupBox1.Controls.Add(this.txtKL);
             this.groupBox1.Controls.Add(this.txtDiachi);
             this.groupBox1.Controls.Add(this.txtSdt);
             this.groupBox1.Controls.Add(this.cbbLoaimu);
@@ -86,6 +86,14 @@ namespace QuanLyThuMua
             this.groupBox1.Size = new System.Drawing.Size(1110, 674);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // txtKL
+            // 
+            this.txtKL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtKL.Location = new System.Drawing.Point(831, 210);
+            this.txtKL.Name = "txtKL";
+            this.txtKL.Size = new System.Drawing.Size(246, 29);
+            this.txtKL.TabIndex = 11;
             // 
             // ckbPayNow
             // 
@@ -114,9 +122,9 @@ namespace QuanLyThuMua
             this.txtDongia.BackColor = System.Drawing.Color.White;
             this.txtDongia.Enabled = false;
             this.txtDongia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtDongia.Location = new System.Drawing.Point(750, 268);
+            this.txtDongia.Location = new System.Drawing.Point(831, 268);
             this.txtDongia.Name = "txtDongia";
-            this.txtDongia.Size = new System.Drawing.Size(327, 29);
+            this.txtDongia.Size = new System.Drawing.Size(246, 29);
             this.txtDongia.TabIndex = 5;
             this.txtDongia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -124,9 +132,9 @@ namespace QuanLyThuMua
             // 
             this.txtSodo.BackColor = System.Drawing.Color.White;
             this.txtSodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtSodo.Location = new System.Drawing.Point(750, 208);
+            this.txtSodo.Location = new System.Drawing.Point(215, 268);
             this.txtSodo.Name = "txtSodo";
-            this.txtSodo.Size = new System.Drawing.Size(327, 29);
+            this.txtSodo.Size = new System.Drawing.Size(184, 29);
             this.txtSodo.TabIndex = 2;
             this.txtSodo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -153,16 +161,6 @@ namespace QuanLyThuMua
             this.rtbNote.Size = new System.Drawing.Size(862, 96);
             this.rtbNote.TabIndex = 6;
             this.rtbNote.Text = "";
-            // 
-            // txtKL
-            // 
-            this.txtKL.BackColor = System.Drawing.Color.White;
-            this.txtKL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtKL.Location = new System.Drawing.Point(215, 268);
-            this.txtKL.Name = "txtKL";
-            this.txtKL.Size = new System.Drawing.Size(184, 29);
-            this.txtKL.TabIndex = 3;
-            this.txtKL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDiachi
             // 
@@ -213,7 +211,7 @@ namespace QuanLyThuMua
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(34, 271);
+            this.label6.Location = new System.Drawing.Point(651, 213);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(141, 24);
             this.label6.TabIndex = 0;
@@ -257,7 +255,7 @@ namespace QuanLyThuMua
             this.lblSodo.AutoSize = true;
             this.lblSodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lblSodo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblSodo.Location = new System.Drawing.Point(651, 213);
+            this.lblSodo.Location = new System.Drawing.Point(34, 273);
             this.lblSodo.Name = "lblSodo";
             this.lblSodo.Size = new System.Drawing.Size(61, 24);
             this.lblSodo.TabIndex = 0;
@@ -363,7 +361,6 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSodo;
-        private System.Windows.Forms.TextBox txtKL;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbLoaimu;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblSodo;
@@ -372,5 +369,6 @@ namespace QuanLyThuMua
         private System.Windows.Forms.Label lblDongia;
         private System.Windows.Forms.TextBox txtThanhtien;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtKL;
     }
 }

@@ -36,9 +36,10 @@ namespace QuanLyThuMua
             InitializeComponent();
             Load += FrmThuMua_Load;
             cbbKH.SelectedValueChanged += CbbKH_SelectedValueChanged;
-            txtKL.Validating += TxtKL_Validating;
-            txtKL.Validated += TxtKL_Validated;
+            //txtKL.Validating += TxtKL_Validating;
+            //txtKL.Validated += TxtKL_Validated;
             txtKL.TextChanged += TxtKL_TextChanged;
+            txtKL.KeyPress += TxtKL_KeyPress;
          
             btnSave.Click += BtnLuu_Click;
             txtDongia.Validating += TxtDongia_Validating;
@@ -46,6 +47,20 @@ namespace QuanLyThuMua
             txtDongia.TextChanged += TxtDongia_TextChanged;
             btnExit.Click += BtnExit_Click;
             ckbPayNow.CheckedChanged += CkbPayNow_CheckedChanged;
+        }
+
+        private void TxtKL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
         #region Props
         public string Type { get; set; } = "Điều";
@@ -162,6 +177,65 @@ namespace QuanLyThuMua
         {
             txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 0)).ToString("#,###", culture.NumberFormat);
         }
+
+        /// <summary>
+        /// Method dùng để format lại cho textbox, phân cách theo đơn vị, và số thập phân.
+        /// </summary>
+        /// <param name="strValor">Nội dung.</param>
+        /// <param name="intNumDecimales">Chọn phần số lẻ cần hiển thị</param>
+        /// <returns></returns>
+        public string Puntos(string strValor, int intNumDecimales)
+        {
+            string strAux = null;
+            string strComas = null;
+            string strPuntos = null;
+            int intX = 0;
+            bool bolMenos = false;
+
+            strComas = "";
+            if (strValor.Length == 0) return "";
+            strValor = strValor.Replace(Application.CurrentCulture.NumberFormat.NumberGroupSeparator, "");
+            if (strValor.Contains(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator))
+            {
+                strAux = strValor.Substring(0, strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+                strComas = strValor.Substring(strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator) + 1);
+            }
+            else
+            {
+                strAux = strValor;
+            }
+
+            if (strAux.Substring(0, 1) == Application.CurrentCulture.NumberFormat.NegativeSign)
+            {
+                bolMenos = true;
+                strAux = strAux.Substring(1);
+            }
+
+            strPuntos = strAux;
+            strAux = "";
+            while (strPuntos.Length > 3)
+            {
+                strAux = Application.CurrentCulture.NumberFormat.NumberGroupSeparator + strPuntos.Substring(strPuntos.Length - 3, 3) + strAux;
+                strPuntos = strPuntos.Substring(0, strPuntos.Length - 3);
+            }
+            if (intNumDecimales > 0)
+            {
+                if (strValor.Contains(Application.CurrentCulture.NumberFormat.PercentDecimalSeparator))
+                {
+                    strComas = Application.CurrentCulture.NumberFormat.PercentDecimalSeparator + strValor.Substring(strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.PercentDecimalSeparator) + 1);
+                    if (strComas.Length > intNumDecimales)
+                    {
+                        strComas = strComas.Substring(0, intNumDecimales + 1);
+                    }
+
+                }
+            }
+            strAux = strPuntos + strAux + strComas;
+
+
+            return strAux;
+        }
+
         private void Handle_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
@@ -312,7 +386,15 @@ namespace QuanLyThuMua
         }
         private void TxtKL_TextChanged(object sender, EventArgs e)
         {
-            Handle_TextChanged(sender, e);
+            TextBox tb = sender as TextBox;
+
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = Puntos(tb.Text, 1);
+                tb.Select(tb.TextLength, 0);
+
+                UpdateTotalMoney();
+            }
         }
 
         private void TxtSodo_Validating(object sender, CancelEventArgs e)
