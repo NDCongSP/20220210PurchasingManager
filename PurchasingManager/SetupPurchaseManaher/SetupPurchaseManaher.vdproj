@@ -303,6 +303,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D13CB98F32154037BA5EC39081DB591E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D3526CD959AC4BB5693A2CEC2C9F102F"
         "OwnerKey" = "8:_2800A802CF2545A49CA88E420E8C91CC"
         "MsmSig" = "8:_UNDEFINED"
@@ -584,6 +590,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -608,6 +622,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -1464,6 +1486,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D13CB98F32154037BA5EC39081DB591E"
+            {
+            "SourcePath" = "8:..\\QuanLyThuMua\\bin\\Debug\\Templates\\TemplateBill.xlsx"
+            "TargetName" = "8:TemplateBill.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_A513B667C05B4E3194F6D78846F3E3EF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D3526CD959AC4BB5693A2CEC2C9F102F"
             {
             "AssemblyRegister" = "3:1"
@@ -1646,6 +1688,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A513B667C05B4E3194F6D78846F3E3EF"
+                    {
+                    "Name" = "8:Templates"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_D5BD957BD50C487D9FAED016E34A6515"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_C82AE5CD5453457C854B469CBC13BBE7"
@@ -1676,7 +1729,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:QuanLyThuMua"
         "ProductCode" = "8:{8F574EB0-8BCA-4C71-9E23-0646C3E0681A}"
-        "PackageCode" = "8:{8BEBD70F-1803-4432-94FA-BE2E0CA4D4BF}"
+        "PackageCode" = "8:{16408A41-F284-43F4-8EFC-2DC14C25F121}"
         "UpgradeCode" = "8:{F0D12A0A-90B6-4449-85EC-D1F90E99CBAD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

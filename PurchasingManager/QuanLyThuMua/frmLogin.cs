@@ -22,16 +22,22 @@ namespace QuanLyThuMua
         {
             string _pass = EncodeMD5.EncryptString(txtPass.Text, "PhucTh!nhMD%");
             string _query = $"Select * from useraccount where UserName = '{txtUseName.Text}' and Password = '{_pass}'";
-            var _useInfo = GlobalVariable.ConnectionDb.Query<AcountModel>($"{_query}", null).FirstOrDefault();
+            GlobalVariable.UserInfo = GlobalVariable.ConnectionDb.Query<AcountModel>($"{_query}", null).FirstOrDefault();
 
-            if (_useInfo != null)
+            if (GlobalVariable.UserInfo != null)
             {
+                this.Hide();
+
                 Form1 nF = new Form1();
 
                 if (nF.ShowDialog(this) == DialogResult.Cancel)
                 {
                     this.Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Thông tin đăng nhập không chính xác.","CẢNH BÁO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
     }

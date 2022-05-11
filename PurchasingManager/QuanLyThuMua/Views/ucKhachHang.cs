@@ -13,6 +13,7 @@ namespace QuanLyThuMua
 {
     public partial class ucKhachHang : UserControl
     {
+       
         public ucKhachHang()
         {
             InitializeComponent();
