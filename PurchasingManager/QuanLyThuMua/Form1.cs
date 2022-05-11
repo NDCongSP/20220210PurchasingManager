@@ -59,6 +59,20 @@ namespace QuanLyThuMua
             this.FormClosing += Form1_FormClosing;
 
             kryptonRibbon1.SelectedTab = kryptonRibbonTab1;
+
+            _cobBaoCaoKH.SelectedIndex = 0;
+
+            if (GlobalVariable.UserInfo.Role == "1")
+            {
+                _btnCreatedUser.Visible = true;
+            }
+            else
+            {
+                _btnCreatedUser.Visible = false;
+            }
+
+            _dtpFromDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            _dtpToDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
         }
 
         private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -89,7 +103,7 @@ namespace QuanLyThuMua
                 {
                     kryptonRibbon1.Enabled = false;
                 }
-                
+
                 MessageBox.Show("Bạn đã hết thời gian dùng thử, vui lòng liên hệ để lấy license.", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -122,9 +136,9 @@ namespace QuanLyThuMua
             {
                 page = new ucBaoCao();
             }
-            else if (_activePageText == "Liên Hệ")
+            else if (_activePageText == "Tài Khoản")
             {
-                page = new ucContact();
+                page = new ucAccount();
             }
             ActivePage = page;
         }
@@ -158,6 +172,15 @@ namespace QuanLyThuMua
             form.ShowDialog();
         }
 
+        private void _btnTaoThuMuaDieu_Click(object sender, EventArgs e)
+        {
+            frmThuMuaDieu form = new frmThuMuaDieu();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.OnPurchaseInserted += Form_OnPurchaseInserted;
+            form.ShowDialog();
+        }
+
         private void Form_OnPurchaseInserted(object sender, EventArgs e)
         {
             if (ActivePage is ucThuMua thuMua)
@@ -179,7 +202,16 @@ namespace QuanLyThuMua
             frmKhachHang form = new frmKhachHang();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnCustomerChanged += Form_OnCustomerChanged; ;
             form.ShowDialog();
+        }
+
+        private void Form_OnCustomerChanged(object sender, EventArgs e)
+        {
+            if (_activePage is ucKhachHang uc)
+            {
+                uc.RefreshData();
+            }
         }
 
         private void _btnSuaKH_Click(object sender, EventArgs e)
@@ -187,6 +219,7 @@ namespace QuanLyThuMua
             frmKhachHangUpdate form = new frmKhachHangUpdate();
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnCustomerChanged += Form_OnCustomerChanged;
             form.ShowDialog();
         }
 
@@ -195,19 +228,33 @@ namespace QuanLyThuMua
 
         }
 
-        private void _btnThemDonGia_Click(object sender, EventArgs e)
+        private void _btnThemDonGiaCaoSu_Click(object sender, EventArgs e)
         {
             frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU";
+            form.PriceType = "Cao su";
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
             form.ShowDialog();
         }
 
-        private void _btnSuaDonGia_Click(object sender, EventArgs e)
+        private void Form_OnPriceChanged(object sender, EventArgs e)
+        {
+            if (_activePage is ucDonGia uc)
+            {
+                uc.RefreshData();
+            }
+        }
+
+        private void _btnThemDonGiaDieu_Click(object sender, EventArgs e)
         {
             frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ ĐIỀU";
+            form.PriceType = "Điều";
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
             form.ShowDialog();
         }
 
@@ -286,6 +333,9 @@ namespace QuanLyThuMua
                 {
                     _cobBaoCaoKH.Items.Add(item);
                 }
+
+                if (_cobBaoCaoKH.SelectedIndex == -1)
+                    _cobBaoCaoKH.SelectedIndex = 0;
             }
             catch { }
         }
@@ -323,6 +373,14 @@ namespace QuanLyThuMua
             {
                 uc.GetData();
             }
+        }
+
+        private void _btnCreatedUser_Click(object sender, EventArgs e)
+        {
+            frmCreatedUser form = new frmCreatedUser();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.ShowDialog();
         }
     }
 }

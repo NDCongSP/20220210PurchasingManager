@@ -7,6 +7,7 @@ namespace QuanLyThuMua
 {
     public partial class frmKhachHang : KryptonForm
     {
+        public event EventHandler OnCustomerChanged;
         public frmKhachHang()
         {
             InitializeComponent();
@@ -18,6 +19,7 @@ namespace QuanLyThuMua
             {
                 if (GlobalVariable.ConnectionDb.Execute($"call spCustomerInsert ('{txtName.Text}','{txtPhoneNum.Text}','{txtAdd.Text}');") > 0)
                 {
+                    OnCustomerChanged?.Invoke(this, e);
                     MessageBox.Show("Lưu thành công.");
                 }
                 else
@@ -29,6 +31,8 @@ namespace QuanLyThuMua
             {
                 MessageBox.Show($"Không được để trống TÊN, SỐ ĐIỆN THOẠI và ĐỊA CHỈ.", "CẢNH BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            this.Close();
         }
     }
 }

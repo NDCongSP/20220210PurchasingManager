@@ -14,7 +14,7 @@ namespace QuanLyThuMua
     public partial class frmDonGiaUpdate : Form
     {
         private PriceModel dongiaInfo = new PriceModel();
-
+       public  event EventHandler OnPriceChanged;
         public frmDonGiaUpdate()
         {
             InitializeComponent();

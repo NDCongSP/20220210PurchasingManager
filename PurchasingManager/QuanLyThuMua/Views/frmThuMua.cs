@@ -31,15 +31,17 @@ namespace QuanLyThuMua
         string fileName;
         bool LoaiCaoSu = true;//True:ko phải mủ chén; flase: mủ chén
         CultureInfo culture = CultureInfo.GetCultureInfo("en-US");
-       
+
         public frmThuMua()
         {
             InitializeComponent();
             Load += FrmThuMua_Load;
             cbbKH.SelectedValueChanged += CbbKH_SelectedValueChanged;
-            txtKL.Validating += TxtKL_Validating;
-            txtKL.Validated += TxtKL_Validated;
+            //txtKL.Validating += TxtKL_Validating;
+            //txtKL.Validated += TxtKL_Validated;
             txtKL.TextChanged += TxtKL_TextChanged;
+            txtKL.KeyPress += TxtKL_KeyPress; 
+
             cbbLoaimu.SelectedValueChanged += CbbLoaimu_SelectedValueChanged;
             btnSave.Click += BtnLuu_Click;
             txtDongia.Validating += TxtDongia_Validating;
@@ -47,13 +49,27 @@ namespace QuanLyThuMua
             txtDongia.TextChanged += TxtDongia_TextChanged;
             btnExit.Click += BtnExit_Click;
             ckbPayNow.CheckedChanged += CkbPayNow_CheckedChanged;
-            rdCaosu.CheckedChanged += RdType_CheckedChanged;
-            rdDieu.CheckedChanged += RdType_CheckedChanged;
+
             txtSodo.Validating += TxtSodo_Validating;
             txtSodo.Validated += TxtSodo_Validated;
             txtSodo.TextChanged += TxtSodo_TextChanged;
 
         }
+
+        private void TxtKL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
         #region Props
         public string Type { get; set; } = "Cao su";
         public event EventHandler OnPurchaseInserted;
@@ -71,7 +87,7 @@ namespace QuanLyThuMua
         {
             var param = new DynamicParameters();
             param.Add("@_type", type);
-            LastestPrice = GlobalVariable.ConnectionDb.QueryFirst<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure);
+            LastestPrice = GlobalVariable.ConnectionDb.Query<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
         private int InsertPurchase(PurchaseModel purchaseModel)
         {
@@ -102,13 +118,15 @@ namespace QuanLyThuMua
 
                 if (LoaiCaoSu)//không phải mủ chens
                 {
-                    ws.Cell("C10").Value = $"Cao su";
+                    ws.Cell("C10").Value = $"Cao su (mủ nước)";
+                    ws.Cell("G15").Value = $"{purchaseModel.Degree}";
                 }
                 else//mủ chén
                 {
                     ws.Cell("C10").Value = $"Cao su (mủ chén)";
+                    ws.Cell("G15").Value = $"";
+                    ws.Cell("F15").Value = $"";
                 }
-                //cell.Value = $"Tên hàng: Cao su";
             }
             else
             {
@@ -122,10 +140,10 @@ namespace QuanLyThuMua
             ws.Cell("C12").Value = $"'{purchaseModel.Phone}";
             ws.Cell("C13").Value = $"{purchaseModel.Address}";
             ws.Cell("C15").Value = $"{purchaseModel.Weight.ToString("#,###.##", culture.NumberFormat)}";
-            ws.Cell("G15").Value = $"{purchaseModel.Degree}";
+
             ws.Cell("C16").Value = $"{purchaseModel.Price.ToString("#,###", culture.NumberFormat)} VNĐ";
 
-            var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree : 1;
+            var degree = purchaseModel.Degree != 0 ? purchaseModel.Degree / 10 : 1;
             double tongTien = purchaseModel.Price * Convert.ToDouble(degree) * purchaseModel.Weight;
 
             ws.Cell("C18").Value = $"{tongTien.ToString("#,###", culture.NumberFormat)} VNĐ";
@@ -163,11 +181,34 @@ namespace QuanLyThuMua
                     p.Kill();
                 }
         }
-  
 
         void UpdateTotalMoney()
         {
-            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 1)).ToString("#,###", culture.NumberFormat);
+            txtThanhtien.Text = ((Double.TryParse(txtDongia.Text, out double res) ? res : LastestPrice.Price) * (Double.TryParse(txtSodo.Text, out double res1) ? res1 / 10 : 1) * (Double.TryParse(txtKL.Text, out double res2) ? res2 : 0)).ToString("#,###", culture.NumberFormat);
+        }
+        private void Handle_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
+                tb.Text = double.Parse(tb.Text).ToString("#,###", culture.NumberFormat);
+                tb.Select(tb.TextLength, 0);
+                UpdateTotalMoney();
+            }
+        }
+
+        private void HandleKL_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
+                tb.Text = float.Parse(tb.Text).ToString("#,###",culture.NumberFormat);
+                //tb.Text = $"{float.Parse(tb.Text).ToString():#,###}";
+                tb.Select(tb.TextLength, 0);
+                UpdateTotalMoney();
+            }
         }
         #endregion
         #region Events
@@ -177,6 +218,7 @@ namespace QuanLyThuMua
             //Initial Data
             GetListCustomer();
             GetLastestPrice(Type);
+            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
             strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //This will strip just the working path name:
             //C:\Program Files\MyApplication
@@ -187,12 +229,12 @@ namespace QuanLyThuMua
         }
         private void CbbKH_SelectedValueChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void TxtKL_Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = sender as TextBox;
-            if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out float res)) && !string.IsNullOrEmpty(tb.Text))
+            if (!float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
             {
 
                 tb.Text = "";
@@ -207,7 +249,7 @@ namespace QuanLyThuMua
         }
         private void TxtKL_Validated(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            HandleKL_TextChanged(sender, e);
         }
         private void CbbLoaimu_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -250,34 +292,26 @@ namespace QuanLyThuMua
         }
         private void TxtDongia_Validated(object sender, EventArgs e)
         {
-            TextBox tb = sender as TextBox;
-            if (!string.IsNullOrEmpty(tb.Text))
-            {
-                //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-                culture = CultureInfo.GetCultureInfo("en-US");   // try with "en-US"
-                tb.Text = double.Parse(tb.Text).ToString("#,###", culture.NumberFormat);
-                UpdateTotalMoney();
-                //tb.Text = double.Parse(tb.Text).ToString("C", cul.NumberFormat);
-                //tb.Text = String.Format("{0:C}", tb.Text).ToString("C",cul.NumberFormat);
-            }
+            Handle_TextChanged(sender, e);
         }
         private void CkbPayNow_CheckedChanged(object sender, EventArgs e)
         {
             KryptonCheckBox cb = sender as KryptonCheckBox;
             if (cb.Checked)
             {
-                txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
-                txtDongia.Visible = true;
-                lblDongia.Visible = true;
+
+                txtDongia.Enabled = true;
+                lblDongia.Enabled = true;
                 txtDongia.Focus();
             }
             else
             {
-                txtDongia.Visible = false;
-                lblDongia.Visible = false;
+                txtDongia.Enabled = false;
+                lblDongia.Enabled = false;
             }
+            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
         }
-      
+
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -309,27 +343,20 @@ namespace QuanLyThuMua
             purchaseModel.Price = ckbPayNow.Checked ? Convert.ToDouble(txtDongia.Text) : LastestPrice.Price;
             purchaseModel.PayNow = Convert.ToInt32(ckbPayNow.Checked);
             int? muType = null;
-            if (rdCaosu.Checked)
+            if (cbbLoaimu.Text == "Mủ chén")
             {
-                if (cbbLoaimu.Text == "Mủ chén")
-                {
-                    muType = 1;
-                }
-                else
-                {
-                    muType = 0;
-                }
+                muType = 1;
             }
             else
             {
-                muType = null;
-            }
+                muType = 0;
+            };
 
             purchaseModel.MuType = muType;
             purchaseModel.Degree = Double.TryParse(txtSodo.Text, out double res) ? res : 0;
             purchaseModel.Note = rtbNote.Text;
             CustomerModel selectedCus = ls_CustomerInfo.FirstOrDefault(c => c.Id == purchaseModel.CustomerId);
-            if (selectedCus !=null)
+            if (selectedCus != null)
             {
                 purchaseModel.Name = selectedCus.Name;
                 purchaseModel.Phone = selectedCus.Phone;
@@ -347,12 +374,81 @@ namespace QuanLyThuMua
                 }
                 OnPurchaseInserted(this, e);
             }
+            Close();
 
             //    customerId,_type, weight, priceId, price, payNow, muType, degree,note
         }
         private void TxtKL_TextChanged(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            //HandleKL_TextChanged(sender, e);
+
+            TextBox tb = sender as TextBox;
+
+            if (float.TryParse(tb.Text, out float res) && !string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = Puntos(tb.Text, 1);
+                tb.Select(tb.TextLength, 0);
+
+                UpdateTotalMoney();
+            }
+        }
+
+        /// <summary>
+        /// Method dùng để format lại cho textbox, phân cách theo đơn vị, và số thập phân.
+        /// </summary>
+        /// <param name="strValor">Nội dung.</param>
+        /// <param name="intNumDecimales">Chọn phần số lẻ cần hiển thị</param>
+        /// <returns></returns>
+        public string Puntos(string strValor, int intNumDecimales)
+        {
+            string strAux = null;
+            string strComas = null;
+            string strPuntos = null;
+            int intX = 0;
+            bool bolMenos = false;
+
+            strComas = "";
+            if (strValor.Length == 0) return "";
+            strValor = strValor.Replace(Application.CurrentCulture.NumberFormat.NumberGroupSeparator, "");
+            if (strValor.Contains(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator))
+            {
+                strAux = strValor.Substring(0, strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+                strComas = strValor.Substring(strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.NumberDecimalSeparator) + 1);
+            }
+            else
+            {
+                strAux = strValor;
+            }
+
+            if (strAux.Substring(0, 1) == Application.CurrentCulture.NumberFormat.NegativeSign)
+            {
+                bolMenos = true;
+                strAux = strAux.Substring(1);
+            }
+
+            strPuntos = strAux;
+            strAux = "";
+            while (strPuntos.Length > 3)
+            {
+                strAux = Application.CurrentCulture.NumberFormat.NumberGroupSeparator + strPuntos.Substring(strPuntos.Length - 3, 3) + strAux;
+                strPuntos = strPuntos.Substring(0, strPuntos.Length - 3);
+            }
+            if (intNumDecimales > 0)
+            {
+                if (strValor.Contains(Application.CurrentCulture.NumberFormat.PercentDecimalSeparator))
+                {
+                    strComas = Application.CurrentCulture.NumberFormat.PercentDecimalSeparator + strValor.Substring(strValor.LastIndexOf(Application.CurrentCulture.NumberFormat.PercentDecimalSeparator) + 1);
+                    if (strComas.Length > intNumDecimales)
+                    {
+                        strComas = strComas.Substring(0, intNumDecimales + 1);
+                    }
+
+                }
+            }
+            strAux = strPuntos + strAux + strComas;
+
+
+            return strAux;
         }
 
         private void RdType_CheckedChanged(object sender, EventArgs e)
@@ -391,6 +487,7 @@ namespace QuanLyThuMua
                 //lblSodo.Location = lblDongia.Location;
                 //txtSodo.Location = txtDongia.Location;
             }
+            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
         }
         private void TxtSodo_Validating(object sender, CancelEventArgs e)
         {
@@ -400,7 +497,7 @@ namespace QuanLyThuMua
             {
                 return;
             }
-            if (Type=="Cao su")
+            if (Type == "Cao su")
             {
                 if ((!System.Text.RegularExpressions.Regex.IsMatch(tb.Text, "\\d+") || !float.TryParse(tb.Text, out Sodo)) && !string.IsNullOrEmpty(tb.Text))
                 {
@@ -422,11 +519,11 @@ namespace QuanLyThuMua
         }
         private void TxtSodo_Validated(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            Handle_TextChanged(sender, e);
         }
         private void TxtSodo_TextChanged(object sender, EventArgs e)
         {
-            UpdateTotalMoney();
+            Handle_TextChanged(sender, e);
         }
 
         private void TxtDongia_TextChanged(object sender, EventArgs e)
@@ -442,8 +539,9 @@ namespace QuanLyThuMua
             if (Decimal.TryParse(value, style, culture, out currency) && !string.IsNullOrEmpty(value))
             {
                 tb.Text = currency.ToString("#,###", culture.NumberFormat);
+                tb.Select(tb.TextLength, 0);
             }
-           
+
             UpdateTotalMoney();
         }
 
