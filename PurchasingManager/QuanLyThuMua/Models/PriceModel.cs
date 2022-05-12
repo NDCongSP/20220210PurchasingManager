@@ -13,5 +13,6 @@ namespace QuanLyThuMua
         public string Type { get; set; }
         public double Price { get; set; }
         public string Note { get; set; }
+        public int MuType { get; set; }
     }
 }
