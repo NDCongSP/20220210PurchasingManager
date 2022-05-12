@@ -382,5 +382,17 @@ namespace QuanLyThuMua
             form.Owner = this;
             form.ShowDialog();
         }
+
+        private void _btnThemDonGiaMuDay_Click(object sender, EventArgs e)
+        {
+            frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU MỦ DÂY";
+            form.PriceType = "Cao su";
+            form.MuType = 2;//tạo đơn giá cho mủ dây
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
+            form.ShowDialog();
+        }
     }
 }
