@@ -189,7 +189,8 @@ namespace QuanLyThuMua
             this.cbbLoaimu.DropDownWidth = 862;
             this.cbbLoaimu.Items.AddRange(new object[] {
             "Mủ nước",
-            "Mủ chén"});
+            "Mủ chén",
+            "Mủ dây"});
             this.cbbLoaimu.Location = new System.Drawing.Point(215, 210);
             this.cbbLoaimu.Name = "cbbLoaimu";
             this.cbbLoaimu.Size = new System.Drawing.Size(395, 27);
