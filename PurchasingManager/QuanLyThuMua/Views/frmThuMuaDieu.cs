@@ -75,10 +75,11 @@ namespace QuanLyThuMua
             cbbKH.ValueMember = "Id";
             cbbKH.DisplayMember = "Name";
         }
-        private void GetLastestPrice(string type)
+        private void GetLastestPrice(string type, int mutype)
         {
             var param = new DynamicParameters();
             param.Add("@_type", type);
+            param.Add("@_mutype", mutype);
             LastestPrice = GlobalVariable.ConnectionDb.Query<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
         private int InsertPurchase(PurchaseModel purchaseModel)
