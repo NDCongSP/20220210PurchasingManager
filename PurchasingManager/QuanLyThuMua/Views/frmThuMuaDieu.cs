@@ -40,7 +40,7 @@ namespace QuanLyThuMua
             //txtKL.Validated += TxtKL_Validated;
             txtKL.TextChanged += TxtKL_TextChanged;
             txtKL.KeyPress += TxtKL_KeyPress;
-         
+
             btnSave.Click += BtnLuu_Click;
             txtDongia.Validating += TxtDongia_Validating;
             txtDongia.Validated += TxtDongia_Validated;
@@ -140,7 +140,7 @@ namespace QuanLyThuMua
 
             ws.Cell("C18").Value = $"{tongTien.ToString("#,###", culture.NumberFormat)} VNĐ";
             string value = cell.GetValue<string>();
-        
+
             //workbook.Save();
 
             //lay ten file de su dung  cho metho open file khi xuat excel xong
@@ -255,7 +255,7 @@ namespace QuanLyThuMua
         {
             //Initial Data
             GetListCustomer();
-            GetLastestPrice(Type);
+            GetLastestPrice(Type, 0);
             txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
             strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //This will strip just the working path name:
@@ -289,7 +289,7 @@ namespace QuanLyThuMua
         {
             Handle_TextChanged(sender, e);
         }
- 
+
 
         private void TxtDongia_Validating(object sender, CancelEventArgs e)
         {
@@ -358,7 +358,7 @@ namespace QuanLyThuMua
             purchaseModel.Price = ckbPayNow.Checked ? Convert.ToDouble(txtDongia.Text) : LastestPrice.Price;
             purchaseModel.PayNow = Convert.ToInt32(ckbPayNow.Checked);
             int? muType = null;
-           
+
             purchaseModel.MuType = muType;
             purchaseModel.Degree = 0;
             purchaseModel.Note = rtbNote.Text;

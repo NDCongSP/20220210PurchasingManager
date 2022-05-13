@@ -394,5 +394,22 @@ namespace QuanLyThuMua
             form.OnPriceChanged += Form_OnPriceChanged;
             form.ShowDialog();
         }
+
+        private void _btnXoaThuMua_Click(object sender, EventArgs e)
+        {
+            var answer = MessageBox.Show($"Bạn có chắc chắn muốn xóa đơn của khách hàng tên '{GlobalVariable.PurchaseInfo.Name}'" +
+                $", tạo ngày '{GlobalVariable.PurchaseInfo.CreatedDate}'" +
+                  $", tổng tiền '{GlobalVariable.PurchaseInfo.Money:#,##0}'?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (answer == DialogResult.Yes)
+            {
+                GlobalVariable.ConnectionDb.Execute($"update purchaseinfo set Actived = 0 where Id ={GlobalVariable.PurchaseInfo.Id}");
+
+                if (ActivePage is ucThuMua uc)
+                {
+                    uc.GetData();
+                }
+            }
+        }
     }
 }
