@@ -73,6 +73,13 @@ namespace QuanLyThuMua
 
             _dtpFromDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             _dtpToDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
+            CheckComboBox ccbb = new CheckComboBox();
+            ccbb.Items.Add(new CheckComboBox.CheckComboBoxItem("One", true));
+            ccbb.Items.Add(new CheckComboBox.CheckComboBoxItem("Two", true));
+            ccbb.Items.Add(new CheckComboBox.CheckComboBoxItem("Three", true));
+
+            kryptonRibbonGroupCustomControl1.CustomControl = ccbb;
+
         }
 
         private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
