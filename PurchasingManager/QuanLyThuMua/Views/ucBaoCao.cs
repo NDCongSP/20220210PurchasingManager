@@ -683,9 +683,13 @@ namespace QuanLyThuMua
 
         public List<PurchaseModel> GetPurchaseModels(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
         {
-            string query = $"select purchaseinfo.*, customerinfo.Name as Name, case when purchaseinfo.MuType = 1 then 'Mủ chén' when purchaseinfo.MuType = 0 then 'Mủ nước' else '' end MuTypeName" +
+            string query = $"select purchaseinfo.*, customerinfo.Name as Name, " +
+                $"case when purchaseinfo.MuType = 1 then 'Mủ chén' " +
+                $"when purchaseinfo.MuType = 0 then 'Mủ nước' " +
+                $"when purchaseinfo.MuType = 2 then 'Mủ dây' " +
+                $"else '' end MuTypeName" +
                 $" from purchaseinfo inner JOIN customerinfo ON customerinfo.Id = purchaseinfo.CustomerId" +
-                $" where purchaseinfo.CreatedDate > '{fromTime:yyyy-MM-dd HH:mm:ss}' and purchaseinfo.CreatedDate < '{toTime:yyyy-MM-dd HH:mm:ss}'";
+                $" where purchaseinfo.CreatedDate > '{fromTime:yyyy-MM-dd HH:mm:ss}' and purchaseinfo.CreatedDate < '{toTime:yyyy-MM-dd HH:mm:ss}' and Actived = 1";
 
             if (customerId != null && customerId != 0)
             {

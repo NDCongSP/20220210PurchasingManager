@@ -88,6 +88,7 @@ namespace QuanLyThuMua
             param.Add("@_type", type);
             param.Add("@_mutype", mutype);
             LastestPrice = GlobalVariable.ConnectionDb.Query<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            txtDongia.Text = LastestPrice?.Price.ToString("#,###", culture.NumberFormat);
         }
         private int InsertPurchase(PurchaseModel purchaseModel)
         {
@@ -115,18 +116,28 @@ namespace QuanLyThuMua
             if (Type == "Cao su")
             {
                 loaiHang = "CaoSu";
-
-                if (LoaiCaoSu)//không phải mủ chens
+                if (cbbLoaimu.Text == "Mủ nước")
                 {
-                    ws.Cell("C10").Value = $"Cao su (mủ nước)";
+                    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
                     ws.Cell("G15").Value = $"{purchaseModel.Degree}";
                 }
-                else//mủ chén
+                else
                 {
-                    ws.Cell("C10").Value = $"Cao su (mủ chén)";
+                    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
                     ws.Cell("G15").Value = $"";
                     ws.Cell("F15").Value = $"";
                 }
+                //if (LoaiCaoSu)//không phải mủ chens
+                //{
+                //    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
+                //    ws.Cell("G15").Value = $"{purchaseModel.Degree}";
+                //}
+                //else//mủ chén
+                //{
+                //    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
+                //    ws.Cell("G15").Value = $"";
+                //    ws.Cell("F15").Value = $"";
+                //}
             }
             else
             {
@@ -218,7 +229,7 @@ namespace QuanLyThuMua
             //Initial Data
             GetListCustomer();
             GetLastestPrice(Type,0);
-            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
+            //txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
             strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //This will strip just the working path name:
             //C:\Program Files\MyApplication
@@ -254,17 +265,24 @@ namespace QuanLyThuMua
         private void CbbLoaimu_SelectedValueChanged(object sender, EventArgs e)
         {
             KryptonComboBox cbb = sender as KryptonComboBox;
-            if (cbb.Text == "Mủ chén")
+            if (cbb.Text == "Mủ dây")
+            {
+                GetLastestPrice(Type, 2);
+            }
+            else
+            {
+                GetLastestPrice(Type, 0);
+            }
+      
+            if (cbb.Text == "Mủ chén" || cbb.Text == "Mủ dây")
             {
                 lblSodo.Visible = false;
                 txtSodo.Visible = false;
-
                 LoaiCaoSu = false;
             }
             else
             {
                 LoaiCaoSu = true;
-
                 lblSodo.Visible = true;
                 txtSodo.Visible = true;
                 txtSodo.Focus();
@@ -320,7 +338,7 @@ namespace QuanLyThuMua
         {
             // LoadTemplate();
 
-            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text != "Mủ chén" && Type == "Cao su")
+            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text == "Mủ nước" && Type == "Cao su")
             {
                 MessageBox.Show("Vui lòng nhập số độ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                 return;
