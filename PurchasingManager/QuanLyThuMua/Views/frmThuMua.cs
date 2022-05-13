@@ -55,7 +55,6 @@ namespace QuanLyThuMua
             txtSodo.TextChanged += TxtSodo_TextChanged;
 
         }
-
         private void TxtKL_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -83,11 +82,13 @@ namespace QuanLyThuMua
             cbbKH.ValueMember = "Id";
             cbbKH.DisplayMember = "Name";
         }
-        private void GetLastestPrice(string type)
+        private void GetLastestPrice(string type,int mutype)
         {
             var param = new DynamicParameters();
             param.Add("@_type", type);
+            param.Add("@_mutype", mutype);
             LastestPrice = GlobalVariable.ConnectionDb.Query<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            txtDongia.Text = LastestPrice?.Price.ToString("#,###", culture.NumberFormat);
         }
         private int InsertPurchase(PurchaseModel purchaseModel)
         {
@@ -115,18 +116,28 @@ namespace QuanLyThuMua
             if (Type == "Cao su")
             {
                 loaiHang = "CaoSu";
-
-                if (LoaiCaoSu)//không phải mủ chens
+                if (cbbLoaimu.Text == "Mủ nước")
                 {
-                    ws.Cell("C10").Value = $"Cao su (mủ nước)";
+                    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
                     ws.Cell("G15").Value = $"{purchaseModel.Degree}";
                 }
-                else//mủ chén
+                else
                 {
-                    ws.Cell("C10").Value = $"Cao su (mủ chén)";
+                    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
                     ws.Cell("G15").Value = $"";
                     ws.Cell("F15").Value = $"";
                 }
+                //if (LoaiCaoSu)//không phải mủ chens
+                //{
+                //    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
+                //    ws.Cell("G15").Value = $"{purchaseModel.Degree}";
+                //}
+                //else//mủ chén
+                //{
+                //    ws.Cell("C10").Value = $"Cao su ({cbbLoaimu.Text.ToLower()})";
+                //    ws.Cell("G15").Value = $"";
+                //    ws.Cell("F15").Value = $"";
+                //}
             }
             else
             {
@@ -217,8 +228,8 @@ namespace QuanLyThuMua
         {
             //Initial Data
             GetListCustomer();
-            GetLastestPrice(Type);
-            txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
+            GetLastestPrice(Type,0);
+            //txtDongia.Text = LastestPrice.Price.ToString("#,###", culture.NumberFormat);
             strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //This will strip just the working path name:
             //C:\Program Files\MyApplication
@@ -254,17 +265,24 @@ namespace QuanLyThuMua
         private void CbbLoaimu_SelectedValueChanged(object sender, EventArgs e)
         {
             KryptonComboBox cbb = sender as KryptonComboBox;
-            if (cbb.Text == "Mủ chén")
+            if (cbb.Text == "Mủ dây")
+            {
+                GetLastestPrice(Type, 2);
+            }
+            else
+            {
+                GetLastestPrice(Type, 0);
+            }
+      
+            if (cbb.Text == "Mủ chén" || cbb.Text == "Mủ dây")
             {
                 lblSodo.Visible = false;
                 txtSodo.Visible = false;
-
                 LoaiCaoSu = false;
             }
             else
             {
                 LoaiCaoSu = true;
-
                 lblSodo.Visible = true;
                 txtSodo.Visible = true;
                 txtSodo.Focus();
@@ -320,7 +338,7 @@ namespace QuanLyThuMua
         {
             // LoadTemplate();
 
-            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text != "Mủ chén" && Type == "Cao su")
+            if (string.IsNullOrEmpty(txtSodo.Text) && cbbLoaimu.Text == "Mủ nước" && Type == "Cao su")
             {
                 MessageBox.Show("Vui lòng nhập số độ", "Cảnh báo", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                 return;
@@ -343,14 +361,28 @@ namespace QuanLyThuMua
             purchaseModel.Price = ckbPayNow.Checked ? Convert.ToDouble(txtDongia.Text) : LastestPrice.Price;
             purchaseModel.PayNow = Convert.ToInt32(ckbPayNow.Checked);
             int? muType = null;
-            if (cbbLoaimu.Text == "Mủ chén")
+            switch (cbbLoaimu.Text)
             {
-                muType = 1;
+                case "Mủ nước":
+                    muType = 0;
+                    break;
+                case "Mủ chén":
+                    muType = 1;
+                    break;
+                case "Mủ dây":
+                    muType = 2;
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                muType = 0;
-            };
+            //if (cbbLoaimu.Text == "Mủ chén")
+            //{
+            //    muType = 1;
+            //}
+            //else
+            //{
+            //    muType = 0;
+            //};
 
             purchaseModel.MuType = muType;
             purchaseModel.Degree = Double.TryParse(txtSodo.Text, out double res) ? res : 0;
@@ -458,7 +490,7 @@ namespace QuanLyThuMua
             if (rd.Name == "rdDieu")
             {
                 Type = "Điều";
-                GetLastestPrice(Type);
+                GetLastestPrice(Type,0);
                 //lblLoaimu.Visible = false;
                 //cbbLoaimu.Visible = false;
                 //lblSodo.Visible = false;
@@ -472,7 +504,7 @@ namespace QuanLyThuMua
             else
             {
                 Type = "Cao su";
-                GetLastestPrice(Type);
+                GetLastestPrice(Type,2);
                 //lblLoaimu.Visible = true;
                 //cbbLoaimu.Visible = true;
                 //lblSodo.Visible = true;

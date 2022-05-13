@@ -28,10 +28,46 @@ namespace QuanLyThuMua
             gvPurchaseList.CellValueChanged += GvPurchaseList_CellValueChanged;
             //gvPurchaseList.CellValidating += GvPurchaseList_CellValidating;
             gvPurchaseList.CellEndEdit += GvPurchaseList_CellEndEdit;
+            gvPurchaseList.EditingControlShowing += GvPurchaseList_EditingControlShowing;
+            gvPurchaseList.MouseClick += GvPurchaseList_MouseClick;
 
             gvPurchaseList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
+        private void GvPurchaseList_MouseClick(object sender, MouseEventArgs e)
+        {
+            KryptonDataGridView ccc = (KryptonDataGridView)sender;
+            DataGridViewSelectedRowCollection rowSelect = ccc.SelectedRows;
+
+           GlobalVariable.PurchaseInfo = (PurchaseModel)rowSelect[0].DataBoundItem;//get giá trị của row hiện tại
+
+            Console.WriteLine($"Purchase id = {GlobalVariable.PurchaseInfo}");
+        }
+
+        private void GvPurchaseList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            KryptonDataGridView ccc = (KryptonDataGridView) sender;
+            DataGridViewSelectedRowCollection a = ccc.SelectedRows;
+
+            PurchaseModel asds =(PurchaseModel) a[0].DataBoundItem;//get giá trị của row hiện tại
+
+            var fdf = asds.Name;
+
+            //var activeColumn = gvPurchaseList.Columns[sender.ColumnIndex];
+            //var row = gvPurchaseList.Rows[e.RowIndex];
+            //var _type = row.Cells["type"].Value.ToString();
+            //string _mutype = row.Cells["mutypename"].Value.ToString();
+
+            //if (activeColumn.Name == "Degree" && _type == "Cao su" && _mutype != "Mủ chén")
+            //{
+            //    CurrentValue = Convert.ToInt32(row.Cells["Degree"].Value);
+            //    e.Cancel = false;
+            //}
+            //else
+            //{
+            //    e.Cancel = true;
+            //}
+        }
 
         private void GvPurchaseList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {

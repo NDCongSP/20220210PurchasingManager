@@ -382,5 +382,34 @@ namespace QuanLyThuMua
             form.Owner = this;
             form.ShowDialog();
         }
+
+        private void _btnThemDonGiaMuDay_Click(object sender, EventArgs e)
+        {
+            frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU MỦ DÂY";
+            form.PriceType = "Cao su";
+            form.MuType = 2;//tạo đơn giá cho mủ dây
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
+            form.ShowDialog();
+        }
+
+        private void _btnXoaThuMua_Click(object sender, EventArgs e)
+        {
+            var answer = MessageBox.Show($"Bạn có chắc chắn muốn xóa đơn của khách hàng tên '{GlobalVariable.PurchaseInfo.Name}'" +
+                $", tạo ngày '{GlobalVariable.PurchaseInfo.CreatedDate}'" +
+                  $", tổng tiền '{GlobalVariable.PurchaseInfo.Money:#,##0}'?", "CẢNH BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (answer == DialogResult.Yes)
+            {
+                GlobalVariable.ConnectionDb.Execute($"update purchaseinfo set Actived = 0 where Id ={GlobalVariable.PurchaseInfo.Id}");
+
+                if (ActivePage is ucThuMua uc)
+                {
+                    uc.GetData();
+                }
+            }
+        }
     }
 }
