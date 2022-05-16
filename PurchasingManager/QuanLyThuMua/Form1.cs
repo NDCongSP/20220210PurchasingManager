@@ -2,12 +2,15 @@
 using System;
 using System.Windows.Forms;
 using Dapper;
+using System.Collections.Generic;
 
 namespace QuanLyThuMua
 {
     public partial class Form1 : KryptonForm
     {
         UserControl _activePage;
+        CheckedComboBox checkedListBox;
+        List<CustomerModel> lFilterCus = new List<CustomerModel>();
         string _activePageText;
 
         private System.Timers.Timer nTimer = new System.Timers.Timer();
@@ -73,6 +76,70 @@ namespace QuanLyThuMua
 
             _dtpFromDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             _dtpToDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
+
+            #region ribbon custom control
+            //KryptonCheckedListBox _ck = new CheckedComboBox();
+            //_ck.Items.Add("1");
+            //_ck.Items.Add("2");
+            //_ck.Items.Add("3");
+            //_ck.Items.Add("4");
+            //_ck.Items.Add("5");
+            //_ck.Items.Add("6");
+            //_ck.Items.Add("7");
+            //_ck.Items.Add("8");
+            //_ck.Items.Add("9");
+            //_ck.Items.Add("10");
+
+            //kryptonRibbonGroupCustomControl1.CustomControl = _ck;
+
+
+            checkedListBox = new CheckedComboBox();
+            checkedListBox.ItemCheck += CheckedListBox_ItemCheck;
+
+            var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
+            checkedListBox.Items.Clear();
+
+            checkedListBox.Items.Add(new CustomerModel()
+            {
+                Name = "Tất Cả"
+            });
+
+            foreach (var item in result)
+            {
+                checkedListBox.Items.Add(item);
+            }
+
+            //if (checkedListBox.SelectedIndex == -1)
+            //    checkedListBox.SelectedIndex = 0;
+
+            //checkedListBox.MaxDropDownItems = 5;
+            // Make the "Name" property the one to display, rather than the ToString() representation.
+            checkedListBox.DisplayMember = "Name";
+            checkedListBox.ValueSeparator = ", ";
+
+            kryptonRibbonGroupCustomControl1.CustomControl = checkedListBox;
+
+            
+            #endregion
+        }
+
+        private void CheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            CustomerModel item = checkedListBox.Items[e.Index] as CustomerModel;
+            if (e.NewValue == CheckState.Checked)
+            {
+                if (!lFilterCus.Contains(item))
+                {
+                    lFilterCus.Add(item);
+                }
+            }
+            else
+            {
+                if (lFilterCus.Contains(item))
+                {
+                    lFilterCus.Remove(item);
+                }
+            }
         }
 
         private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -284,8 +351,9 @@ namespace QuanLyThuMua
 
             if (ActivePage is ucBaoCao uc)
             {
-
+                //string Customers = checkedListBox.GetItemChecked();
                 CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                var a = lFilterCus;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
                 {

@@ -32,6 +32,7 @@ namespace QuanLyThuMua
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDonGia));
             this.txtPriceCaoSu = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labTitle = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNoteCaosu = new System.Windows.Forms.TextBox();
             this.dtpCaoSu = new System.Windows.Forms.DateTimePicker();
@@ -39,7 +40,6 @@ namespace QuanLyThuMua
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.labTitle = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +69,17 @@ namespace QuanLyThuMua
             this.groupBox1.Size = new System.Drawing.Size(579, 311);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // labTitle
+            // 
+            this.labTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTitle.Location = new System.Drawing.Point(25, 25);
+            this.labTitle.Name = "labTitle";
+            this.labTitle.Size = new System.Drawing.Size(529, 54);
+            this.labTitle.TabIndex = 12;
+            this.labTitle.Text = "THÊM ĐƠN GIÁ";
+            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -143,17 +154,6 @@ namespace QuanLyThuMua
             this.button1.TabIndex = 12;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // labTitle
-            // 
-            this.labTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTitle.Location = new System.Drawing.Point(25, 25);
-            this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(529, 54);
-            this.labTitle.TabIndex = 12;
-            this.labTitle.Text = "THÊM ĐƠN GIÁ";
-            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmDonGia
             // 
