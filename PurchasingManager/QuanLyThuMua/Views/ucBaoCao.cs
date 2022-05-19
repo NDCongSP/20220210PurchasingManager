@@ -136,7 +136,7 @@ namespace QuanLyThuMua
 
         }
 
-        public void CapNhat(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        public void CapNhat(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
         {
             try
             {
@@ -146,13 +146,16 @@ namespace QuanLyThuMua
                 labFromDate.Text = _fromTime.ToString("HH:mm:ss dd/MM/yyyy");
                 labToDate.Text = _toTime.ToString("HH:mm:ss dd/MM/yyyy");
 
-                _purchaseModels = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
+                //get đơn hàng thu mua
+                _purchaseModels = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow, customerInfo);
+
                 CapNhatChartThuMua();
 
                 _dgBaoCao.DataSource = _purchaseModels;
                 _dgBaoCao.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-                CapNhatTamUng(fromTime, toTime, customerId, payNow);
+                //get tạm ứng
+                CapNhatTamUng(fromTime, toTime, customerId, payNow, customerInfo);
 
                 CapNhatThongKe();
 
@@ -260,12 +263,12 @@ namespace QuanLyThuMua
             _chart2.Update(true, true);
         }
 
-        private void CapNhatTamUng(DateTime fromTime, DateTime toTime, int? customerId, int payNow)
+        private void CapNhatTamUng(DateTime fromTime, DateTime toTime, int? customerId, int payNow, List<CustomerModel> customerList)
         {
             try
             {
 
-                _tamUngModels = GetTamUngs(fromTime, toTime, customerId, payNow);
+                _tamUngModels = GetTamUngs(fromTime, toTime, customerId, payNow, customerList);
                 _dgTamUng.DataSource = _tamUngModels;
                 _dgTamUng.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
@@ -307,7 +310,7 @@ namespace QuanLyThuMua
             _lbTongTienPhaiTra.Text = $"{tienThuMuaConLai:#,##0} - {tienTamUngConNo:#,##0} = {tongTienPhaiTra:#,##0} VND";
         }
 
-        public void XuatExcelThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        public void XuatExcelThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
         {
             try
             {
@@ -317,15 +320,15 @@ namespace QuanLyThuMua
 
                 //if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    var dsThuMua = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
-                    var dsTamUng = GetTamUngs(fromTime, toTime, customerId, payNow);
+                    var dsThuMua = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow, customerInfo);
+                    var dsTamUng = GetTamUngs(fromTime, toTime, customerId, payNow, customerInfo);
 
                     using (var wb = new XLWorkbook())
                     {
                         var wsThongKe = wb.Worksheets.Add("ThongKe");
                         var wsThuMua = wb.Worksheets.Add("ThuMua");
                         var wsTamUng = wb.Worksheets.Add("TamUng");
-                        if (customerId != null && customerId != 0)
+                        if (customerInfo != null && customerInfo.Count == 1)
                         {
                             #region Tạo sheet thống kê
                             CustomerModel _customerInfo = new CustomerModel();
@@ -350,7 +353,7 @@ namespace QuanLyThuMua
                             GlobalVariable.ConnectionDb.Execute(@"Update tamung set PaidDate = @PaidDate, Payed = 1 where Id = @Id", listUpdateTamUngThanhToan);
                             #endregion
 
-                            _customerInfo = GlobalVariable.ConnectionDb.Query<CustomerModel>($"select * from customerinfo where Id = {customerId}").First();
+                            _customerInfo = GlobalVariable.ConnectionDb.Query<CustomerModel>($"select * from customerinfo where Id = {customerInfo[0].Id}").First();
                             double klCaoSu = dsThuMua.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
                             double klDieu = dsThuMua.Where(x => x.Type == "Điều").Sum(x => x.Weight);
 
@@ -564,7 +567,7 @@ namespace QuanLyThuMua
                         }
                         else
                         {
-                            MessageBox.Show("Chưa chọn tên khách hàng. Mời chọn lại.", "CẢNH BÁO", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                            MessageBox.Show("Chưa chọn tên khách hàng, hoặc chọn nhiều hơn 1 khách hàng (chỉ được chọn duy nhất 1 khách hàng để thanh toán). Mời chọn lại.", "CẢNH BÁO", buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -575,7 +578,7 @@ namespace QuanLyThuMua
             }
         }
 
-        public void XuatExcel(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        public void XuatExcel(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
         {
             try
             {
@@ -585,7 +588,7 @@ namespace QuanLyThuMua
 
                 //if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    var dsThuMua = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow);
+                    var dsThuMua = GetPurchaseModels(fromTime, toTime, customerId, kieu, payNow, customerInfo);
 
                     using (var wb = new XLWorkbook())
                     {
@@ -622,7 +625,7 @@ namespace QuanLyThuMua
 
                         wsThuMua.Columns().AdjustToContents();
                         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        var dsTamUng = GetTamUngs(fromTime, toTime, customerId, payNow);
+                        var dsTamUng = GetTamUngs(fromTime, toTime, customerId, payNow, customerInfo);
                         DataTable dtTamUng = new DataTable();
                         dtTamUng.Columns.Add("Ngày Ứng", typeof(DateTime));
                         dtTamUng.Columns.Add("Khách Hàng", typeof(string));
@@ -681,7 +684,7 @@ namespace QuanLyThuMua
             }
         }
 
-        public List<PurchaseModel> GetPurchaseModels(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        public List<PurchaseModel> GetPurchaseModels(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerList)
         {
             string query = $"select purchaseinfo.*, customerinfo.Name as Name, " +
                 $"case when purchaseinfo.MuType = 1 then 'Mủ chén' " +
@@ -691,10 +694,10 @@ namespace QuanLyThuMua
                 $" from purchaseinfo inner JOIN customerinfo ON customerinfo.Id = purchaseinfo.CustomerId" +
                 $" where purchaseinfo.CreatedDate > '{fromTime:yyyy-MM-dd HH:mm:ss}' and purchaseinfo.CreatedDate < '{toTime:yyyy-MM-dd HH:mm:ss}' and Actived = 1";
 
-            if (customerId != null && customerId != 0)
-            {
-                query = query + $" and purchaseinfo.CustomerId = {customerId.Value}";
-            }
+            //if (customerId != null && customerId != 0)
+            //{
+            //    query = query + $" and purchaseinfo.CustomerId = {customerId.Value}";
+            //}
 
             if (!string.IsNullOrWhiteSpace(kieu) && kieu != "Tất Cả")
             {
@@ -706,11 +709,29 @@ namespace QuanLyThuMua
                 query = query + $" and purchaseinfo.PayNow = {payNow}";
             }
 
+            if (customerList != null && customerList.Count > 0)
+            {
+                string _where = null;
+                foreach (var item in customerList)
+                {
+                    if (_where == null)
+                    {
+                        _where = _where + $"{item.Id}";
+                    }
+                    else
+                    {
+                        _where = _where + $",{item.Id}";
+                    }
+                }
+
+                query = query + $" and purchaseinfo.CustomerId in ( {_where} )";
+            }
+
             var result = GlobalVariable.ConnectionDb.Query<PurchaseModel>(query + " order by Id desc").AsList();
             return result;
         }
 
-        public List<TamUngModel> GetTamUngs(DateTime fromTime, DateTime toTime, int? customerId, int payNow)
+        public List<TamUngModel> GetTamUngs(DateTime fromTime, DateTime toTime, int? customerId, int payNow, List<CustomerModel> customerList)
         {
             string query = $"select tamung.*, customerinfo.Name as TenKhachHang" +
                 $" from tamung inner JOIN customerinfo ON customerinfo.Id = tamung.CustomerId" +
@@ -726,15 +747,32 @@ namespace QuanLyThuMua
                 query = query + $" and tamung.Payed = {payNow}";
             }
 
+            if (customerList != null && customerList.Count > 0)
+            {
+                string _where = null;
+                foreach (var item in customerList)
+                {
+                    if (_where == null)
+                    {
+                        _where = _where + $"{item.Id}";
+                    }
+                    else
+                    {
+                        _where = _where + $",{item.Id}";
+                    }
+                }
+
+                query = query + $" and tamung.CustomerId in ( {_where} )";
+            }
             var result = GlobalVariable.ConnectionDb.Query<TamUngModel>(query).AsList();
             return result;
         }
 
-        public void ThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow)
+        public void ThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
         {
             if (MessageBox.Show($"Bạn có chắc chắn muốn thanh toán?", "CẢNH BẢO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                XuatExcelThanhToan(fromTime, toTime, customerId,kieu, payNow);
+                XuatExcelThanhToan(fromTime, toTime, customerId, kieu, payNow, customerInfo);
             }
         }
 

@@ -2,12 +2,15 @@
 using System;
 using System.Windows.Forms;
 using Dapper;
+using System.Collections.Generic;
 
 namespace QuanLyThuMua
 {
     public partial class Form1 : KryptonForm
     {
         UserControl _activePage;
+        CheckedComboBox checkedListBox;
+        List<CustomerModel> lFilterCus = new List<CustomerModel>();
         string _activePageText;
 
         private System.Timers.Timer nTimer = new System.Timers.Timer();
@@ -60,8 +63,6 @@ namespace QuanLyThuMua
 
             kryptonRibbon1.SelectedTab = kryptonRibbonTab1;
 
-            _cobBaoCaoKH.SelectedIndex = 0;
-
             if (GlobalVariable.UserInfo.Role == "1")
             {
                 _btnCreatedUser.Visible = true;
@@ -73,6 +74,70 @@ namespace QuanLyThuMua
 
             _dtpFromDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             _dtpToDay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
+
+            #region ribbon custom control
+            //KryptonCheckedListBox _ck = new CheckedComboBox();
+            //_ck.Items.Add("1");
+            //_ck.Items.Add("2");
+            //_ck.Items.Add("3");
+            //_ck.Items.Add("4");
+            //_ck.Items.Add("5");
+            //_ck.Items.Add("6");
+            //_ck.Items.Add("7");
+            //_ck.Items.Add("8");
+            //_ck.Items.Add("9");
+            //_ck.Items.Add("10");
+
+            //kryptonRibbonGroupCustomControl1.CustomControl = _ck;
+
+
+            checkedListBox = new CheckedComboBox();
+            checkedListBox.ItemCheck += CheckedListBox_ItemCheck;
+
+            var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
+            checkedListBox.Items.Clear();
+
+            //checkedListBox.Items.Add(new CustomerModel()
+            //{
+            //    Name = "Tất Cả"
+            //});
+
+            foreach (var item in result)
+            {
+                checkedListBox.Items.Add(item);
+            }
+
+            //if (checkedListBox.SelectedIndex == -1)
+            //    checkedListBox.SelectedIndex = 0;
+
+            //checkedListBox.MaxDropDownItems = 5;
+            // Make the "Name" property the one to display, rather than the ToString() representation.
+            checkedListBox.DisplayMember = "Name";
+            checkedListBox.ValueSeparator = ", ";
+
+            kryptonRibbonGroupCustomControl1.CustomControl = checkedListBox;
+
+            
+            #endregion
+        }
+
+        private void CheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            CustomerModel item = checkedListBox.Items[e.Index] as CustomerModel;
+            if (e.NewValue == CheckState.Checked)
+            {
+                if (!lFilterCus.Contains(item))
+                {
+                    lFilterCus.Add(item);
+                }
+            }
+            else
+            {
+                if (lFilterCus.Contains(item))
+                {
+                    lFilterCus.Remove(item);
+                }
+            }
         }
 
         private void NTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -284,8 +349,9 @@ namespace QuanLyThuMua
 
             if (ActivePage is ucBaoCao uc)
             {
-
-                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                //string Customers = checkedListBox.GetItemChecked();
+                
+                var a = lFilterCus;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
                 {
@@ -295,7 +361,7 @@ namespace QuanLyThuMua
                 {
                     payNow = 1;
                 }
-                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, 0, _cobKieuBaoCao.Text, payNow,a);
             }
         }
 
@@ -303,7 +369,6 @@ namespace QuanLyThuMua
         {
             if (ActivePage is ucBaoCao uc)
             {
-                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
                 {
@@ -313,7 +378,7 @@ namespace QuanLyThuMua
                 {
                     payNow = 1;
                 }
-                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, 0, _cobKieuBaoCao.Text, payNow, lFilterCus);
             }
         }
 
@@ -321,21 +386,21 @@ namespace QuanLyThuMua
         {
             try
             {
-                var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
-                _cobBaoCaoKH.Items.Clear();
+                //var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
+                //_cobBaoCaoKH.Items.Clear();
 
-                _cobBaoCaoKH.Items.Add(new CustomerModel()
-                {
-                    Name = "Tất Cả"
-                });
+                //_cobBaoCaoKH.Items.Add(new CustomerModel()
+                //{
+                //    Name = "Tất Cả"
+                //});
 
-                foreach (var item in result)
-                {
-                    _cobBaoCaoKH.Items.Add(item);
-                }
+                //foreach (var item in result)
+                //{
+                //    _cobBaoCaoKH.Items.Add(item);
+                //}
 
-                if (_cobBaoCaoKH.SelectedIndex == -1)
-                    _cobBaoCaoKH.SelectedIndex = 0;
+                //if (_cobBaoCaoKH.SelectedIndex == -1)
+                //    _cobBaoCaoKH.SelectedIndex = 0;
             }
             catch { }
         }
@@ -344,7 +409,7 @@ namespace QuanLyThuMua
         {
             if (ActivePage is ucBaoCao uc)
             {
-                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                //CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
                 {
@@ -355,7 +420,8 @@ namespace QuanLyThuMua
                     payNow = 1;
                 }
 
-                uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                //uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, 0, _cobKieuBaoCao.Text, payNow, lFilterCus);
             }
         }
 

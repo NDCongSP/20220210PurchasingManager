@@ -55,10 +55,11 @@ namespace QuanLyThuMua
             cbbKH.ValueMember = "Id";
             cbbKH.DisplayMember = "Name";
         }
-        private void GetLastestPrice(string type)
+        private void GetLastestPrice(string type, int muType)
         {
             var param = new DynamicParameters();
             param.Add("@_type", type);
+            param.Add("@_mutype", muType);
             LastestPrice = GlobalVariable.ConnectionDb.QueryFirst<PriceModel>("spPriceGetLatestPrice", param, commandType: CommandType.StoredProcedure);
         }
         private int InsertTamUng(TamUngModel tamUng)
@@ -88,7 +89,7 @@ namespace QuanLyThuMua
         {
             //Initial Data
             GetListCustomer();
-            GetLastestPrice(Type);
+            //GetLastestPrice(Type,0);
             strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //This will strip just the working path name:
             //C:\Program Files\MyApplication
