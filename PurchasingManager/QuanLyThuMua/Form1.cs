@@ -63,8 +63,6 @@ namespace QuanLyThuMua
 
             kryptonRibbon1.SelectedTab = kryptonRibbonTab1;
 
-            _cobBaoCaoKH.SelectedIndex = 0;
-
             if (GlobalVariable.UserInfo.Role == "1")
             {
                 _btnCreatedUser.Visible = true;
@@ -99,10 +97,10 @@ namespace QuanLyThuMua
             var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
             checkedListBox.Items.Clear();
 
-            checkedListBox.Items.Add(new CustomerModel()
-            {
-                Name = "Tất Cả"
-            });
+            //checkedListBox.Items.Add(new CustomerModel()
+            //{
+            //    Name = "Tất Cả"
+            //});
 
             foreach (var item in result)
             {
@@ -352,7 +350,7 @@ namespace QuanLyThuMua
             if (ActivePage is ucBaoCao uc)
             {
                 //string Customers = checkedListBox.GetItemChecked();
-                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                
                 var a = lFilterCus;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
@@ -363,7 +361,7 @@ namespace QuanLyThuMua
                 {
                     payNow = 1;
                 }
-                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                uc.CapNhat(_dtpFromDay.Value, _dtpToDay.Value, 0, _cobKieuBaoCao.Text, payNow,a);
             }
         }
 
@@ -371,7 +369,6 @@ namespace QuanLyThuMua
         {
             if (ActivePage is ucBaoCao uc)
             {
-                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
                 {
@@ -381,7 +378,7 @@ namespace QuanLyThuMua
                 {
                     payNow = 1;
                 }
-                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                uc.XuatExcel(_dtpFromDay.Value, _dtpToDay.Value, 0, _cobKieuBaoCao.Text, payNow, lFilterCus);
             }
         }
 
@@ -389,21 +386,21 @@ namespace QuanLyThuMua
         {
             try
             {
-                var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
-                _cobBaoCaoKH.Items.Clear();
+                //var result = GlobalVariable.ConnectionDb.Query<CustomerModel>("select * from customerinfo");
+                //_cobBaoCaoKH.Items.Clear();
 
-                _cobBaoCaoKH.Items.Add(new CustomerModel()
-                {
-                    Name = "Tất Cả"
-                });
+                //_cobBaoCaoKH.Items.Add(new CustomerModel()
+                //{
+                //    Name = "Tất Cả"
+                //});
 
-                foreach (var item in result)
-                {
-                    _cobBaoCaoKH.Items.Add(item);
-                }
+                //foreach (var item in result)
+                //{
+                //    _cobBaoCaoKH.Items.Add(item);
+                //}
 
-                if (_cobBaoCaoKH.SelectedIndex == -1)
-                    _cobBaoCaoKH.SelectedIndex = 0;
+                //if (_cobBaoCaoKH.SelectedIndex == -1)
+                //    _cobBaoCaoKH.SelectedIndex = 0;
             }
             catch { }
         }
@@ -412,7 +409,7 @@ namespace QuanLyThuMua
         {
             if (ActivePage is ucBaoCao uc)
             {
-                CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
+                //CustomerModel customer = _cobBaoCaoKH.SelectedItem as CustomerModel;
                 int payNow = -1;
                 if (_radioNotPayed.Checked)
                 {
@@ -423,7 +420,8 @@ namespace QuanLyThuMua
                     payNow = 1;
                 }
 
-                uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                //uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, customer?.Id, _cobKieuBaoCao.Text, payNow);
+                uc.ThanhToan(_dtpFromDay.Value, _dtpToDay.Value, 0, _cobKieuBaoCao.Text, payNow, lFilterCus);
             }
         }
 
