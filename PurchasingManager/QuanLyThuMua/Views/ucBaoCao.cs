@@ -311,7 +311,7 @@ namespace QuanLyThuMua
 
             //update thêm tính trung bình số độ, chỉ làm với mủ nước
             double avgSoDo = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Average(x=>x.Degree);
-            labAvgDegree.Text = $"{avgSoDo/10:#,##0.#}";
+            labAvgDegree.Text = $"{avgSoDo:#,##0}";
         }
 
         public void XuatExcelThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
