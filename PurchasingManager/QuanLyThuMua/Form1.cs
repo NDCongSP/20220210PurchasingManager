@@ -295,9 +295,11 @@ namespace QuanLyThuMua
 
         private void _btnThemDonGiaCaoSu_Click(object sender, EventArgs e)
         {
+            //CÓ SỐ ĐỘ
             frmDonGia form = new frmDonGia();
-            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU";
+            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU MỦ NƯỚC";
             form.PriceType = "Cao su";
+            form.MuType = 0;
             form.StartPosition = FormStartPosition.CenterParent;
             form.Owner = this;
             form.OnPriceChanged += Form_OnPriceChanged;
@@ -476,6 +478,18 @@ namespace QuanLyThuMua
                     uc.GetData();
                 }
             }
+        }
+
+        private void _btnThemDonGiaMuChen_Click(object sender, EventArgs e)
+        {
+            frmDonGia form = new frmDonGia();
+            form.TitleForm = "THÊM ĐƠN GIÁ CAO SU MỦ CHÉN";
+            form.PriceType = "Cao su";
+            form.MuType = 1;
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.Owner = this;
+            form.OnPriceChanged += Form_OnPriceChanged;
+            form.ShowDialog();
         }
     }
 }

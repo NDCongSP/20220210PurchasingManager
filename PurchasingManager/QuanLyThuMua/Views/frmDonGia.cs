@@ -98,10 +98,10 @@ namespace QuanLyThuMua
 
             if (priceInfo != null)
             {
-                if (MuType!=2)
-                {
-                    var lastestPrice = priceInfo.Where(x => x.Type == PriceType).OrderByDescending(x => x.Id);
+                var lastestPrice = priceInfo.Where(x => x.Type == PriceType && x.MuType == MuType).OrderByDescending(x => x.Id);
 
+                if (lastestPrice.Count() > 0)
+                {
                     var _first = lastestPrice.First();
 
                     if (txtPriceCaoSu.InvokeRequired)
@@ -116,27 +116,64 @@ namespace QuanLyThuMua
                         txtPriceCaoSu.Text = _first.Price.ToString();
                     }
                 }
-                else
-                {
-                    var lastestPrice = priceInfo.Where(x => x.Type == PriceType && x.MuType == MuType).OrderByDescending(x => x.Id);
 
-                    if (lastestPrice.Count()>0)
-                    {
-                        var _first = lastestPrice.First();
+                //if (MuType == 0)//mủ nước (có số độ)
+                //{
+                //    var lastestPrice = priceInfo.Where(x => x.Type == PriceType).OrderByDescending(x => x.Id);
 
-                        if (txtPriceCaoSu.InvokeRequired)
-                        {
-                            txtPriceCaoSu.Invoke(new Action(() =>
-                            {
-                                txtPriceCaoSu.Text = _first.Price.ToString();
-                            }));
-                        }
-                        else
-                        {
-                            txtPriceCaoSu.Text = _first.Price.ToString();
-                        }
-                    }
-                }
+                //    var _first = lastestPrice.First();
+
+                //    if (txtPriceCaoSu.InvokeRequired)
+                //    {
+                //        txtPriceCaoSu.Invoke(new Action(() =>
+                //        {
+                //            txtPriceCaoSu.Text = _first.Price.ToString();
+                //        }));
+                //    }
+                //    else
+                //    {
+                //        txtPriceCaoSu.Text = _first.Price.ToString();
+                //    }
+                //}
+                //else if (MuType ==1)//mủ chén
+                //{
+                //    var lastestPrice = priceInfo.Where(x => x.Type == PriceType).OrderByDescending(x => x.Id);
+
+                //    var _first = lastestPrice.First();
+
+                //    if (txtPriceCaoSu.InvokeRequired)
+                //    {
+                //        txtPriceCaoSu.Invoke(new Action(() =>
+                //        {
+                //            txtPriceCaoSu.Text = _first.Price.ToString();
+                //        }));
+                //    }
+                //    else
+                //    {
+                //        txtPriceCaoSu.Text = _first.Price.ToString();
+                //    }
+                //}
+                //else// if (MuType == 2)//mủ dây
+                //{
+                //    var lastestPrice = priceInfo.Where(x => x.Type == PriceType && x.MuType == MuType).OrderByDescending(x => x.Id);
+
+                //    if (lastestPrice.Count() > 0)
+                //    {
+                //        var _first = lastestPrice.First();
+
+                //        if (txtPriceCaoSu.InvokeRequired)
+                //        {
+                //            txtPriceCaoSu.Invoke(new Action(() =>
+                //            {
+                //                txtPriceCaoSu.Text = _first.Price.ToString();
+                //            }));
+                //        }
+                //        else
+                //        {
+                //            txtPriceCaoSu.Text = _first.Price.ToString();
+                //        }
+                //    }
+                //}
             }
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -149,13 +186,24 @@ namespace QuanLyThuMua
                     p.Add("_createdDate", dtpCaoSu.Value.ToString("yyyy-MM-dd HH:mm:ss"));
                     p.Add("_type", PriceType);
                     p.Add("_price", double.TryParse(txtPriceCaoSu.Text, out double res) ? res : 0);
-                    if (MuType!=2)
+                    if (PriceType == "Cao su")
                     {
-                        p.Add("_note", txtNoteCaosu.Text);
+                        if (MuType == 0)
+                        {
+                            p.Add("_note", $"[Mủ nước] {txtNoteCaosu.Text}");
+                        }
+                        else if (MuType == 1)
+                        {
+                            p.Add("_note", $"[Mủ chén] {txtNoteCaosu.Text}");
+                        }
+                        else
+                        {
+                            p.Add("_note", $"[Mủ dây] {txtNoteCaosu.Text}");
+                        }
                     }
                     else
                     {
-                        p.Add("_note", $"[Mủ dây] {txtNoteCaosu.Text}");
+                        p.Add("_note", $"{txtNoteCaosu.Text}");
                     }
                     p.Add("_muType", MuType);
 
