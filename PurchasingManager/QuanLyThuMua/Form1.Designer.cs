@@ -94,6 +94,7 @@ namespace QuanLyThuMua
             this.panelContainer = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonRibbonGroupButton1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroupButton2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this._btnThemDonGiaMuChen = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContainer)).BeginInit();
             this.SuspendLayout();
@@ -110,7 +111,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonTab4,
             this.kryptonRibbonTabAccount,
             this.kryptonRibbonTab5});
-            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab1;
+            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab3;
             this.kryptonRibbon1.Size = new System.Drawing.Size(1924, 145);
             this.kryptonRibbon1.StateCommon.RibbonGeneral.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRibbon1.TabIndex = 0;
@@ -245,7 +246,7 @@ namespace QuanLyThuMua
             // _btnThemDonGiaCaoSu
             // 
             this._btnThemDonGiaCaoSu.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnThemDonGiaCaoSu.ImageLarge")));
-            this._btnThemDonGiaCaoSu.TextLine1 = "Thêm đơn giá cao su";
+            this._btnThemDonGiaCaoSu.TextLine1 = "Thêm đơn giá mủ nước";
             this._btnThemDonGiaCaoSu.Click += new System.EventHandler(this._btnThemDonGiaCaoSu_Click);
             // 
             // _btnThemDonGiaMuDay
@@ -257,6 +258,7 @@ namespace QuanLyThuMua
             // kryptonRibbonGroupTriple13
             // 
             this.kryptonRibbonGroupTriple13.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this._btnThemDonGiaMuChen,
             this._btnThemDonGiaDieu});
             // 
             // _btnThemDonGiaDieu
@@ -445,6 +447,12 @@ namespace QuanLyThuMua
             this.panelContainer.TabIndex = 1;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
             // 
+            // _btnThemDonGiaMuChen
+            // 
+            this._btnThemDonGiaMuChen.ImageLarge = ((System.Drawing.Image)(resources.GetObject("_btnThemDonGiaMuChen.ImageLarge")));
+            this._btnThemDonGiaMuChen.TextLine1 = "Thêm đơn giá mủ chén";
+            this._btnThemDonGiaMuChen.Click += new System.EventHandler(this._btnThemDonGiaMuChen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -527,6 +535,7 @@ namespace QuanLyThuMua
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines kryptonRibbonGroupLines1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupCustomControl kryptonRibbonGroupCustomControl1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLabel kryptonRibbonGroupLabel5;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton _btnThemDonGiaMuChen;
     }
 }
 

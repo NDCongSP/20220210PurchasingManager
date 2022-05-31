@@ -101,7 +101,16 @@ namespace QuanLyThuMua
             param.Add("@payNow", purchaseModel.PayNow);
             param.Add("@muType", purchaseModel.MuType);
             param.Add("@degree", purchaseModel.Degree);
-            param.Add("@note", purchaseModel.Note);
+
+            if (purchaseModel.Type=="Cao su")
+            {
+                param.Add("@note", purchaseModel.MuType == 0 ? $"[Mủ nước] {purchaseModel.Note}" : purchaseModel.MuType == 1 ? $"[Mủ chén] {purchaseModel.Note}" : $"[Mủ dây] {purchaseModel.Note}");
+            }
+            else
+            {
+                param.Add("@note", purchaseModel.Note);
+            }
+            
             return GlobalVariable.ConnectionDb.Execute("spPurchaseInsert", param, commandType: CommandType.StoredProcedure);
         }
         private void LoadTemplate()
@@ -268,6 +277,10 @@ namespace QuanLyThuMua
             if (cbb.Text == "Mủ dây")
             {
                 GetLastestPrice(Type, 2);
+            }
+            else if (cbb.Text == "Mủ chén")
+            {
+                GetLastestPrice(Type, 1);
             }
             else
             {
