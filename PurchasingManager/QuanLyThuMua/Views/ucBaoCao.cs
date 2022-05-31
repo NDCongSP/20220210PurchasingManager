@@ -35,7 +35,7 @@ namespace QuanLyThuMua
 
             _dgBaoCao.Focus();
 
-            kryptonNavigator1.SelectedIndex = 2;
+            kryptonNavigator1.SelectedIndex = 0;
 
             _chart1.Series = new SeriesCollection();
             _chart1.LegendLocation = LegendLocation.Right;
@@ -308,6 +308,10 @@ namespace QuanLyThuMua
 
             double tongTienPhaiTra = tienThuMuaConLai - tienTamUngConNo;
             _lbTongTienPhaiTra.Text = $"{tienThuMuaConLai:#,##0} - {tienTamUngConNo:#,##0} = {tongTienPhaiTra:#,##0} VND";
+
+            //update thêm tính trung bình số độ, chỉ làm với mủ nước
+            double avgSoDo = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Average(x=>x.Degree);
+            labAvgDegree.Text = $"{avgSoDo/10:#,##0.#}";
         }
 
         public void XuatExcelThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
