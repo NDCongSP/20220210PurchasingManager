@@ -75,6 +75,9 @@ namespace QuanLyThuMua
             this._radioPayNowTotal = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
             this._radioPayed = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
             this._radioNotPayed = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupRadioButton();
+            this.kryptonRibbonGroupLines1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
+            this.kryptonRibbonGroupCustomControl1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupCustomControl();
+            this.kryptonRibbonGroupLabel5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLabel();
             this.kryptonRibbonGroup5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupTriple8 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
             this._btnCapNhatBaoCao = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
@@ -91,9 +94,6 @@ namespace QuanLyThuMua
             this.panelContainer = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonRibbonGroupButton1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroupButton2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonGroupLines1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
-            this.kryptonRibbonGroupCustomControl1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupCustomControl();
-            this.kryptonRibbonGroupLabel5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonRibbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContainer)).BeginInit();
             this.SuspendLayout();
@@ -110,8 +110,7 @@ namespace QuanLyThuMua
             this.kryptonRibbonTab4,
             this.kryptonRibbonTabAccount,
             this.kryptonRibbonTab5});
-            this.kryptonRibbon1.SelectedContext = null;
-            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab4;
+            this.kryptonRibbon1.SelectedTab = this.kryptonRibbonTab1;
             this.kryptonRibbon1.Size = new System.Drawing.Size(1924, 145);
             this.kryptonRibbon1.StateCommon.RibbonGeneral.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRibbon1.TabIndex = 0;
@@ -368,6 +367,20 @@ namespace QuanLyThuMua
             // 
             this._radioNotPayed.TextLine1 = "Chưa Thanh Toán";
             // 
+            // kryptonRibbonGroupLines1
+            // 
+            this.kryptonRibbonGroupLines1.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this.kryptonRibbonGroupCustomControl1,
+            this.kryptonRibbonGroupLabel5});
+            // 
+            // kryptonRibbonGroupCustomControl1
+            // 
+            this.kryptonRibbonGroupCustomControl1.CustomControl = null;
+            // 
+            // kryptonRibbonGroupLabel5
+            // 
+            this.kryptonRibbonGroupLabel5.TextLine1 = "Khách hàng";
+            // 
             // kryptonRibbonGroup5
             // 
             this.kryptonRibbonGroup5.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
@@ -431,20 +444,6 @@ namespace QuanLyThuMua
             this.panelContainer.Size = new System.Drawing.Size(1924, 916);
             this.panelContainer.TabIndex = 1;
             this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
-            // 
-            // kryptonRibbonGroupLines1
-            // 
-            this.kryptonRibbonGroupLines1.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.kryptonRibbonGroupCustomControl1,
-            this.kryptonRibbonGroupLabel5});
-            // 
-            // kryptonRibbonGroupCustomControl1
-            // 
-            this.kryptonRibbonGroupCustomControl1.CustomControl = null;
-            // 
-            // kryptonRibbonGroupLabel5
-            // 
-            this.kryptonRibbonGroupLabel5.TextLine1 = "Khách hàng";
             // 
             // Form1
             // 

@@ -49,7 +49,7 @@ namespace QuanLyThuMua
             this.txtPriceCaoSu.Location = new System.Drawing.Point(320, 124);
             this.txtPriceCaoSu.Name = "txtPriceCaoSu";
             this.txtPriceCaoSu.Size = new System.Drawing.Size(234, 29);
-            this.txtPriceCaoSu.TabIndex = 4;
+            this.txtPriceCaoSu.TabIndex = 2;
             this.txtPriceCaoSu.Text = "0";
             this.txtPriceCaoSu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -98,7 +98,7 @@ namespace QuanLyThuMua
             this.txtNoteCaosu.Multiline = true;
             this.txtNoteCaosu.Name = "txtNoteCaosu";
             this.txtNoteCaosu.Size = new System.Drawing.Size(533, 90);
-            this.txtNoteCaosu.TabIndex = 5;
+            this.txtNoteCaosu.TabIndex = 3;
             // 
             // dtpCaoSu
             // 
@@ -108,7 +108,7 @@ namespace QuanLyThuMua
             this.dtpCaoSu.Location = new System.Drawing.Point(21, 124);
             this.dtpCaoSu.Name = "dtpCaoSu";
             this.dtpCaoSu.Size = new System.Drawing.Size(227, 29);
-            this.dtpCaoSu.TabIndex = 3;
+            this.dtpCaoSu.TabIndex = 1;
             // 
             // label2
             // 
@@ -140,7 +140,7 @@ namespace QuanLyThuMua
             this.btnSave.Location = new System.Drawing.Point(12, 343);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(579, 99);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

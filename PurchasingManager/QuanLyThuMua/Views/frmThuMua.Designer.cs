@@ -93,7 +93,7 @@ namespace QuanLyThuMua
             this.txtKL.Location = new System.Drawing.Point(831, 210);
             this.txtKL.Name = "txtKL";
             this.txtKL.Size = new System.Drawing.Size(246, 29);
-            this.txtKL.TabIndex = 11;
+            this.txtKL.TabIndex = 3;
             // 
             // ckbPayNow
             // 
@@ -102,7 +102,7 @@ namespace QuanLyThuMua
             this.ckbPayNow.Name = "ckbPayNow";
             this.ckbPayNow.Size = new System.Drawing.Size(183, 29);
             this.ckbPayNow.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbPayNow.TabIndex = 4;
+            this.ckbPayNow.TabIndex = 5;
             this.ckbPayNow.Values.Text = "Thanh toán ngay";
             // 
             // txtThanhtien
@@ -114,7 +114,7 @@ namespace QuanLyThuMua
             this.txtThanhtien.Name = "txtThanhtien";
             this.txtThanhtien.ReadOnly = true;
             this.txtThanhtien.Size = new System.Drawing.Size(395, 53);
-            this.txtThanhtien.TabIndex = 9;
+            this.txtThanhtien.TabIndex = 10;
             this.txtThanhtien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDongia
@@ -125,7 +125,7 @@ namespace QuanLyThuMua
             this.txtDongia.Location = new System.Drawing.Point(831, 268);
             this.txtDongia.Name = "txtDongia";
             this.txtDongia.Size = new System.Drawing.Size(246, 29);
-            this.txtDongia.TabIndex = 5;
+            this.txtDongia.TabIndex = 11;
             this.txtDongia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtSodo
@@ -135,7 +135,7 @@ namespace QuanLyThuMua
             this.txtSodo.Location = new System.Drawing.Point(215, 268);
             this.txtSodo.Name = "txtSodo";
             this.txtSodo.Size = new System.Drawing.Size(184, 29);
-            this.txtSodo.TabIndex = 2;
+            this.txtSodo.TabIndex = 4;
             this.txtSodo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnSave
@@ -195,7 +195,7 @@ namespace QuanLyThuMua
             this.cbbLoaimu.Name = "cbbLoaimu";
             this.cbbLoaimu.Size = new System.Drawing.Size(395, 27);
             this.cbbLoaimu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoaimu.TabIndex = 1;
+            this.cbbLoaimu.TabIndex = 2;
             this.cbbLoaimu.Text = "Mủ nước";
             // 
             // cbbKH
@@ -205,7 +205,7 @@ namespace QuanLyThuMua
             this.cbbKH.Name = "cbbKH";
             this.cbbKH.Size = new System.Drawing.Size(862, 27);
             this.cbbKH.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbKH.TabIndex = 0;
+            this.cbbKH.TabIndex = 1;
             // 
             // label6
             // 
