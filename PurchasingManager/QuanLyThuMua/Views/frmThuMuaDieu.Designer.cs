@@ -85,7 +85,7 @@ namespace QuanLyThuMua
             this.ckbPayNow.Name = "ckbPayNow";
             this.ckbPayNow.Size = new System.Drawing.Size(183, 29);
             this.ckbPayNow.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbPayNow.TabIndex = 4;
+            this.ckbPayNow.TabIndex = 3;
             this.ckbPayNow.Values.Text = "Thanh toán ngay";
             // 
             // txtThanhtien
@@ -97,7 +97,7 @@ namespace QuanLyThuMua
             this.txtThanhtien.Name = "txtThanhtien";
             this.txtThanhtien.ReadOnly = true;
             this.txtThanhtien.Size = new System.Drawing.Size(395, 53);
-            this.txtThanhtien.TabIndex = 9;
+            this.txtThanhtien.TabIndex = 10;
             this.txtThanhtien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDongia
@@ -108,7 +108,7 @@ namespace QuanLyThuMua
             this.txtDongia.Location = new System.Drawing.Point(743, 212);
             this.txtDongia.Name = "txtDongia";
             this.txtDongia.Size = new System.Drawing.Size(327, 29);
-            this.txtDongia.TabIndex = 5;
+            this.txtDongia.TabIndex = 11;
             this.txtDongia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnSave
@@ -121,10 +121,9 @@ namespace QuanLyThuMua
             this.btnSave.Location = new System.Drawing.Point(648, 517);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(422, 112);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
-        
             // 
             // rtbNote
             // 
@@ -133,7 +132,7 @@ namespace QuanLyThuMua
             this.rtbNote.Location = new System.Drawing.Point(208, 355);
             this.rtbNote.Name = "rtbNote";
             this.rtbNote.Size = new System.Drawing.Size(862, 96);
-            this.rtbNote.TabIndex = 6;
+            this.rtbNote.TabIndex = 4;
             this.rtbNote.Text = "";
             // 
             // txtKL
@@ -143,7 +142,7 @@ namespace QuanLyThuMua
             this.txtKL.Location = new System.Drawing.Point(208, 212);
             this.txtKL.Name = "txtKL";
             this.txtKL.Size = new System.Drawing.Size(184, 29);
-            this.txtKL.TabIndex = 3;
+            this.txtKL.TabIndex = 2;
             this.txtKL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtDiachi
@@ -175,7 +174,7 @@ namespace QuanLyThuMua
             this.cbbKH.Name = "cbbKH";
             this.cbbKH.Size = new System.Drawing.Size(862, 27);
             this.cbbKH.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbKH.TabIndex = 0;
+            this.cbbKH.TabIndex = 1;
             // 
             // label6
             // 

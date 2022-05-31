@@ -36,12 +36,16 @@ namespace QuanLyThuMua
 
         private void GvPurchaseList_MouseClick(object sender, MouseEventArgs e)
         {
-            KryptonDataGridView ccc = (KryptonDataGridView)sender;
-            DataGridViewSelectedRowCollection rowSelect = ccc.SelectedRows;
+            try
+            {
+                KryptonDataGridView ccc = (KryptonDataGridView)sender;
+                DataGridViewSelectedRowCollection rowSelect = ccc.SelectedRows;
 
-           GlobalVariable.PurchaseInfo = (PurchaseModel)rowSelect[0].DataBoundItem;//get giá trị của row hiện tại
+                GlobalVariable.PurchaseInfo = (PurchaseModel)rowSelect[0].DataBoundItem;//get giá trị của row hiện tại
 
-            Console.WriteLine($"Purchase id = {GlobalVariable.PurchaseInfo}");
+                Console.WriteLine($"Purchase id = {GlobalVariable.PurchaseInfo}");
+            }
+            catch { }
         }
 
         private void GvPurchaseList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
