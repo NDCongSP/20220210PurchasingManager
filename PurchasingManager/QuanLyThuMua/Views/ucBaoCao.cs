@@ -310,8 +310,18 @@ namespace QuanLyThuMua
             _lbTongTienPhaiTra.Text = $"{tienThuMuaConLai:#,##0} - {tienTamUngConNo:#,##0} = {tongTienPhaiTra:#,##0} VND";
 
             //update thêm tính trung bình số độ, chỉ làm với mủ nước
-            double avgSoDo = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Average(x => x.Degree);
-            labAvgDegree.Text = $"{avgSoDo:#,##0}";
+            //lấy tổng số kg: A
+            //tổng tích: số độ x số ký (B). (Từng record riêng)
+            //Trung binh độ = B/A
+            double sumDegree = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Sum(x => x.Degree);
+            double sumTongTich = 0;
+            foreach (var item in _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0))
+            {
+                sumTongTich = sumTongTich + (item.Degree * item.Weight);
+            }
+            //double avgSoDo = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Average(x => x.Degree);
+            double avgSoDo = sumTongTich / sumDegree;
+            labAvgDegree.Text = $"{avgSoDo:#,##0.##}";
         }
 
         public void XuatExcelThanhToan(DateTime fromTime, DateTime toTime, int? customerId, string kieu, int payNow, List<CustomerModel> customerInfo)
