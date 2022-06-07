@@ -313,14 +313,14 @@ namespace QuanLyThuMua
             //lấy tổng số kg: A
             //tổng tích: số độ x số ký (B). (Từng record riêng)
             //Trung binh độ = B/A
-            double sumDegree = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Sum(x => x.Degree);
+            double sumWeight = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Sum(x => x.Weight);
             double sumTongTich = 0;
             foreach (var item in _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0))
             {
                 sumTongTich = sumTongTich + (item.Degree * item.Weight);
             }
             //double avgSoDo = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Average(x => x.Degree);
-            double avgSoDo = sumTongTich / sumDegree;
+            double avgSoDo = sumTongTich / sumWeight;
             labAvgDegree.Text = $"{avgSoDo:#,##0.##}";
         }
 
