@@ -29,17 +29,29 @@ namespace QuanLyThuMua
         public string Name { get; set; }
         [DisplayName("Ngày tạo")]
         public DateTime CreatedDate { get; set; }
+
         [DisplayName("Loại")]
         public string Type { get; set; }
+
+        [DisplayName("Loại mủ")]
+        public string MuTypeName { get; set; }
+
         [DisplayName("Trọng lượng")]
         public double Weight { get; set; }
-        [Browsable(false)]
-        public int PriceId { get; set; }
+
+        [DisplayName("Số độ")]
+        public double Degree { get; set; }
+       
         [DisplayName("Đơn giá")]
         public double Price { get; set; }
-        [Browsable(false)]
-        public int PayNow { get; set; }
-
+        private double _money;
+        [DisplayName("Thành tiền")]
+        public double Money
+        {
+            get { return Math.Round(Price * (Degree == 0 ? 1 : Degree / 10) * Weight, 2); }
+            set { _money = value; }
+        }
+        
         private bool _customPayNow;
         [DisplayName("TT ngay")]
         public bool CustomPayNow
@@ -50,22 +62,16 @@ namespace QuanLyThuMua
                 _customPayNow = value;
             }
         }
-        [DisplayName("Loại mủ")]
-        public string MuTypeName { get; set; }
-
-        [DisplayName("Số độ")]
-        public double Degree { get; set; }
-
-        private double _money;
-        [DisplayName("Thành tiền")]
-        public double Money
-        {
-            get { return Math.Round(Price * (Degree == 0 ? 1 : Degree / 10) * Weight, 2); }
-            set { _money = value; }
-        }
 
         [DisplayName("Lưu ý")]
         public string Note { get; set; }
+
+        [Browsable(false)]
+        public int PriceId { get; set; }
+
+        [Browsable(false)]
+        public int PayNow { get; set; }
+       
         [Browsable(false)]
         public object Handle { get; set; }
 

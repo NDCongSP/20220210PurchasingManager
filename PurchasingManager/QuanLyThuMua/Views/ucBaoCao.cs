@@ -283,12 +283,26 @@ namespace QuanLyThuMua
             labFromDate.Text = $"{_fromTime:dd/MM/yyyy HH:mm:ss}";
             labToDate.Text = $"{_toTime:dd/MM/yyyy HH:mm:ss}";
 
-            double klCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
+            double klMuNuoc = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Sum(x => x.Weight);
+            double klMuChen = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 1).Sum(x => x.Weight);
+            double klMuDay = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 2).Sum(x => x.Weight);
+
+            double klCaoSu = klMuNuoc + klMuChen + klMuDay; // _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Weight);
+
             double klDieu = _purchaseModels.Where(x => x.Type == "Điều").Sum(x => x.Weight);
+            labKlMuNuoc.Text = $"{klMuNuoc:#,##0.00} Kg";
+            labKlMuChen.Text = $"{klMuChen:#,##0.00} Kg";
+            labKlMuDay.Text = $"{klMuDay:#,##0.00} Kg";
             _lbKLCaoSu.Text = $"{klCaoSu:#,##0.00} Kg";
             _lbKLDieu.Text = $"{klDieu:#,##0.00} Kg";
 
-            double tongTienCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Money);
+            double tongTienMuNuoc = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 0).Sum(x => x.Money);
+            double tongTienMuChen = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 1).Sum(x => x.Money);
+            double tongTienMuDay = _purchaseModels.Where(x => x.Type == "Cao su" && x.MuType == 2).Sum(x => x.Money);
+
+            double tongTienCaoSu = tongTienMuNuoc + tongTienMuChen + tongTienMuDay;
+            //double tongTienCaoSu = _purchaseModels.Where(x => x.Type == "Cao su").Sum(x => x.Money);
+
             double tongTienDieu = _purchaseModels.Where(x => x.Type == "Điều").Sum(x => x.Money);
             double tongTienThuMua = _purchaseModels.Sum(x => x.Money);
             double tienThuMuaDaThanhToan = _purchaseModels.Where(x => x.PayNow == 1).Sum(x => x.Money);
@@ -298,6 +312,9 @@ namespace QuanLyThuMua
             _lbTienThuMuaConLai.Text = $"{tienThuMuaConLai:#,##0} VND";
             labTienCaoSu.Text = $"{tongTienCaoSu:#,##0} VND";
             labTienDieu.Text = $"{tongTienDieu:#,##0} VND";
+            labTienMuNuoc.Text = $"{tongTienMuNuoc:#,##0} VND";
+            labTienMuChen.Text = $"{tongTienMuChen:#,##0} VND";
+            labTienMuDay.Text = $"{tongTienMuDay:#,##0} VND";
 
             double tongTienTamUng = _tamUngModels.Sum(x => x.Money);
             double tienTamUngDaTra = _tamUngModels.Where(x => x.Payed == 1).Sum(X => X.Money);
@@ -512,18 +529,18 @@ namespace QuanLyThuMua
                                 dtThuMua.Columns.Add("Ngày Mua", typeof(DateTime));
                                 dtThuMua.Columns.Add("Kiểu", typeof(string));
                                 dtThuMua.Columns.Add("Khách Hàng", typeof(string));
+                                dtThuMua.Columns.Add("Kiểu Mủ", typeof(string));
                                 dtThuMua.Columns.Add("Khối Lượng", typeof(double));
+                                dtThuMua.Columns.Add("Độ", typeof(double));
                                 dtThuMua.Columns.Add("Đơn Giá", typeof(double));
                                 dtThuMua.Columns.Add("Thành Tiền", typeof(double));
                                 dtThuMua.Columns.Add("Thanh Toán", typeof(string));
-                                dtThuMua.Columns.Add("Kiểu Mủ", typeof(string));
-                                dtThuMua.Columns.Add("Độ", typeof(double));
                                 dtThuMua.Columns.Add("Ghi Chú", typeof(string));
 
                                 foreach (var item in dsThuMua.Where(x => x.CustomerId == itemCustomer.Id))
                                 {
-                                    dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.Name, item.Weight, item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "",
-                                        item.MuTypeName, item.Degree, item.Note);
+                                    dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.Name, item.MuTypeName, item.Weight, item.Degree, 
+                                        item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "", item.Note);
                                 }
                                 wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
                                 wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
@@ -864,18 +881,18 @@ namespace QuanLyThuMua
                         dtThuMua.Columns.Add("Ngày Mua", typeof(DateTime));
                         dtThuMua.Columns.Add("Kiểu", typeof(string));
                         dtThuMua.Columns.Add("Khách Hàng", typeof(string));
+                        dtThuMua.Columns.Add("Kiểu Mủ", typeof(string));
                         dtThuMua.Columns.Add("Khối Lượng", typeof(double));
+                        dtThuMua.Columns.Add("Độ", typeof(double));
                         dtThuMua.Columns.Add("Đơn Giá", typeof(double));
                         dtThuMua.Columns.Add("Thành Tiền", typeof(double));
                         dtThuMua.Columns.Add("Thanh Toán", typeof(string));
-                        dtThuMua.Columns.Add("Kiểu Mủ", typeof(string));
-                        dtThuMua.Columns.Add("Độ", typeof(double));
                         dtThuMua.Columns.Add("Ghi Chú", typeof(string));
 
                         foreach (var item in dsThuMua)
                         {
-                            dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.Name, item.Weight, item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "",
-                                item.MuTypeName, item.Degree, item.Note);
+                            dtThuMua.Rows.Add(item.CreatedDate, item.Type, item.Name, item.MuTypeName, item.Weight, item.Degree,
+                                item.Price, item.Money, item.PayNow == 1 ? "Đã thanh toán" : "", item.Note);
                         }
                         wsThuMua.Cell("A1").Value = "DANH SÁCH THU MUA";
                         wsThuMua.Range(1, 1, 1, dtThuMua.Columns.Count).Merge().AddToNamed("Titles");
