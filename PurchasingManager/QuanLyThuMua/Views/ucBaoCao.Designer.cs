@@ -30,17 +30,17 @@ namespace QuanLyThuMua
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.kryptonPage3 = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -66,10 +66,16 @@ namespace QuanLyThuMua
             this.label4 = new System.Windows.Forms.Label();
             this.labTienCaoSu = new System.Windows.Forms.Label();
             this.labTienDieu = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.labKlMuDay = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.labKlMuChen = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.labKlMuNuoc = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this._lbKLCaoSu = new System.Windows.Forms.Label();
             this._lbKLDieu = new System.Windows.Forms.Label();
@@ -109,6 +115,12 @@ namespace QuanLyThuMua
             this.kryptonDataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xacNhanDaThuHoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labTienMuNuoc = new System.Windows.Forms.Label();
+            this.labTienMuChen = new System.Windows.Forms.Label();
+            this.labTienMuDay = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -213,9 +225,9 @@ namespace QuanLyThuMua
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this._chart1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(519, 15);
+            this.groupBox4.Location = new System.Drawing.Point(522, 7);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1479, 384);
+            this.groupBox4.Size = new System.Drawing.Size(1479, 394);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Khối lượng (Kg)";
@@ -225,7 +237,7 @@ namespace QuanLyThuMua
             this._chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._chart1.Location = new System.Drawing.Point(3, 25);
             this._chart1.Name = "_chart1";
-            this._chart1.Size = new System.Drawing.Size(1473, 356);
+            this._chart1.Size = new System.Drawing.Size(1473, 366);
             this._chart1.TabIndex = 0;
             this._chart1.Text = "cartesianChart1";
             // 
@@ -247,9 +259,9 @@ namespace QuanLyThuMua
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.groupBox1.Location = new System.Drawing.Point(13, 15);
+            this.groupBox1.Location = new System.Drawing.Point(13, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 1237);
+            this.groupBox1.Size = new System.Drawing.Size(500, 1245);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống Kê";
@@ -259,7 +271,7 @@ namespace QuanLyThuMua
             this.labAvgDegree.AutoSize = true;
             this.labAvgDegree.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labAvgDegree.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labAvgDegree.Location = new System.Drawing.Point(334, 638);
+            this.labAvgDegree.Location = new System.Drawing.Point(340, 675);
             this.labAvgDegree.Name = "labAvgDegree";
             this.labAvgDegree.Size = new System.Drawing.Size(21, 24);
             this.labAvgDegree.TabIndex = 19;
@@ -268,33 +280,33 @@ namespace QuanLyThuMua
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label5.Location = new System.Drawing.Point(12, 638);
+            this.label5.Location = new System.Drawing.Point(12, 675);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(325, 24);
+            this.label5.Size = new System.Drawing.Size(264, 20);
             this.label5.TabIndex = 19;
             this.label5.Text = "Trung bình số độ (chỉ có ở mủ nước):";
             // 
             // labToDate
             // 
             this.labToDate.AutoSize = true;
-            this.labToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labToDate.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labToDate.Location = new System.Drawing.Point(139, 79);
+            this.labToDate.Location = new System.Drawing.Point(139, 58);
             this.labToDate.Name = "labToDate";
-            this.labToDate.Size = new System.Drawing.Size(22, 24);
+            this.labToDate.Size = new System.Drawing.Size(17, 20);
             this.labToDate.TabIndex = 30;
             this.labToDate.Text = "//";
             // 
             // labFromDate
             // 
             this.labFromDate.AutoSize = true;
-            this.labFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labFromDate.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labFromDate.Location = new System.Drawing.Point(139, 38);
+            this.labFromDate.Location = new System.Drawing.Point(139, 26);
             this.labFromDate.Name = "labFromDate";
-            this.labFromDate.Size = new System.Drawing.Size(22, 24);
+            this.labFromDate.Size = new System.Drawing.Size(17, 20);
             this.labFromDate.TabIndex = 29;
             this.labFromDate.Text = "//";
             // 
@@ -308,9 +320,9 @@ namespace QuanLyThuMua
             this.groupBox3.Controls.Add(this._lbConNo);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.groupBox3.Location = new System.Drawing.Point(252, 130);
+            this.groupBox3.Location = new System.Drawing.Point(6, 556);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(240, 505);
+            this.groupBox3.Size = new System.Drawing.Size(472, 106);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tạm ứng";
@@ -318,66 +330,66 @@ namespace QuanLyThuMua
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label25.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label25.Location = new System.Drawing.Point(6, 38);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(95, 24);
+            this.label25.Size = new System.Drawing.Size(79, 20);
             this.label25.TabIndex = 18;
             this.label25.Text = "Tổng tiền:";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label24.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label24.Location = new System.Drawing.Point(6, 102);
+            this.label24.Location = new System.Drawing.Point(160, 38);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(63, 24);
+            this.label24.Size = new System.Drawing.Size(57, 20);
             this.label24.TabIndex = 19;
             this.label24.Text = "Đã trả:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label23.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label23.Location = new System.Drawing.Point(6, 166);
+            this.label23.Location = new System.Drawing.Point(310, 38);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(105, 24);
+            this.label23.Size = new System.Drawing.Size(98, 20);
             this.label23.TabIndex = 20;
             this.label23.Text = "Còn nợ (b):";
             // 
             // _lbTongTienTamUng
             // 
             this._lbTongTienTamUng.AutoSize = true;
-            this._lbTongTienTamUng.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbTongTienTamUng.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._lbTongTienTamUng.ForeColor = System.Drawing.SystemColors.MenuText;
             this._lbTongTienTamUng.Location = new System.Drawing.Point(6, 70);
             this._lbTongTienTamUng.Name = "_lbTongTienTamUng";
-            this._lbTongTienTamUng.Size = new System.Drawing.Size(70, 24);
+            this._lbTongTienTamUng.Size = new System.Drawing.Size(56, 20);
             this._lbTongTienTamUng.TabIndex = 23;
             this._lbTongTienTamUng.Text = "0 VND";
             // 
             // _lbTienTamUngDaTra
             // 
             this._lbTienTamUngDaTra.AutoSize = true;
-            this._lbTienTamUngDaTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbTienTamUngDaTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._lbTienTamUngDaTra.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbTienTamUngDaTra.Location = new System.Drawing.Point(6, 134);
+            this._lbTienTamUngDaTra.Location = new System.Drawing.Point(160, 70);
             this._lbTienTamUngDaTra.Name = "_lbTienTamUngDaTra";
-            this._lbTienTamUngDaTra.Size = new System.Drawing.Size(70, 24);
+            this._lbTienTamUngDaTra.Size = new System.Drawing.Size(56, 20);
             this._lbTienTamUngDaTra.TabIndex = 24;
             this._lbTienTamUngDaTra.Text = "0 VND";
             // 
             // _lbConNo
             // 
             this._lbConNo.AutoSize = true;
-            this._lbConNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbConNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this._lbConNo.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbConNo.Location = new System.Drawing.Point(6, 198);
+            this._lbConNo.Location = new System.Drawing.Point(310, 70);
             this._lbConNo.Name = "_lbConNo";
-            this._lbConNo.Size = new System.Drawing.Size(70, 24);
+            this._lbConNo.Size = new System.Drawing.Size(61, 20);
             this._lbConNo.TabIndex = 25;
             this._lbConNo.Text = "0 VND";
             // 
@@ -387,21 +399,33 @@ namespace QuanLyThuMua
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.labTienCaoSu);
             this.groupBox2.Controls.Add(this.labTienDieu);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.labTienMuDay);
             this.groupBox2.Controls.Add(this._lbKLCaoSu);
+            this.groupBox2.Controls.Add(this.labKlMuDay);
             this.groupBox2.Controls.Add(this._lbKLDieu);
             this.groupBox2.Controls.Add(this._lbTongTienThuMua);
+            this.groupBox2.Controls.Add(this.labTienMuChen);
             this.groupBox2.Controls.Add(this._lbThuMuaDaThanhToan);
+            this.groupBox2.Controls.Add(this.labKlMuChen);
+            this.groupBox2.Controls.Add(this.labTienMuNuoc);
             this.groupBox2.Controls.Add(this._lbTienThuMuaConLai);
+            this.groupBox2.Controls.Add(this.labKlMuNuoc);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.groupBox2.Location = new System.Drawing.Point(6, 130);
+            this.groupBox2.Location = new System.Drawing.Point(6, 92);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(240, 505);
+            this.groupBox2.Size = new System.Drawing.Size(472, 458);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thu mua";
@@ -409,161 +433,227 @@ namespace QuanLyThuMua
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(6, 162);
+            this.label2.Location = new System.Drawing.Point(6, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 24);
+            this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Tiền cao su:";
+            this.label2.Text = "Tổng tiền cao su:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label4.Location = new System.Drawing.Point(6, 224);
+            this.label4.Location = new System.Drawing.Point(6, 213);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 24);
+            this.label4.Size = new System.Drawing.Size(77, 20);
             this.label4.TabIndex = 16;
             this.label4.Text = "Tiền điều:";
             // 
             // labTienCaoSu
             // 
             this.labTienCaoSu.AutoSize = true;
-            this.labTienCaoSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTienCaoSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labTienCaoSu.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labTienCaoSu.Location = new System.Drawing.Point(6, 193);
+            this.labTienCaoSu.Location = new System.Drawing.Point(6, 182);
             this.labTienCaoSu.Name = "labTienCaoSu";
-            this.labTienCaoSu.Size = new System.Drawing.Size(70, 24);
+            this.labTienCaoSu.Size = new System.Drawing.Size(56, 20);
             this.labTienCaoSu.TabIndex = 17;
             this.labTienCaoSu.Text = "0 VND";
             // 
             // labTienDieu
             // 
             this.labTienDieu.AutoSize = true;
-            this.labTienDieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTienDieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labTienDieu.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.labTienDieu.Location = new System.Drawing.Point(6, 255);
+            this.labTienDieu.Location = new System.Drawing.Point(6, 244);
             this.labTienDieu.Name = "labTienDieu";
-            this.labTienDieu.Size = new System.Drawing.Size(70, 24);
+            this.labTienDieu.Size = new System.Drawing.Size(56, 20);
             this.labTienDieu.TabIndex = 18;
             this.labTienDieu.Text = "0 VND";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label16.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label16.Location = new System.Drawing.Point(234, 136);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(142, 20);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Khối lượng mủ dây:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label14.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label14.Location = new System.Drawing.Point(234, 81);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(152, 20);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Khối lượng mủ chén:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label12.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label12.Location = new System.Drawing.Point(234, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(152, 20);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Khối lượng mủ nước:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label6.Location = new System.Drawing.Point(6, 38);
+            this.label6.Location = new System.Drawing.Point(6, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(167, 24);
+            this.label6.Size = new System.Drawing.Size(176, 20);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Khối lượng cao su:";
+            this.label6.Text = "Tổng khối lượng cao su:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label7.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label7.Location = new System.Drawing.Point(6, 100);
+            this.label7.Location = new System.Drawing.Point(6, 89);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(149, 24);
+            this.label7.Size = new System.Drawing.Size(121, 20);
             this.label7.TabIndex = 6;
             this.label7.Text = "Khối lượng điều:";
+            // 
+            // labKlMuDay
+            // 
+            this.labKlMuDay.AutoSize = true;
+            this.labKlMuDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labKlMuDay.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labKlMuDay.Location = new System.Drawing.Point(234, 167);
+            this.labKlMuDay.Name = "labKlMuDay";
+            this.labKlMuDay.Size = new System.Drawing.Size(41, 20);
+            this.labKlMuDay.TabIndex = 10;
+            this.labKlMuDay.Text = "0 Kg";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label8.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(6, 286);
+            this.label8.Location = new System.Drawing.Point(6, 275);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 24);
+            this.label8.Size = new System.Drawing.Size(79, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "Tổng tiền:";
+            // 
+            // labKlMuChen
+            // 
+            this.labKlMuChen.AutoSize = true;
+            this.labKlMuChen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labKlMuChen.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labKlMuChen.Location = new System.Drawing.Point(234, 112);
+            this.labKlMuChen.Name = "labKlMuChen";
+            this.labKlMuChen.Size = new System.Drawing.Size(41, 20);
+            this.labKlMuChen.TabIndex = 10;
+            this.labKlMuChen.Text = "0 Kg";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label9.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label9.Location = new System.Drawing.Point(6, 348);
+            this.label9.Location = new System.Drawing.Point(6, 337);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(131, 24);
+            this.label9.Size = new System.Drawing.Size(115, 20);
             this.label9.TabIndex = 8;
             this.label9.Text = "Đã thanh toán:";
+            // 
+            // labKlMuNuoc
+            // 
+            this.labKlMuNuoc.AutoSize = true;
+            this.labKlMuNuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labKlMuNuoc.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labKlMuNuoc.Location = new System.Drawing.Point(234, 57);
+            this.labKlMuNuoc.Name = "labKlMuNuoc";
+            this.labKlMuNuoc.Size = new System.Drawing.Size(41, 20);
+            this.labKlMuNuoc.TabIndex = 10;
+            this.labKlMuNuoc.Text = "0 Kg";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label10.Location = new System.Drawing.Point(6, 410);
+            this.label10.Location = new System.Drawing.Point(6, 399);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 24);
+            this.label10.Size = new System.Drawing.Size(96, 20);
             this.label10.TabIndex = 9;
             this.label10.Text = "Còn lại (a):";
             // 
             // _lbKLCaoSu
             // 
             this._lbKLCaoSu.AutoSize = true;
-            this._lbKLCaoSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbKLCaoSu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._lbKLCaoSu.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbKLCaoSu.Location = new System.Drawing.Point(6, 69);
+            this._lbKLCaoSu.Location = new System.Drawing.Point(6, 57);
             this._lbKLCaoSu.Name = "_lbKLCaoSu";
-            this._lbKLCaoSu.Size = new System.Drawing.Size(52, 24);
+            this._lbKLCaoSu.Size = new System.Drawing.Size(41, 20);
             this._lbKLCaoSu.TabIndex = 10;
             this._lbKLCaoSu.Text = "0 Kg";
             // 
             // _lbKLDieu
             // 
             this._lbKLDieu.AutoSize = true;
-            this._lbKLDieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbKLDieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._lbKLDieu.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbKLDieu.Location = new System.Drawing.Point(6, 131);
+            this._lbKLDieu.Location = new System.Drawing.Point(6, 120);
             this._lbKLDieu.Name = "_lbKLDieu";
-            this._lbKLDieu.Size = new System.Drawing.Size(52, 24);
+            this._lbKLDieu.Size = new System.Drawing.Size(41, 20);
             this._lbKLDieu.TabIndex = 11;
             this._lbKLDieu.Text = "0 Kg";
             // 
             // _lbTongTienThuMua
             // 
             this._lbTongTienThuMua.AutoSize = true;
-            this._lbTongTienThuMua.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbTongTienThuMua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._lbTongTienThuMua.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbTongTienThuMua.Location = new System.Drawing.Point(6, 317);
+            this._lbTongTienThuMua.Location = new System.Drawing.Point(6, 306);
             this._lbTongTienThuMua.Name = "_lbTongTienThuMua";
-            this._lbTongTienThuMua.Size = new System.Drawing.Size(70, 24);
+            this._lbTongTienThuMua.Size = new System.Drawing.Size(56, 20);
             this._lbTongTienThuMua.TabIndex = 12;
             this._lbTongTienThuMua.Text = "0 VND";
             // 
             // _lbThuMuaDaThanhToan
             // 
             this._lbThuMuaDaThanhToan.AutoSize = true;
-            this._lbThuMuaDaThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbThuMuaDaThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this._lbThuMuaDaThanhToan.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbThuMuaDaThanhToan.Location = new System.Drawing.Point(6, 379);
+            this._lbThuMuaDaThanhToan.Location = new System.Drawing.Point(6, 368);
             this._lbThuMuaDaThanhToan.Name = "_lbThuMuaDaThanhToan";
-            this._lbThuMuaDaThanhToan.Size = new System.Drawing.Size(70, 24);
+            this._lbThuMuaDaThanhToan.Size = new System.Drawing.Size(56, 20);
             this._lbThuMuaDaThanhToan.TabIndex = 13;
             this._lbThuMuaDaThanhToan.Text = "0 VND";
             // 
             // _lbTienThuMuaConLai
             // 
             this._lbTienThuMuaConLai.AutoSize = true;
-            this._lbTienThuMuaConLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lbTienThuMuaConLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this._lbTienThuMuaConLai.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbTienThuMuaConLai.Location = new System.Drawing.Point(6, 441);
+            this._lbTienThuMuaConLai.Location = new System.Drawing.Point(6, 430);
             this._lbTienThuMuaConLai.Name = "_lbTienThuMuaConLai";
-            this._lbTienThuMuaConLai.Size = new System.Drawing.Size(70, 24);
+            this._lbTienThuMuaConLai.Size = new System.Drawing.Size(61, 20);
             this._lbTienThuMuaConLai.TabIndex = 14;
             this._lbTienThuMuaConLai.Text = "0 VND";
             // 
             // kryptonBorderEdge2
             // 
             this.kryptonBorderEdge2.AutoSize = false;
-            this.kryptonBorderEdge2.Location = new System.Drawing.Point(6, 123);
+            this.kryptonBorderEdge2.Location = new System.Drawing.Point(6, 89);
             this.kryptonBorderEdge2.Name = "kryptonBorderEdge2";
             this.kryptonBorderEdge2.Size = new System.Drawing.Size(485, 1);
             this.kryptonBorderEdge2.Text = "kryptonBorderEdge2";
@@ -571,7 +661,7 @@ namespace QuanLyThuMua
             // kryptonBorderEdge1
             // 
             this.kryptonBorderEdge1.AutoSize = false;
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(6, 665);
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(12, 702);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(485, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
@@ -581,7 +671,7 @@ namespace QuanLyThuMua
             this._lbTongTienPhaiTra.AutoSize = true;
             this._lbTongTienPhaiTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._lbTongTienPhaiTra.ForeColor = System.Drawing.SystemColors.MenuText;
-            this._lbTongTienPhaiTra.Location = new System.Drawing.Point(6, 714);
+            this._lbTongTienPhaiTra.Location = new System.Drawing.Point(12, 751);
             this._lbTongTienPhaiTra.Name = "_lbTongTienPhaiTra";
             this._lbTongTienPhaiTra.Size = new System.Drawing.Size(70, 24);
             this._lbTongTienPhaiTra.TabIndex = 28;
@@ -590,33 +680,33 @@ namespace QuanLyThuMua
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label21.Location = new System.Drawing.Point(6, 679);
+            this.label21.Location = new System.Drawing.Point(12, 716);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(215, 24);
+            this.label21.Size = new System.Drawing.Size(242, 24);
             this.label21.TabIndex = 27;
             this.label21.Text = "Tổng tiền phải trả (a - b):";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label3.Location = new System.Drawing.Point(25, 79);
+            this.label3.Location = new System.Drawing.Point(25, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 24);
+            this.label3.Size = new System.Drawing.Size(81, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Đến ngày:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(25, 38);
+            this.label1.Location = new System.Drawing.Point(25, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 24);
+            this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Từ ngày: ";
             // 
@@ -669,8 +759,8 @@ namespace QuanLyThuMua
             // colId
             // 
             this.colId.DataPropertyName = "Id";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colId.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colId.DefaultCellStyle = dataGridViewCellStyle23;
             this.colId.HeaderText = "Id";
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
@@ -679,8 +769,8 @@ namespace QuanLyThuMua
             // colCreatedDate
             // 
             this.colCreatedDate.DataPropertyName = "CreatedDate";
-            dataGridViewCellStyle13.Format = "dd/MM/yyyy HH:mm:ss";
-            this.colCreatedDate.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle24.Format = "dd/MM/yyyy HH:mm:ss";
+            this.colCreatedDate.DefaultCellStyle = dataGridViewCellStyle24;
             this.colCreatedDate.HeaderText = "Ngày Mua";
             this.colCreatedDate.Name = "colCreatedDate";
             this.colCreatedDate.ReadOnly = true;
@@ -713,8 +803,8 @@ namespace QuanLyThuMua
             // colDo
             // 
             this.colDo.DataPropertyName = "Degree";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colDo.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colDo.DefaultCellStyle = dataGridViewCellStyle25;
             this.colDo.HeaderText = "Độ";
             this.colDo.Name = "colDo";
             this.colDo.ReadOnly = true;
@@ -723,10 +813,10 @@ namespace QuanLyThuMua
             // colWeight
             // 
             this.colWeight.DataPropertyName = "Weight";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = "0";
-            this.colWeight.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "N2";
+            dataGridViewCellStyle26.NullValue = "0";
+            this.colWeight.DefaultCellStyle = dataGridViewCellStyle26;
             this.colWeight.HeaderText = "Khối Lượng";
             this.colWeight.Name = "colWeight";
             this.colWeight.ReadOnly = true;
@@ -735,9 +825,9 @@ namespace QuanLyThuMua
             // colPrice
             // 
             this.colPrice.DataPropertyName = "Price";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "#,###";
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "#,###";
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle27;
             this.colPrice.HeaderText = "Đơn Giá";
             this.colPrice.Name = "colPrice";
             this.colPrice.ReadOnly = true;
@@ -746,9 +836,9 @@ namespace QuanLyThuMua
             // Column1
             // 
             this.Column1.DataPropertyName = "Money";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "#,###";
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Format = "#,###";
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle28;
             this.Column1.HeaderText = "Thành Tiền";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -757,9 +847,9 @@ namespace QuanLyThuMua
             // colPayNow
             // 
             this.colPayNow.DataPropertyName = "CustomPayNow";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.NullValue = false;
-            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.NullValue = false;
+            this.colPayNow.DefaultCellStyle = dataGridViewCellStyle29;
             this.colPayNow.FalseValue = "0";
             this.colPayNow.HeaderText = "Thanh Toán";
             this.colPayNow.IndeterminateValue = null;
@@ -845,8 +935,8 @@ namespace QuanLyThuMua
             // kryptonDataGridViewTextBoxColumn1
             // 
             this.kryptonDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.kryptonDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.kryptonDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle30;
             this.kryptonDataGridViewTextBoxColumn1.HeaderText = "Id";
             this.kryptonDataGridViewTextBoxColumn1.Name = "kryptonDataGridViewTextBoxColumn1";
             this.kryptonDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -855,8 +945,8 @@ namespace QuanLyThuMua
             // kryptonDataGridViewTextBoxColumn2
             // 
             this.kryptonDataGridViewTextBoxColumn2.DataPropertyName = "CreatedDate";
-            dataGridViewCellStyle20.Format = "dd/MM/yyyy HH:mm:ss";
-            this.kryptonDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle31.Format = "dd/MM/yyyy HH:mm:ss";
+            this.kryptonDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle31;
             this.kryptonDataGridViewTextBoxColumn2.HeaderText = "Ngày Ứng";
             this.kryptonDataGridViewTextBoxColumn2.Name = "kryptonDataGridViewTextBoxColumn2";
             this.kryptonDataGridViewTextBoxColumn2.ReadOnly = true;
@@ -873,9 +963,9 @@ namespace QuanLyThuMua
             // kryptonDataGridViewTextBoxColumn7
             // 
             this.kryptonDataGridViewTextBoxColumn7.DataPropertyName = "Money";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Format = "#,###";
-            this.kryptonDataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle32.Format = "#,###";
+            this.kryptonDataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle32;
             this.kryptonDataGridViewTextBoxColumn7.HeaderText = "Số Tiền";
             this.kryptonDataGridViewTextBoxColumn7.Name = "kryptonDataGridViewTextBoxColumn7";
             this.kryptonDataGridViewTextBoxColumn7.ReadOnly = true;
@@ -885,9 +975,9 @@ namespace QuanLyThuMua
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column2.DataPropertyName = "Payed";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.NullValue = false;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.NullValue = false;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle33;
             this.Column2.FalseValue = "0";
             this.Column2.HeaderText = "Đã Thu Hồi";
             this.Column2.IndeterminateValue = null;
@@ -927,6 +1017,72 @@ namespace QuanLyThuMua
             this.xacNhanDaThuHoiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xacNhanDaThuHoiToolStripMenuItem.Text = "Xác nhận đã thu hồi";
             this.xacNhanDaThuHoiToolStripMenuItem.Click += new System.EventHandler(this.xacNhanDaThuHoiToolStripMenuItem_Click);
+            // 
+            // labTienMuNuoc
+            // 
+            this.labTienMuNuoc.AutoSize = true;
+            this.labTienMuNuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labTienMuNuoc.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labTienMuNuoc.Location = new System.Drawing.Point(234, 227);
+            this.labTienMuNuoc.Name = "labTienMuNuoc";
+            this.labTienMuNuoc.Size = new System.Drawing.Size(41, 20);
+            this.labTienMuNuoc.TabIndex = 10;
+            this.labTienMuNuoc.Text = "0 Kg";
+            // 
+            // labTienMuChen
+            // 
+            this.labTienMuChen.AutoSize = true;
+            this.labTienMuChen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labTienMuChen.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labTienMuChen.Location = new System.Drawing.Point(234, 282);
+            this.labTienMuChen.Name = "labTienMuChen";
+            this.labTienMuChen.Size = new System.Drawing.Size(41, 20);
+            this.labTienMuChen.TabIndex = 10;
+            this.labTienMuChen.Text = "0 Kg";
+            // 
+            // labTienMuDay
+            // 
+            this.labTienMuDay.AutoSize = true;
+            this.labTienMuDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labTienMuDay.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.labTienMuDay.Location = new System.Drawing.Point(234, 337);
+            this.labTienMuDay.Name = "labTienMuDay";
+            this.labTienMuDay.Size = new System.Drawing.Size(41, 20);
+            this.labTienMuDay.TabIndex = 10;
+            this.labTienMuDay.Text = "0 Kg";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label17.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label17.Location = new System.Drawing.Point(234, 196);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(108, 20);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Tiền mủ nước:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label18.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label18.Location = new System.Drawing.Point(234, 251);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(108, 20);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Tiền mủ chén:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label19.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label19.Location = new System.Drawing.Point(234, 306);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(98, 20);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Tiền mủ dây:";
             // 
             // ucBaoCao
             // 
@@ -1034,5 +1190,17 @@ namespace QuanLyThuMua
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn10;
         private System.Windows.Forms.Label labAvgDegree;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labKlMuDay;
+        private System.Windows.Forms.Label labKlMuChen;
+        private System.Windows.Forms.Label labKlMuNuoc;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label labTienMuDay;
+        private System.Windows.Forms.Label labTienMuChen;
+        private System.Windows.Forms.Label labTienMuNuoc;
     }
 }
